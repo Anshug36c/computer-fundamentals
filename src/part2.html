@@ -1,0 +1,159 @@
+  <!-- ================= MODULE 2 ================= -->
+  <section id="m2">
+    <span class="modnum">Module 2</span>
+    <h2 class="title">The Information Processing Cycle</h2>
+    <p class="lede">Also called the <b>IPO cycle</b> (Input–Process–Output) or <b>IPOS cycle</b>. It describes how a computer converts data into information. Almost every diagram question in Unit 1 comes from here.</p>
+
+    <h3>2.1 The stages</h3>
+    <figure>
+      <svg viewBox="0 0 900 260" role="img" aria-label="Information processing cycle">
+        <defs>
+          <marker id="ar" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+            <path d="M0,0 L10,4 L0,8 z" fill="#4f46e5"/>
+          </marker>
+        </defs>
+        <rect x="20" y="60" width="150" height="70" rx="12" fill="#eef0ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="95" y="90" text-anchor="middle" font-size="17" font-weight="700" fill="#312e81">INPUT</text>
+        <text x="95" y="112" text-anchor="middle" font-size="12" fill="#5b6279">data entered</text>
+
+        <rect x="240" y="60" width="170" height="70" rx="12" fill="#e6f7f4" stroke="#0e9488" stroke-width="2"/>
+        <text x="325" y="90" text-anchor="middle" font-size="17" font-weight="700" fill="#065f56">PROCESSING</text>
+        <text x="325" y="112" text-anchor="middle" font-size="12" fill="#5b6279">CPU works on data</text>
+
+        <rect x="480" y="60" width="150" height="70" rx="12" fill="#fdf3e3" stroke="#b45309" stroke-width="2"/>
+        <text x="555" y="90" text-anchor="middle" font-size="17" font-weight="700" fill="#92400e">OUTPUT</text>
+        <text x="555" y="112" text-anchor="middle" font-size="12" fill="#5b6279">information shown</text>
+
+        <rect x="700" y="60" width="170" height="70" rx="12" fill="#f3ecff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="785" y="90" text-anchor="middle" font-size="17" font-weight="700" fill="#5b21b6">STORAGE</text>
+        <text x="785" y="112" text-anchor="middle" font-size="12" fill="#5b6279">saved for later use</text>
+
+        <line x1="174" y1="95" x2="234" y2="95" stroke="#4f46e5" stroke-width="2.5" marker-end="url(#ar)"/>
+        <line x1="414" y1="95" x2="474" y2="95" stroke="#4f46e5" stroke-width="2.5" marker-end="url(#ar)"/>
+        <line x1="634" y1="95" x2="694" y2="95" stroke="#4f46e5" stroke-width="2.5" marker-end="url(#ar)"/>
+        <path d="M785,134 C785,205 95,205 95,138" fill="none" stroke="#9aa0b8" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#ar)"/>
+        <text x="440" y="228" text-anchor="middle" font-size="12.5" fill="#5b6279">feedback / stored data can become input for the next cycle</text>
+        <text x="440" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#171a26">THE INFORMATION PROCESSING CYCLE (IPOS)</text>
+      </svg>
+      <figcaption>The four stages of the cycle. Storage is what makes a computer different from a calculator.</figcaption>
+    </figure>
+
+    <ol class="steps">
+      <li><b>Input</b> — Data and instructions are fed in using input devices (keyboard, mouse, scanner, mic, sensor, touchscreen) and stored in memory. <i>At this moment data has no meaning yet.</i></li>
+      <li><b>Processing</b> — The CPU (ALU + Control Unit) performs arithmetic and logical operations: calculating, comparing, sorting, searching, classifying, summarising, formatting. Raw data becomes information. <i>This is the "brain" step.</i></li>
+      <li><b>Output</b> — The result is presented in a human-usable form through output devices: monitor (soft copy), printer (hard copy), speakers, projector. <i>This is the information.</i></li>
+      <li><b>Storage</b> — Data and results are kept for future use in primary memory (RAM) or secondary storage (HDD, SSD, pen drive, cloud). Without storage, every task would have to start from zero.</li>
+    </ol>
+    <p>Some books add a 5th stage: <b>Communication / Distribution</b> — sending the output over a network to another user or machine. Others list <b>Control/Feedback</b> as a stage, because the control unit supervises the whole cycle. Mentioning either shows deeper knowledge.</p>
+
+    <div class="box tip"><span class="bt">Teacher's note</span> Input devices + output devices together are called <b>peripherals</b>. The processor is the CPU. Storage is memory. So the cycle = <b>Peripherals → CPU → Peripherals, with memory alongside</b>.</div>
+
+    <h3>2.2 The cycle in real life (use these as examples in exams)</h3>
+    <div class="tw"><table>
+      <thead><tr><th>System</th><th>Input</th><th>Processing</th><th>Output</th><th>Storage</th></tr></thead>
+      <tbody>
+        <tr><td><b>ATM</b></td><td>Card + PIN + amount</td><td>Verify PIN, check balance, debit</td><td>Cash + receipt + new balance</td><td>Updated account record</td></tr>
+        <tr><td><b>Billing in a shop</b></td><td>Barcode scans</td><td>Look up price, add tax, total</td><td>Printed bill</td><td>Sales record</td></tr>
+        <tr><td><b>Weather forecasting</b></td><td>Temperature, wind, satellite data</td><td>Run prediction model</td><td>Rain alert, forecast map</td><td>Historical weather database</td></tr>
+        <tr><td><b>Marksheet app</b></td><td>Student marks</td><td>Total, percentage, grade</td><td>Report card</td><td>School database</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>2.3 Extended view — the computing system around the cycle</h3>
+    <div class="cards">
+      <div class="card"><h5>Hardware</h5><p>The physical parts: keyboard, CPU, monitor, printer, disk.</p></div>
+      <div class="card"><h5>Software</h5><p>Instructions that tell hardware what to do: OS, apps, drivers.</p></div>
+      <div class="card"><h5>Data</h5><p>The raw material being processed (now often called the "new oil").</p></div>
+      <div class="card"><h5>People / Users</h5><p>Operators, programmers, end users — the "liveware".</p></div>
+      <div class="card"><h5>Procedures</h5><p>Rules and steps followed to operate the system.</p></div>
+      <div class="card"><h5>Connectivity</h5><p>Networks, internet, cloud — allow sharing and communication.</p></div>
+    </div>
+  </section>
+
+  <!-- ================= MODULE 3 ================= -->
+  <section id="m3">
+    <span class="modnum">Module 3</span>
+    <h2 class="title">Introduction to Computers — What is a Computer?</h2>
+    <p class="lede">The definition, word origin, and the exact reason a computer is different from a calculator.</p>
+
+    <h3>3.1 Definition (learn one long + one short)</h3>
+    <div class="box kv"><span class="bt">Definition — full version</span>
+      <b>A computer is an electronic, programmable device that accepts data and instructions as input, processes them automatically according to a stored set of instructions (a program), produces meaningful information as output, and stores the results for future use.</b>
+    </div>
+    <div class="box kv"><span class="bt">Definition — short version</span>
+      "A computer is an electronic device that takes <b>input</b>, <b>processes</b> it according to instructions, gives <b>output</b> and can <b>store</b> the data." (The word is derived from the Latin <i>computare</i> = "to calculate".)
+    </div>
+
+    <h3>3.2 Breaking the definition down — every keyword matters</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Word</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td><b>Electronic</b></td><td>It runs on electricity and uses electronic circuits (transistors, ICs); it works with binary signals 0 and 1.</td></tr>
+        <tr><td><b>Programmable</b></td><td>It can follow a <i>set of stored instructions</i>. Change the program → the same machine does a completely different job. This is the stored-program concept of John von Neumann, and it is the single most important idea in computing.</td></tr>
+        <tr><td><b>Accepts data (input)</b></td><td>It cannot think of anything by itself; the data must be supplied.</td></tr>
+        <tr><td><b>Automatic</b></td><td>Once started, it works without human intervention (a "self-acting" machine).</td></tr>
+        <tr><td><b>Produces information (output)</b></td><td>It converts raw data into a usable form.</td></tr>
+        <tr><td><b>Stores</b></td><td>It remembers data and instructions — unlike a calculator which forgets.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>3.3 Computer vs Calculator vs Human</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Feature</th><th>Calculator</th><th>Computer</th></tr></thead>
+      <tbody>
+        <tr><td>Memory</td><td>Minimal / temporary (only last result)</td><td>Large; primary + secondary storage</td></tr>
+        <tr><td>Programmable</td><td>No (fixed operations)</td><td>Yes (any program can be run)</td></tr>
+        <tr><td>Automatic working</td><td>Needs key presses for every step</td><td>Runs a whole program automatically</td></tr>
+        <tr><td>Devices</td><td>Keypad + display only</td><td>Keyboard, mouse, printer, disk, network…</td></tr>
+        <tr><td>Logic &amp; decisions</td><td>No</td><td>Yes, via conditional instructions ("if… then…")</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>3.4 The five-part picture of any computer system</h3>
+    <p><b>Hardware</b> (input + CPU + output + storage) + <b>Software</b> (system + application) + <b>Data</b> + <b>Users/People</b> + <b>Procedure/Connectivity</b>. In one line: <i>"A computer system = hardware + software working together on data for people."</i></p>
+    <p>Note the difference between the two words:</p>
+    <ul>
+      <li><b>Computer</b> = the machine (hardware).</li>
+      <li><b>Computer system</b> = the complete working setup: hardware + software + data + users + procedures.</li>
+    </ul>
+    <div class="box warn"><span class="bt">Common mistake</span> Do not define a computer as "a machine that calculates fast". Speed is a property, not the definition. A calculator can also be fast. The <b>stored program</b> ability is the real definition of a computer.</div>
+  </section>
+
+  <!-- ================= MODULE 4 ================= -->
+  <section id="m4">
+    <span class="modnum">Module 4</span>
+    <h2 class="title">Characteristics of Computers</h2>
+    <p class="lede">The classic 10 powers and the equally classic 5 limitations. You will be asked "explain any four characteristics" — so learn the bold keyword and one example for each.</p>
+
+    <h3>4.1 The strengths</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Characteristic</th><th>Meaning</th><th>Example / figure to quote</th></tr></thead>
+      <tbody>
+        <tr><td><b>1. Speed</b></td><td>Works at incredibly high speed — millions of instructions per second.</td><td>Modern CPUs do billions of operations per second (GHz). A task of 1000 calculations takes microseconds; supercomputers measure speed in <b>FLOPS</b> (floating point operations per second).</td></tr>
+        <tr><td><b>2. Accuracy</b></td><td>Gives 100% correct results if the input and program are correct.</td><td>Errors are due to bad data (GIGO) or bad logic — never due to "carelessness".</td></tr>
+        <tr><td><b>3. Diligence (consistency)</b></td><td>Performs the same task repeatedly with the same accuracy — no tiredness, no boredom, no lunch breaks.</td><td>Processing 10 lakh bank transactions at 3 a.m. just as carefully as the first one.</td></tr>
+        <tr><td><b>4. Versatility</b></td><td>The same machine does many different jobs — typing, music, design, science, gaming, accounting, teaching. (Its sister term: <b>adaptability</b> / <b>flexibility</b>.)</td><td>One laptop can be a music studio in the morning and an accounting office in the evening — only the software changes.</td></tr>
+        <tr><td><b>5. Storage capacity</b></td><td>Stores enormous amounts of data permanently and retrieves it instantly.</td><td>From kilobytes (KB) in the 1980s to <b>terabytes &amp; petabytes</b> today; cloud storage adds practically unlimited space.</td></tr>
+        <tr><td><b>6. Automatism</b></td><td>Once a program is started it does the whole job itself without human help.</td><td>Overnight batch processing; automatic backup at 2 a.m.</td></tr>
+        <tr><td><b>7. Reliability</b></td><td>Results are dependable and repeatable; modern chips run for years.</td><td>Same input + same program = same output, always.</td></tr>
+        <tr><td><b>8. Cost-effectiveness</b></td><td>Work that needs many clerks can be done by one machine, cheaper per unit of work (even though initial hardware cost is high).</td><td>One payroll server replaces 20 accountants' manual work.</td></tr>
+        <tr><td><b>9. Logical decision-making</b></td><td>Can compare and take decisions like "if marks ≥ 33 then pass" using logical/branching instructions.</td><td>Automatic fee calculation with discounts for the right category.</td></tr>
+        <tr><td><b>10. Power of remembering (retrieval)</b></td><td>Keeps data safe and can find any record instantly among millions.</td><td>Searching a customer by name in a database of one crore records in milliseconds.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box hook"><span class="bt">Memory hook</span> <b>S-A-D-V-S-A-R-C-L-P</b> → <i>"Some Androids Don't Very Simply Accept Random Crazy Logical Problems"</i>. Or, more simply, remember the famous trio first: <b>Speed · Accuracy · Diligence</b>, then Storage, Versatility, Automation.</div>
+
+    <h3>4.2 The limitations (no machine is perfect)</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Limitation</th><th>Explanation</th></tr></thead>
+      <tbody>
+        <tr><td><b>No intelligence of its own (no "IQ")</b></td><td>A computer cannot think, reason or take its own decisions. It only obeys the instructions written by a human. (AI is software imitating certain intelligent behaviours — the machine itself still follows instructions.)</td></tr>
+        <tr><td><b>No emotions, feelings or judgement</b></td><td>It cannot sense love, taste, beauty or ethics. It cannot judge "should we do this?" — only "can this be computed?".</td></tr>
+        <tr><td><b>GIGO — depends on input</b></td><td>Wrong data or wrong program → wrong output. Its accuracy is only as good as its input.</td></tr>
+        <tr><td><b>Needs electricity and maintenance</b></td><td>No power, no computer. It also needs a controlled, clean environment especially for large systems.</td></tr>
+        <tr><td><b>Cannot learn from experience by itself</b></td><td>It never gets "better with practice"; it must be reprogrammed/retrained.</td></tr>
+        <tr><td><b>Zero common sense</b></td><td>Ask it to "take a break" and it has no idea — instructions must be literal and exact.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box ex"><span class="bt">Typical exam framing</span> "Computer is a dumb machine with a great memory." Explain in 4 lines: it has immense speed/accuracy/storage but no IQ, no emotions and no decision-making of its own — it is <b>"garbage in, garbage out"</b> and depends fully on the program (a human creation).</div>
+  </section>

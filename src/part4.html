@@ -1,0 +1,227 @@
+  <!-- ================= MODULE 7 ================= -->
+  <section id="m7">
+    <span class="modnum">Module 7</span>
+    <h2 class="title">Basic Organization of a Digital Computer</h2>
+    <p class="lede">This is the highest-value diagram in the whole syllabus. Learn to draw the block diagram from memory and to explain each block in two lines.</p>
+
+    <h3>7.1 The five functional units — block diagram</h3>
+    <figure>
+      <svg viewBox="0 0 940 430" role="img" aria-label="Block diagram of a digital computer">
+        <defs>
+          <marker id="a2" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+            <path d="M0,0 L10,4 L0,8 z" fill="#4f46e5"/>
+          </marker>
+          <marker id="a3" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+            <path d="M0,0 L10,4 L0,8 z" fill="#0e9488"/>
+          </marker>
+        </defs>
+
+        <!-- CPU big box -->
+        <rect x="330" y="70" width="290" height="180" rx="14" fill="#eef0ff" stroke="#4f46e5" stroke-width="2.5"/>
+        <text x="475" y="96" text-anchor="middle" font-size="15" font-weight="800" fill="#312e81">CENTRAL PROCESSING UNIT (CPU)</text>
+        <rect x="352" y="112" width="112" height="56" rx="10" fill="#fff" stroke="#4f46e5" stroke-width="1.8"/>
+        <text x="408" y="136" text-anchor="middle" font-size="13.5" font-weight="700" fill="#312e81">ALU</text>
+        <text x="408" y="154" text-anchor="middle" font-size="11" fill="#5b6279">arithmetic + logic</text>
+        <rect x="486" y="112" width="112" height="56" rx="10" fill="#fff" stroke="#4f46e5" stroke-width="1.8"/>
+        <text x="542" y="136" text-anchor="middle" font-size="13.5" font-weight="700" fill="#312e81">CONTROL UNIT</text>
+        <text x="542" y="154" text-anchor="middle" font-size="11" fill="#5b6279">directs everything</text>
+        <rect x="352" y="180" width="246" height="52" rx="10" fill="#fff" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="5 4"/>
+        <text x="475" y="202" text-anchor="middle" font-size="13.5" font-weight="700" fill="#5b21b6">REGISTERS</text>
+        <text x="475" y="220" text-anchor="middle" font-size="11" fill="#5b6279">ACC · PC · IR · MAR · MDR (fastest storage inside CPU)</text>
+
+        <!-- Left: input -->
+        <rect x="30" y="120" width="180" height="86" rx="12" fill="#e6f7f4" stroke="#0e9488" stroke-width="2"/>
+        <text x="120" y="150" text-anchor="middle" font-size="15" font-weight="800" fill="#065f56">INPUT UNIT</text>
+        <text x="120" y="172" text-anchor="middle" font-size="11.5" fill="#3c4258">keyboard · mouse · scanner</text>
+        <text x="120" y="190" text-anchor="middle" font-size="11.5" fill="#3c4258">mic · camera · sensor · touch</text>
+
+        <!-- Right: output -->
+        <rect x="740" y="120" width="180" height="86" rx="12" fill="#fdf3e3" stroke="#b45309" stroke-width="2"/>
+        <text x="830" y="150" text-anchor="middle" font-size="15" font-weight="800" fill="#92400e">OUTPUT UNIT</text>
+        <text x="830" y="172" text-anchor="middle" font-size="11.5" fill="#3c4258">monitor · printer · speakers</text>
+        <text x="830" y="190" text-anchor="middle" font-size="11.5" fill="#3c4258">projector · plotter</text>
+
+        <!-- Bottom: memory -->
+        <rect x="300" y="305" width="350" height="96" rx="12" fill="#f3ecff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="475" y="330" text-anchor="middle" font-size="14.5" font-weight="800" fill="#5b21b6">MEMORY UNIT</text>
+        <text x="475" y="353" text-anchor="middle" font-size="11.5" fill="#3c4258">Primary — RAM, ROM, Cache (fast, small)</text>
+        <text x="475" y="373" text-anchor="middle" font-size="11.5" fill="#3c4258">Secondary — HDD, SSD, pen drive, cloud (slow, huge)</text>
+
+        <!-- arrows -->
+        <line x1="214" y1="150" x2="326" y2="150" stroke="#0e9488" stroke-width="2.5" marker-end="url(#a3)"/>
+        <text x="270" y="140" text-anchor="middle" font-size="11" fill="#0e9488" font-weight="700">data + instructions</text>
+
+        <line x1="624" y1="150" x2="736" y2="150" stroke="#b45309" stroke-width="2.5" marker-end="url(#a2)"/>
+        <text x="680" y="140" text-anchor="middle" font-size="11" fill="#b45309" font-weight="700">results / information</text>
+
+        <path d="M475,254 L475,300" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#a2)"/>
+        <path d="M500,300 L500,254" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#a2)"/>
+        <text x="560" y="282" font-size="11.5" fill="#5b21b6" font-weight="700">SYSTEM BUS — data, address &amp; control</text>
+
+        <text x="475" y="40" text-anchor="middle" font-size="13" font-weight="700" fill="#171a26">BASIC ORGANIZATION OF A DIGITAL COMPUTER (von Neumann model)</text>
+        <text x="475" y="425" text-anchor="middle" font-size="11.5" fill="#5b6279">Data flows: input → CPU ↔ memory → output. The control unit supervises every step.</text>
+      </svg>
+      <figcaption>Draw exactly this in the exam: three top blocks, memory below, arrows showing data flow. Label both primary and secondary memory.</figcaption>
+    </figure>
+
+    <h3>7.2 What each unit does</h3>
+    <h4>a) Input Unit</h4>
+    <ul>
+      <li>Accepts data and instructions from the outside world.</li>
+      <li>Converts them into the computer's internal <b>binary (machine-readable)</b> form.</li>
+      <li>Passes them to the CPU / memory. <b>Without input, the computer cannot do anything.</b></li>
+      <li>Devices: keyboard, mouse, trackball, joystick, scanner, mic, webcam, touchscreen, light pen, digitizer, barcode/QR reader, OMR, OCR, MICR, biometric sensor, game controller.</li>
+      <li>Two families: <b>keyboard-based</b> (typed entry) and <b>point-and-click / direct-entry</b> (mouse, scanner, mic, sensor).</li>
+    </ul>
+
+    <h4>b) CPU — Central Processing Unit ("the brain")</h4>
+    <p>Where all processing happens. It has three parts:</p>
+    <div class="tw"><table>
+      <thead><tr><th>Part</th><th>Function</th><th>Details</th></tr></thead>
+      <tbody>
+        <tr><td><b>ALU — Arithmetic Logic Unit</b></td><td>Does the <i>actual work</i> on data</td><td><b>Arithmetic:</b> + − × ÷. <b>Logical:</b> comparisons (&gt;, &lt;, =, ≠) and Boolean operations (AND, OR, NOT). Produces the result, which is stored in a register — usually the <b>Accumulator (ACC)</b>. It also sets <b>flags</b> (zero, carry, sign, overflow).</td></tr>
+        <tr><td><b>CU — Control Unit</b></td><td><i>Directs and coordinates</i> — it does not process data</td><td>Fetches instructions from memory, decodes them, tells the ALU what operation to do, tells memory when to read/write, tells input/output devices when to act, and keeps everything in step with the system clock. It is the <b>traffic police</b> of the computer.</td></tr>
+        <tr><td><b>Registers</b></td><td>Extremely small, extremely fast storage <i>inside</i> the CPU</td><td><b>PC</b> (program counter — address of next instruction) · <b>IR</b> (instruction register — current instruction) · <b>MAR</b> (memory address register) · <b>MDR</b> (memory data register) · <b>ACC</b> (accumulator) · general-purpose registers. Size measured in bits (32-bit / 64-bit).</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box hook"><span class="bt">Memory hook</span> <b>ALU = A</b>ll <b>L</b>ogic <b>U</b>nderstanding (does the sums) · <b>CU = C</b>hief <b>U</b>mpire (gives the orders). A CPU is also called the computer's <b>brain</b> or <b>processor</b>; the chip itself is the <b>microprocessor</b>.</div>
+
+    <h4>c) Memory Unit (storage)</h4>
+    <ul>
+      <li>Holds data, instructions and results. Memory is a giant array of numbered boxes ("cells"), each with a unique <b>address</b>.</li>
+      <li><b>Primary memory</b> — directly accessed by the CPU, fast, small, costlier: <b>RAM</b> (volatile, read/write, working memory), <b>ROM</b> (non-volatile, read-only, stores start-up instructions), <b>Cache</b> (fastest, keeps frequently used data).</li>
+      <li><b>Secondary memory</b> — permanent, huge, cheap, slower: HDD, SSD, optical discs, pen drive, memory card, cloud.</li>
+      <li>Why two levels? Because extremely fast memory is extremely expensive and small. This compromise is called the <b>memory hierarchy</b>.</li>
+    </ul>
+
+    <h4>d) Output Unit</h4>
+    <ul>
+      <li>Converts the machine's binary results back into human-readable form.</li>
+      <li><b>Soft copy</b> (on screen — temporary): monitor/LCD/LED/OLED, projector, speakers, headphones.</li>
+      <li><b>Hard copy</b> (physical — permanent): printers — <b>impact</b> (dot-matrix, daisy wheel, line printer) and <b>non-impact</b> (inkjet, laser, thermal, 3D printer); plotter for engineering drawings.</li>
+    </ul>
+
+    <h3>7.3 The system bus — how the units talk</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Bus</th><th>Direction</th><th>Carries</th><th>Key point</th></tr></thead>
+      <tbody>
+        <tr><td><b>Data bus</b></td><td>Bidirectional</td><td>Actual data &amp; instructions</td><td>Width (8/16/32/64 bits) decides how much is transferred at one time.</td></tr>
+        <tr><td><b>Address bus</b></td><td>Unidirectional (CPU → memory)</td><td>Address of the location to read/write</td><td>With n address lines you can address <b>2ⁿ locations</b>. E.g. 32 address lines → 2³² ≈ 4 GB locations.</td></tr>
+        <tr><td><b>Control bus</b></td><td>Bidirectional</td><td>Control signals: read, write, interrupt, clock, reset</td><td>Synchronises and supervises everything — this is the Control Unit's channel.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>7.4 How an instruction actually runs — the instruction cycle</h3>
+    <p>Every program is just a list of instructions like "ADD 5" or "LOAD A". The CPU repeats this cycle billions of times per second:</p>
+    <ol class="steps">
+      <li><b>FETCH</b> — The Control Unit reads the next instruction from memory. Address comes from the <b>PC</b> (program counter), which is then incremented to point to the next instruction.</li>
+      <li><b>DECODE</b> — The instruction is placed in the <b>IR</b> and the CU figures out what it means: what operation, which data (operand).</li>
+      <li><b>EXECUTE</b> — The ALU performs the operation, or data is moved between registers/memory, or the CU signals a device to act.</li>
+      <li><b>STORE / WRITE-BACK</b> — The result is stored in a register or in memory, and status flags are updated. Then the cycle repeats for the next instruction.</li>
+    </ol>
+    <div class="box tip"><span class="bt">Exam tip</span> This cycle is also called the <b>fetch–decode–execute cycle</b> or <b>machine cycle</b>. Mentioning that the same memory holds both data and instructions (the <b>stored-program concept</b>) is what distinguishes the <b>von Neumann architecture</b> from the <b>Harvard architecture</b> (separate instruction and data memories — used in many microcontrollers and DSPs).</div>
+
+    <h3 id="m7b">7.5 Memory hierarchy, storage units, and speed</h3>
+    <figure>
+      <svg viewBox="0 0 720 300" role="img" aria-label="Memory hierarchy">
+        <polygon points="360,10 400,70 320,70" fill="#4f46e5"/>
+        <polygon points="320,74 400,74 440,134 280,134" fill="#6d63ef"/>
+        <polygon points="280,138 440,138 480,198 240,198" fill="#0e9488"/>
+        <polygon points="240,202 480,202 520,262 200,262" fill="#0f766e"/>
+        <text x="360" y="60" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700">REGISTERS</text>
+        <text x="360" y="112" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700">CACHE (L1/L2/L3)</text>
+        <text x="360" y="174" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700">PRIMARY MEMORY — RAM / ROM</text>
+        <text x="360" y="238" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700">SECONDARY / TERTIARY STORAGE</text>
+        <text x="540" y="45" font-size="11.5" fill="#5b6279">fastest · tiny</text>
+        <text x="540" y="110" font-size="11.5" fill="#5b6279">very fast · small</text>
+        <text x="540" y="172" font-size="11.5" fill="#5b6279">fast · moderate</text>
+        <text x="540" y="236" font-size="11.5" fill="#5b6279">slow · vast</text>
+        <text x="120" y="45" font-size="11.5" fill="#5b6279">costliest per byte</text>
+        <text x="90" y="236" font-size="11.5" fill="#5b6279">cheapest per byte</text>
+      </svg>
+      <figcaption>Going up: faster, costlier, smaller. Going down: slower, cheaper, bigger. Cache exists to bridge the speed gap between CPU and RAM.</figcaption>
+    </figure>
+
+    <div class="tw"><table>
+      <thead><tr><th>Storage</th><th>Type</th><th>Volatile?</th><th>Typical size</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><b>Registers</b></td><td>Primary (inside CPU)</td><td>Yes</td><td>Bytes</td><td>Fastest; part of CPU.</td></tr>
+        <tr><td><b>Cache</b></td><td>Primary</td><td>Yes</td><td>KB – MB</td><td>L1 (in core, ~ns), L2, L3 (shared). Stores recently/frequently used data.</td></tr>
+        <tr><td><b>RAM</b></td><td>Primary</td><td><b>Yes</b> (loses content on power off)</td><td>GB</td><td>Read/Write. <b>SRAM</b> (fast, cache, flip-flops) vs <b>DRAM</b> (main memory, capacitors, needs refreshing).</td></tr>
+        <tr><td><b>ROM</b></td><td>Primary</td><td><b>No</b> (permanent)</td><td>KB – MB</td><td>Read-only; holds BIOS/firmware. Types: PROM (write once), EPROM (erase with UV), EEPROM (erase electrically), Flash.</td></tr>
+        <tr><td><b>SSD / Flash</b></td><td>Secondary</td><td>No</td><td>GB – TB</td><td>No moving parts, silent, fast, shock-resistant.</td></tr>
+        <tr><td><b>HDD</b></td><td>Secondary</td><td>No</td><td>TB</td><td>Magnetic platters + read/write head; mechanical, slower, cheap per TB.</td></tr>
+        <tr><td><b>Optical</b> (CD/DVD/Blu-ray)</td><td>Secondary</td><td>No</td><td>700 MB / 4.7 GB / 25 GB</td><td>Read by laser; good for archiving media.</td></tr>
+        <tr><td><b>Pen drive / Memory card</b></td><td>Secondary</td><td>No</td><td>GB – TB</td><td>USB / flash-based portable storage.</td></tr>
+        <tr><td><b>Magnetic tape</b></td><td>Tertiary</td><td>No</td><td>TB+</td><td>Sequential access; used for backups/archives.</td></tr>
+        <tr><td><b>Cloud</b></td><td>Remote</td><td>No</td><td>Practically unlimited</td><td>Stored on someone else's servers, accessed over the internet (Google Drive, OneDrive, S3).</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Units of memory — memorise this ladder</h4>
+    <div class="tw"><table>
+      <thead><tr><th>Unit</th><th>Value</th><th>Roughly</th></tr></thead>
+      <tbody>
+        <tr><td><b>Bit</b></td><td>1 binary digit (0 or 1)</td><td>Smallest unit of data</td></tr>
+        <tr><td><b>Nibble</b></td><td>4 bits</td><td>One hexadecimal digit</td></tr>
+        <tr><td><b>Byte</b></td><td>8 bits</td><td>One character (e.g. 'A')</td></tr>
+        <tr><td><b>Word</b></td><td>Machine dependent (8/16/32/64 bits)</td><td>Size of data the CPU handles at once</td></tr>
+        <tr><td><b>Kilobyte (KB)</b></td><td>2¹⁰ = 1,024 bytes</td><td>A page of text</td></tr>
+        <tr><td><b>Megabyte (MB)</b></td><td>2²⁰ = 1,048,576 bytes</td><td>A photo / 1 min of MP3</td></tr>
+        <tr><td><b>Gigabyte (GB)</b></td><td>2³⁰ bytes</td><td>A movie / phone storage</td></tr>
+        <tr><td><b>Terabyte (TB)</b></td><td>2⁴⁰ bytes</td><td>Laptop hard disk</td></tr>
+        <tr><td><b>Petabyte (PB)</b></td><td>2⁵⁰ bytes</td><td>Data-centre scale</td></tr>
+        <tr><td><b>Exabyte (EB) / Zettabyte (ZB) / Yottabyte (YB)</b></td><td>2⁶⁰ / 2⁷⁰ / 2⁸⁰ bytes</td><td>Global internet traffic scale</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box warn"><span class="bt">Careful</span> In computing a kilobyte is <b>1024 bytes</b> (powers of 2), but hard-disk makers advertise 1 KB = 1000 bytes — that is why a "500 GB" drive shows less. (Strictly, 1024 B = 1 KiB "kibibyte"; exams usually use 1024 for KB, MB, GB.)</div>
+
+    <h4>Speed terms to sprinkle into answers</h4>
+    <ul>
+      <li><b>Clock speed</b> — cycles per second (Hz, MHz, GHz); the heartbeat that times all operations.</li>
+      <li><b>MIPS</b> — Million Instructions Per Second.</li>
+      <li><b>FLOPS</b> — Floating-point Operations Per Second; supercomputer speed is quoted in tera/peta/exaFLOPS.</li>
+      <li><b>Latency</b> — delay before data arrives; <b>Bandwidth</b> — how much data can flow per second.</li>
+    </ul>
+
+    <h3>7.6 Hardware vs Software (and firmware)</h3>
+    <div class="tw"><table>
+      <thead><tr><th></th><th>Hardware</th><th>Software</th></tr></thead>
+      <tbody>
+        <tr><td>Nature</td><td>Physical, touchable parts</td><td>Set of programs/instructions — intangible</td></tr>
+        <tr><td>Failure</td><td>Wears out with time ("hardware failure")</td><td>Does not wear out; can become obsolete ("software failure" = bug)</td></tr>
+        <tr><td>Dependency</td><td>Cannot do anything without software</td><td>Cannot run without hardware</td></tr>
+        <tr><td>Examples</td><td>CPU, RAM, keyboard, monitor, motherboard</td><td>Windows, MS Word, Chrome, WhatsApp, a compiler</td></tr>
+        <tr><td>Made by</td><td>Manufactured in factories</td><td>Written/engineered by programmers</td></tr>
+      </tbody>
+    </table></div>
+    <div class="grid2">
+      <div class="card">
+        <h5>System software</h5>
+        <p>Runs and manages the machine itself. <b>Operating System</b> (Windows, Linux, macOS, Android, iOS), <b>device drivers</b>, <b>utilities</b> (antivirus, disk cleanup), <b>language processors</b> (assembler, compiler, interpreter), <b>linker/loader</b>, <b>BIOS/firmware</b>.</p>
+      </div>
+      <div class="card">
+        <h5>Application software</h5>
+        <p>Does the user's actual job. <b>General purpose:</b> word processor, spreadsheet, presentation, browser, media player. <b>Specific purpose:</b> payroll, railway reservation, banking, hospital management, Tally, AutoCAD.</p>
+      </div>
+    </div>
+    <p><b>Firmware</b> = software permanently stored in hardware (ROM/BIOS) so the machine can start. <b>Middleware</b> = software that connects two applications, e.g. a payment gateway connecting a shopping website to a bank.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Language processor</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><b>Assembler</b></td><td>Converts assembly language → machine language</td></tr>
+        <tr><td><b>Compiler</b></td><td>Converts the <i>whole</i> high-level program into machine code at once, then runs it (C, C++). Reports all errors together.</td></tr>
+        <tr><td><b>Interpreter</b></td><td>Converts and runs high-level program <i>line by line</i> (Python, BASIC). Stops at the first error; slower but easier to debug.</td></tr>
+        <tr><td><b>Linker</b></td><td>Joins the object code with library code to make one executable file</td></tr>
+        <tr><td><b>Loader</b></td><td>Loads the executable from disk into RAM for execution</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>7.7 The motherboard and ports (one-liners)</h3>
+    <ul>
+      <li><b>Motherboard</b> — the main circuit board that holds the CPU, memory slots, chipset and expansion slots so all parts can communicate.</li>
+      <li><b>Ports</b> — physical connection points: USB, HDMI, VGA, Ethernet (RJ-45), audio jack, and wireless links (Wi-Fi, Bluetooth, NFC).</li>
+      <li><b>Expansion cards</b> — add capability: graphics card (GPU), sound card, network card.</li>
+      <li><b>SMPS / battery</b> — supplies clean, regulated power.</li>
+    </ul>
+  </section>

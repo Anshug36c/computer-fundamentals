@@ -1,0 +1,157 @@
+  <!-- ================= MODULE 9 ================= -->
+  <section id="m9">
+    <span class="modnum">Module 9</span>
+    <h2 class="title">Related Essentials (the neighbours of this unit)</h2>
+    <p class="lede">Everything adjacent to this syllabus that examiners like to mix in — data processing types, data representation, logic gates, and real-world uses of the number systems.</p>
+
+    <h3>9.1 Types of data processing (extends Module 2)</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Type</th><th>How it works</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><b>Batch processing</b></td><td>Data is collected over time and processed together as one "batch"; no user interaction during processing.</td><td>Monthly salary, university result processing, electricity billing, old-generation computers.</td></tr>
+        <tr><td><b>Online / Transaction processing</b></td><td>Each transaction is processed immediately as it arrives; user waits for the response.</td><td>ATM withdrawal, railway ticket booking, UPI payment, POS billing.</td></tr>
+        <tr><td><b>Real-time processing</b></td><td>So fast that the output controls an ongoing physical process; must finish within a deadline.</td><td>Air-traffic control, hospital ICU monitor, anti-lock braking, missile guidance, online gaming.</td></tr>
+        <tr><td><b>Time-sharing / Multiprogramming</b></td><td>Many users/s programs share one computer, the CPU switching rapidly between them so each feels alone.</td><td>College server with 100 logged-in students; cloud servers.</td></tr>
+        <tr><td><b>Distributed processing</b></td><td>The job is split across several computers connected by a network.</td><td>Search engines, banking networks, weather modelling clusters.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>9.2 How different kinds of data are represented inside the computer</h3>
+    <ul>
+      <li><b>Numbers</b> — binary (with 2's complement for negatives, and floating-point for fractions/in scientific work).</li>
+      <li><b>Text/characters</b> — codes: ASCII (8-bit), Unicode/UTF-8 (variable), BCD for decimal displays.</li>
+      <li><b>Images</b> — a grid of pixels, each pixel stored as a number. In <b>bitmap</b> images, colour = 24-bit (8 bits each for Red, Green, Blue, i.e. 16.7 million colours); higher resolution and colour depth = bigger file. <b>Vector</b> images store shapes and formulas instead (scalable).</li>
+      <li><b>Audio</b> — the sound wave is sampled thousands of times a second (sampling rate, e.g. 44.1 kHz) and each sample stored as a number; higher rate and bit depth = better quality, bigger file (MP3 compresses by discarding what the ear cannot hear).</li>
+      <li><b>Video</b> — a sequence of images (frames) played at 24–60 fps plus audio; compressed with codecs (MP4/H.264).</li>
+      <li><b>Every single item is ultimately a string of 0s and 1s</b> — a 1 MB photo is about 8 million bits.</li>
+    </ul>
+
+    <h3>9.3 Logic gates — the electronic cousins of binary arithmetic (bonus)</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Gate</th><th>Rule</th><th>De Morgan / use</th></tr></thead>
+      <tbody>
+        <tr><td><b>AND</b></td><td>Output 1 only if all inputs are 1 (A·B)</td><td>Used in carry generation of the adder; "both conditions must be true"</td></tr>
+        <tr><td><b>OR</b></td><td>Output 1 if any input is 1 (A+B)</td><td>"At least one condition true"</td></tr>
+        <tr><td><b>NOT</b></td><td>Inverts the input (complement) — this is exactly the 1's complement</td><td>Used with a +1 adder to make 2's complement (subtraction)</td></tr>
+        <tr><td><b>NAND / NOR</b></td><td>AND/OR followed by NOT</td><td>Universal gates — any circuit can be built from NAND alone</td></tr>
+        <tr><td><b>XOR</b></td><td>Output 1 if inputs are <i>different</i></td><td>Half-adder sum bit, parity generation, Gray-code conversion</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>Boolean algebra</b> (George Boole, 1854) is the mathematics of 0 and 1 that makes digital circuits possible; <b>Claude Shannon (1937)</b> showed that relay circuits could implement Boolean logic — a key step from switches to computers.</p>
+
+    <h3>9.4 Where number systems meet real life (great for viva "applications" questions)</h3>
+    <div class="cards">
+      <div class="card"><h5>IPv4 addresses</h5><p>Written in decimal but stored as 4 bytes, e.g. 192.168.1.1 = 11000000.10101000.00000001.00000001.</p></div>
+      <div class="card"><h5>IPv6 &amp; MAC addresses</h5><p>Written in hexadecimal — e.g. MAC 3C:5A:B4:1F:9E:22, IPv6 in 8 hex groups.</p></div>
+      <div class="card"><h5>Colour codes in HTML/CSS</h5><p>#FF0000 = red (FF, 00, 00 for R, G, B). Each pair is one byte of 0–255.</p></div>
+      <div class="card"><h5>File permissions (Unix/Linux)</h5><p><code>chmod 755</code> is octal — 7 = rwx for the owner, 5 = r-x for group and others.</p></div>
+      <div class="card"><h5>Memory addresses &amp; disassembly</h5><p>Debuggers show addresses like 0x7FFE4A2C — hexadecimal, because it maps cleanly onto bits.</p></div>
+      <div class="card"><h5>Storage sizes</h5><p>Everything counted in powers of 2: 4 GB RAM = 4 × 2³⁰ bytes ≈ 43 crore bytes.</p></div>
+      <div class="card"><h5>Digital clocks / time &amp; angles</h5><p>Base-60 (sexagesimal) residue: 60 seconds, 60 minutes, 360° = 60×6.</p></div>
+      <div class="card"><h5>Bar codes, ISBN, Aadhaar</h5><p>Check digits use modular arithmetic on the digits — a cousin of the parity idea.</p></div>
+    </div>
+
+    <h3>9.5 Bits, bytes and the word length</h3>
+    <ul>
+      <li><b>Bit</b> = a single binary digit. It is the atom of information (coined from "<b>b</b>inary dig<b>it</b>").</li>
+      <li><b>Byte</b> = 8 bits; enough for one ASCII character. A byte can store 2⁸ = 256 different values (0–255).</li>
+      <li><b>Word length</b> = the number of bits the CPU handles in one operation (8/16/32/64). Bigger word length = faster and more accurate machine; today's PCs are 64-bit.</li>
+      <li><b>Address</b> = a unique number labelling each memory cell; the CPU says "read address 42" rather than "read the third box after the blue one".</li>
+      <li>How many bit patterns in n bits? <b>2ⁿ</b>. How many distinct values in n bits? <b>2ⁿ</b>, ranging 0 to <b>2ⁿ − 1</b> (unsigned).</li>
+    </ul>
+  </section>
+
+  <!-- ================= MODULE 10 ================= -->
+  <section id="m10">
+    <span class="modnum">Module 10</span>
+    <h2 class="title">Quick Revision Sheet — the night before the exam</h2>
+    <p class="lede">If you read only one page, read this one. Everything is compressed into lists you can memorise in 30 minutes.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h5>Definitions in one line</h5>
+        <p><b>Data</b> — raw, unprocessed facts.<br>
+        <b>Information</b> — processed, meaningful data used for decisions.<br>
+        <b>Computer</b> — electronic, programmable device that accepts input, processes per stored instructions, gives output, stores results.<br>
+        <b>Number system</b> — a set of digits and rules with a base r → digits 0…r−1.<br>
+        <b>Base/radix</b> — number of symbols in the system.</p>
+      </div>
+      <div class="card">
+        <h5>The cycles</h5>
+        <p><b>IPOS:</b> Input → Processing → Output → Storage.<br>
+        <b>Machine cycle:</b> Fetch → Decode → Execute → Store (billions of times per second).<br>
+        <b>Data processing → Information.</b></p>
+      </div>
+      <div class="card">
+        <h5>Generations (V-T-I-M-A)</h5>
+        <p>1: Vacuum tubes (1940–56) — ENIAC, UNIVAC-I<br>
+        2: Transistors (1956–63) — FORTRAN, COBOL<br>
+        3: ICs (1964–71) — IBM System/360, OS, time-sharing<br>
+        4: Microprocessors/VLSI (1971+) — PC, internet, GUI<br>
+        5: AI/ULSI (present) — ML, robotics, quantum</p>
+      </div>
+      <div class="card">
+        <h5>Fathers &amp; firsts</h5>
+        <p><b>Babbage</b> — Father of the computer.<br>
+        <b>Ada Lovelace</b> — first programmer.<br>
+        <b>Von Neumann</b> — stored-program concept.<br>
+        <b>Alan Turing</b> — Turing machine, Turing test.<br>
+        <b>Hollerith</b> — punched cards → IBM.<br>
+        <b>ENIAC</b> — first general-purpose electronic digital computer (1946).<br>
+        <b>UNIVAC-I</b> — first commercial computer.<br>
+        <b>Intel 4004</b> — first microprocessor (1971).</p>
+      </div>
+      <div class="card">
+        <h5>Number systems</h5>
+        <p>Binary r=2 (0,1) · Octal r=8 (0–7) · Decimal r=10 (0–9) · Hex r=16 (0–9,A–F)<br>
+        1 octal digit = 3 bits · 1 hex digit = 4 bits</p>
+      </div>
+      <div class="card">
+        <h5>Conversion methods</h5>
+        <p>Dec → other: divide by base, read remainders <b>bottom-up</b>.<br>
+        Fraction: multiply by base, read integer parts <b>top-down</b>.<br>
+        Other → Dec: weights (powers of base).<br>
+        Binary ↔ Octal: groups of 3.<br>
+        Binary ↔ Hex: groups of 4.<br>
+        Octal ↔ Hex: via binary (or via decimal).</p>
+      </div>
+      <div class="card">
+        <h5>Handy values</h5>
+        <p>(45)₁₀ = 101101₂ = 55₈ = 2D₁₆<br>
+        (156)₁₀ = 10011100₂ = 234₈ = 9C₁₆<br>
+        (255)₁₀ = 11111111₂ = 377₈ = FF₁₆<br>
+        2¹⁰ = 1024 · 2¹⁶ = 65536 · 2³² ≈ 4.3 billion<br>
+        8 bits = 1 byte = 256 values (0–255)<br>
+        Signed 8-bit 2's complement range: −128 to +127</p>
+      </div>
+      <div class="card">
+        <h5>CPU &amp; memory</h5>
+        <p><b>CPU = ALU + CU + Registers.</b><br>
+        ALU does arithmetic &amp; logic; CU controls; registers (PC, IR, MAR, MDR, ACC) are fastest.<br>
+        Primary: RAM (volatile) + ROM (non-volatile) + Cache.<br>
+        Secondary: HDD, SSD, optical, pen drive, cloud.<br>
+        Buses: data, address (n lines → 2ⁿ locations), control.</p>
+      </div>
+      <div class="card">
+        <h5>Codes</h5>
+        <p>BCD (4 bits/digit, 8421) · Excess-3 (digit+3) · Gray (1-bit change) · ASCII (7/8 bits; A=65, a=97, 0=48) · EBCDIC (8-bit, IBM) · Unicode (all languages) · Parity bit (error detection).</p>
+      </div>
+      <div class="card">
+        <h5>Characteristics</h5>
+        <p>Speed · Accuracy · Diligence · Versatility · Storage · Automation · Reliability · Cost-effectiveness · Logical decisions · Memory — but <b>no intelligence, no emotions, no common sense</b> (GIGO).</p>
+      </div>
+      <div class="card">
+        <h5>Types of computers</h5>
+        <p>By data: Analog · Digital · Hybrid.<br>
+        By size: Super &gt; Mainframe &gt; Mini &gt; Micro.<br>
+        By purpose: General-purpose · Special-purpose.</p>
+      </div>
+      <div class="card">
+        <h5>Three diagrams to be able to draw</h5>
+        <p>1. Block diagram of a computer (inputs, CPU = ALU+CU+registers, memory, output).<br>
+        2. IPOS cycle.<br>
+        3. Memory hierarchy pyramid.<br>
+        Plus the conversion map if you have time.</p>
+      </div>
+    </div>
+  </section>

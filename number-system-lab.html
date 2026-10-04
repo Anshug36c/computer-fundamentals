@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4f46e5">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Number System Lab — Convert, Learn, Quiz</title>
+<style>
+  :root{
+    --bg:#f4f5fb; --card:#fff; --ink:#171a26; --muted:#5b6279;
+    --accent:#4f46e5; --accent-soft:#eef0ff; --line:#e2e5f0;
+    --good:#0f766e; --good-soft:#e6f7f4; --bad:#b91c1c; --bad-soft:#fdecec;
+    --code:#f2f3f9;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:16.5px;line-height:1.6;
+  }
+  header{
+    background:linear-gradient(135deg,#312e81,#4f46e5 50%,#0e9488);
+    color:#fff;padding:34px 22px 30px;text-align:center;
+  }
+  header h1{margin:0 0 6px;font-size:clamp(22px,4.2vw,34px);letter-spacing:-.02em}
+  header p{margin:0;opacity:.93;font-size:15.5px}
+  .wrap{max-width:1000px;margin:0 auto;padding:22px 16px 70px}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+  .tabs button{
+    border:1px solid var(--line);background:#fff;color:var(--muted);
+    padding:9px 16px;border-radius:999px;font-size:15px;font-weight:600;cursor:pointer;
+  }
+  .tabs button.active{background:var(--accent);border-color:var(--accent);color:#fff}
+  .panel{display:none}
+  .panel.active{display:block}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:22px 24px;margin-bottom:18px;box-shadow:0 2px 10px rgba(20,25,60,.05);
+  }
+  h2{font-size:21px;margin:0 0 4px;letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:14.5px;margin:0 0 16px}
+  label{display:block;font-size:13px;font-weight:700;color:#3b3f66;margin:0 0 5px;letter-spacing:.03em;text-transform:uppercase}
+  input[type=text],select{
+    width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:10px;
+    font-size:16px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    background:#fcfcff;color:var(--ink);outline:none;
+  }
+  input[type=text]:focus,select:focus{border-color:var(--accent);background:#fff}
+  .row{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:12px;align-items:end}
+  @media (max-width:760px){.row{grid-template-columns:1fr 1fr}}
+  @media (max-width:480px){.row{grid-template-columns:1fr}}
+  button.go{
+    background:var(--accent);color:#fff;border:none;border-radius:10px;
+    padding:12px 20px;font-size:15.5px;font-weight:700;cursor:pointer;white-space:nowrap;
+  }
+  button.go:hover{background:#4338ca}
+  button.ghost{
+    background:#fff;color:var(--accent);border:1.5px solid var(--accent);
+    border-radius:10px;padding:10px 16px;font-size:15px;font-weight:600;cursor:pointer;
+  }
+  button.ghost:hover{background:var(--accent-soft)}
+  .result{margin-top:18px}
+  .resgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+  .resbox{border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:#fbfbfe}
+  .resbox .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}
+  .resbox .val{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:17px;font-weight:700;color:#312e81;word-break:break-all}
+  pre.steps{
+    background:#1c2033;color:#e6ebff;padding:16px 18px;border-radius:12px;overflow-x:auto;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px;line-height:1.62;
+  }
+  pre.steps b{color:#ffd479}
+  .steptitle{
+    font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent);margin:16px 0 6px;
+  }
+  .err{background:var(--bad-soft);border-left:5px solid var(--bad);color:#7f1d1d;padding:12px 16px;border-radius:10px;font-size:15px}
+  .ok{background:var(--good-soft);border-left:5px solid var(--good);color:#065f56;padding:12px 16px;border-radius:10px;font-size:15px}
+  .note{background:var(--accent-soft);border-left:5px solid var(--accent);padding:12px 16px;border-radius:10px;font-size:14.5px;margin-top:14px}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;background:#fff}
+  th,td{border:1px solid var(--line);padding:7px 10px;text-align:center;font-family:ui-monospace,Menlo,Consolas,monospace}
+  th{background:#f0f2fa;font-family:inherit;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#2b3050}
+  .tw{overflow-x:auto;margin:10px 0}
+  .mono{font-family:ui-monospace,Menlo,Consolas,monospace}
+  .scorebar{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+  .score{font-size:15px;font-weight:700;color:#3b3f66}
+  .qbox{
+    background:#fbfbfe;border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+    font-size:17px;margin-bottom:14px;
+  }
+  .qbox .qt{font-size:12.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:700;display:block;margin-bottom:6px}
+  .ansrow{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:end}
+  @media (max-width:600px){.ansrow{grid-template-columns:1fr}}
+  .feedback{margin-top:14px;font-size:15.5px;font-weight:600}
+  .legend{font-size:13.5px;color:var(--muted);margin-top:8px}
+  code{background:var(--code);padding:2px 6px;border-radius:6px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;color:#3730a3}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Number System Lab</h1>
+  <p>Convert between binary, octal, decimal &amp; hexadecimal — with the full working shown. Then quiz yourself.</p>
+  <p style="margin:12px 0 0"><a href="index.html" style="color:#fff;font-size:14.5px;border-bottom:1px solid rgba(255,255,255,.6);text-decoration:none">← Back to the full study guide</a></p>
+</header>
+
+<div class="wrap">
+  <div class="tabs">
+    <button class="active" data-tab="conv">🔄 Converter (step by step)</button>
+    <button data-tab="quiz">🎯 Practice Quiz</button>
+    <button data-tab="tables">📋 Tables &amp; Formulas</button>
+  </div>
+
+  <!-- ============ CONVERTER ============ -->
+  <div class="panel active" id="panel-conv">
+    <div class="card">
+      <h2>Any base → any base, with working</h2>
+      <p class="sub">Type a number, choose the base it is in and the base you want. Fractions like <span class="mono">1011.101</span> are supported.</p>
+      <div class="row">
+        <div>
+          <label for="num">Number</label>
+          <input type="text" id="num" value="45" placeholder="e.g. 45 or 1011.101 or 2F3" autocomplete="off">
+        </div>
+        <div>
+          <label for="from">From base</label>
+          <select id="from">
+            <option value="2">Binary (2)</option>
+            <option value="8">Octal (8)</option>
+            <option value="10" selected>Decimal (10)</option>
+            <option value="16">Hex (16)</option>
+            <option value="3">Base 3</option>
+            <option value="5">Base 5</option>
+            <option value="7">Base 7</option>
+            <option value="12">Base 12</option>
+            <option value="60">Base 60</option>
+          </select>
+        </div>
+        <div>
+          <label for="to">To base</label>
+          <select id="to">
+            <option value="2">Binary (2)</option>
+            <option value="8">Octal (8)</option>
+            <option value="10">Decimal (10)</option>
+            <option value="16" selected>Hex (16)</option>
+            <option value="3">Base 3</option>
+            <option value="5">Base 5</option>
+            <option value="7">Base 7</option>
+            <option value="12">Base 12</option>
+            <option value="60">Base 60</option>
+          </select>
+        </div>
+        <div><button class="go" id="convertBtn">Convert →</button></div>
+      </div>
+      <div class="legend">Handy presets:
+        <button class="ghost" style="padding:4px 10px;font-size:13px" data-preset="45|10|2">45₁₀ → bin</button>
+        <button class="ghost" style="padding:4px 10px;font-size:13px" data-preset="156|10|16">156₁₀ → hex</button>
+        <button class="ghost" style="padding:4px 10px;font-size:13px" data-preset="1011.101|2|10">1011.101₂ → dec</button>
+        <button class="ghost" style="padding:4px 10px;font-size:13px" data-preset="2F3|16|8">2F3₁₆ → octal</button>
+        <button class="ghost" style="padding:4px 10px;font-size:13px" data-preset="0.6875|10|2">0.6875₁₀ → bin</button>
+      </div>
+    </div>
+    <div id="convOut"></div>
+  </div>
+
+  <!-- ============ QUIZ ============ -->
+  <div class="panel" id="panel-quiz">
+    <div class="card">
+      <h2>Random practice questions</h2>
+      <p class="sub">Answer 10 in a row and you own this topic. Spaces and letter-case are ignored; write hex letters in upper or lower case.</p>
+      <div class="row" style="grid-template-columns:1fr auto auto;align-items:end">
+        <div>
+          <label for="qtype">Question type</label>
+          <select id="qtype">
+            <option value="mixed" selected>Mixed (recommended)</option>
+            <option value="d2b">Decimal → Binary</option>
+            <option value="b2d">Binary → Decimal</option>
+            <option value="d2h">Decimal → Hex</option>
+            <option value="h2d">Hex → Decimal</option>
+            <option value="d2o">Decimal → Octal</option>
+            <option value="b2o">Binary → Octal</option>
+            <option value="o2b">Octal → Binary</option>
+            <option value="b2h">Binary → Hex</option>
+            <option value="comp">1's / 2's complement</option>
+            <option value="add">Binary addition</option>
+            <option value="bcd">BCD</option>
+          </select>
+        </div>
+        <div><button class="ghost" id="newQ">New question</button></div>
+        <div><button class="ghost" id="resetScore">Reset score</button></div>
+      </div>
+      <div class="scorebar" style="margin-top:16px">
+        <span class="score" id="score">Score: 0 / 0</span>
+      </div>
+      <div class="qbox"><span class="qt">Question</span><span id="qtext">Press “New question”.</span></div>
+      <div class="ansrow">
+        <div>
+          <label for="ansInput">Your answer</label>
+          <input type="text" id="ansInput" placeholder="type the answer, then press Enter" autocomplete="off" disabled>
+        </div>
+        <div><button class="go" id="checkBtn" disabled>Check</button></div>
+        <div><button class="ghost" id="showBtn" disabled>Show steps</button></div>
+      </div>
+      <div id="qfeedback"></div>
+    </div>
+  </div>
+
+  <!-- ============ TABLES ============ -->
+  <div class="panel" id="panel-tables">
+    <div class="card">
+      <h2>Hex ↔ binary ↔ octal ↔ decimal digit table</h2>
+      <div class="tw"><table id="digTable"><thead><tr><th>Decimal</th><th>Binary (4-bit)</th><th>Octal</th><th>Hex</th><th>BCD (8421)</th></tr></thead><tbody></tbody></table></div>
+      <p class="sub">1 hex digit = 4 bits = one nibble. 1 octal digit = 3 bits. That is why grouping works.</p>
+    </div>
+    <div class="card">
+      <h2>Powers of 2 (weights of each bit)</h2>
+      <div class="tw"><table id="powTable"><thead><tr><th>2<sup>n</sup></th><th>Value</th><th>2<sup>n</sup></th><th>Value</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div class="card">
+      <h2>Conversion cookbook</h2>
+      <div class="tw"><table>
+        <thead><tr><th>Conversion</th><th>Method</th><th>Remember</th></tr></thead>
+        <tbody>
+          <tr><td>Decimal → any base</td><td>Divide by base, collect remainders</td><td>read <b>bottom → top</b></td></tr>
+          <tr><td>Decimal fraction → any base</td><td>Multiply by base, collect integer parts</td><td>read <b>top → bottom</b></td></tr>
+          <tr><td>Any base → decimal</td><td>multiply each digit by its weight (power of base) and add</td><td>weights = powers of the base</td></tr>
+          <tr><td>Binary ↔ Octal</td><td>groups of 3 bits (pad with 0s)</td><td>2³ = 8</td></tr>
+          <tr><td>Binary ↔ Hex</td><td>groups of 4 bits (pad with 0s)</td><td>2⁴ = 16</td></tr>
+          <tr><td>Octal ↔ Hex</td><td>go through binary (fast) or decimal (safe)</td><td>no direct shortcut</td></tr>
+        </tbody>
+      </table></div>
+      <div class="note">
+        <b>Key formulas:</b> digits of base r = 0 … r−1 · largest digit = r−1 · unsigned maximum in n bits = 2ⁿ − 1 ·
+        2's complement range = −2<sup>n−1</sup> to 2<sup>n−1</sup>−1 · 2's complement = 1's complement + 1 ·
+        a − b = a + (2's complement of b), discard the final carry.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ==================== CORE START ==================== */
+const DIGITS = "0123456789ABCDEF";
+
+function digitVal(ch){ return DIGITS.indexOf(ch); }
+function valDigit(v){ return DIGITS[v]; }
+
+function cleanInput(str){ return String(str).trim().toUpperCase().replace(/\s+/g,""); }
+
+function validate(str, base){
+  const s = cleanInput(str);
+  if(!s) return "Please type a number.";
+  if(!/^[0-9A-F]*(\.[0-9A-F]*)?$/.test(s) || s === ".") return "Only digits 0-9 and letters A-F are allowed (and one decimal point).";
+  for(const ch of s){
+    if(ch === ".") continue;
+    if(digitVal(ch) >= base) return '"' + ch + '" is not a valid digit in base ' + base + ' (allowed: 0-' + valDigit(base-1) + ').';
+  }
+  return null;
+}
+
+function intToBaseStr(n, base){
+  if(n === 0) return "0";
+  let out = "";
+  while(n > 0){ out = valDigit(n % base) + out; n = Math.floor(n / base); }
+  return out;
+}
+function fracToBaseStr(frac, base, maxDigits){
+  let out = "", x = frac, i = 0;
+  while(x > 1e-12 && i < maxDigits){
+    x *= base;
+    const d = Math.floor(x + 1e-12);
+    out += valDigit(d);
+    x -= d;
+    i++;
+  }
+  return out;
+}
+function fracToDecVal(s, base){
+  let v = 0;
+  for(let i = 0; i < s.length; i++) v += digitVal(s[i]) / Math.pow(base, i + 1);
+  return v;
+}
+function intFromBase(s, base){
+  let v = 0;
+  for(const ch of s) v = v * base + digitVal(ch);
+  return v;
+}
+
+/* generic conversion; returns {str, value, steps:[{title, lines:[]}] } */
+function convert(raw, base, target){
+  const s = cleanInput(raw);
+  const parts = s.split(".");
+  const intStr = parts[0] || "0";
+  const fracStr = parts[1] || "";
+  const steps = [];
+
+  const intVal = intFromBase(intStr, base);
+  const fracVal = fracToDecVal(fracStr, base);
+  const decValue = intVal + fracVal;
+
+  const tIntStr = intToBaseStr(intVal, target);
+  const tFracStr = fracStr ? fracToBaseStr(fracVal, target, 12) : "";
+  const outStr = tFracStr ? tIntStr + "." + tFracStr : tIntStr;
+
+  /* ---- step generation ---- */
+  if(base === target){
+    steps.push({title:"Same base", lines:["The number is already in base " + target + ".", "Answer: " + outStr + " (base " + target + ")"]});
+  } else if(base === 10){
+    if(intStr !== "0" || fracStr === ""){
+      const lines = [];
+      let n = intVal;
+      lines.push("Convert the integer part by repeated division by " + target + ":");
+      lines.push("");
+      lines.push("   number ÷ " + target + "   quotient   remainder");
+      while(n > 0){
+        const q = Math.floor(n / target), r = n % target;
+        lines.push("   " + pad(String(n), 8) + " ÷ " + pad(String(target), 4) + " → " + pad(String(q), 8) + "   " + r + " (" + valDigit(r) + ")   ↑");
+        n = q;
+      }
+      lines.push("");
+      lines.push("Read the remainders from BOTTOM to TOP → " + tIntStr);
+      steps.push({title:"Integer part (repeated division)", lines:lines});
+    }
+    if(fracStr !== "" && fracVal > 0){
+      const lines = [];
+      let x = fracVal;
+      lines.push("Convert the fraction by repeated multiplication by " + target + ":");
+      lines.push("");
+      lines.push("   fraction × " + target + "    product    digit");
+      for(let i = 0; i < 10 && x > 1e-12; i++){
+        const p = x * target;
+        const d = Math.floor(p + 1e-12);
+        lines.push("   " + pad(x.toFixed(6), 10) + " × " + pad(String(target), 4) + " → " + pad(p.toFixed(6), 10) + "   " + d + " (" + valDigit(d) + ")   ↓");
+        x = p - d;
+      }
+      lines.push("");
+      lines.push("Read the integer parts from TOP to BOTTOM → 0." + tFracStr);
+      if(fracToBaseStr(fracVal, target, 13).length > tFracStr.length)
+        lines.push("(This fraction does not terminate in base " + target + " — stop after the required number of digits and write ≈.)");
+      steps.push({title:"Fraction part (repeated multiplication)", lines:lines});
+    }
+  } else if(target === 10){
+    const lines = [];
+    lines.push("Multiply each digit by its place value (powers of " + base + ") and add:");
+    lines.push("");
+    let terms = [];
+    for(let i = 0; i < intStr.length; i++){
+      const w = intStr.length - 1 - i;
+      lines.push("   " + pad(intStr[i], 4) + " × " + base + "^" + w + " = " + pad(intStr[i], 4) + " × " + pad(String(Math.pow(base, w)), 10) + " = " + digitVal(intStr[i]) * Math.pow(base, w));
+      terms.push(intStr[i] + "×" + base + "^" + w);
+    }
+    for(let i = 0; i < fracStr.length; i++){
+      const w = i + 1;
+      lines.push("   " + pad(fracStr[i], 4) + " × " + base + "^-" + w + " = " + digitVal(fracStr[i]) + "/" + Math.pow(base, w) + " = " + (digitVal(fracStr[i]) / Math.pow(base, w)).toFixed(8).replace(/0+$/,""));
+      terms.push(fracStr[i] + "×" + base + "^-" + w);
+    }
+    lines.push("");
+    lines.push("Sum = " + fmtNum(decValue) + "   ( " + terms.join(" + ") + " )");
+    steps.push({title:"Positional expansion (weights)", lines:lines});
+  } else {
+    /* both non-decimal */
+    const inSet = (b) => b === 2 || b === 8 || b === 16;
+    const lines = [];
+    if(inSet(base) && inSet(target)){
+      const binOfInt = intToBaseStr(intVal, 2);
+      const binOfFrac = fracVal > 0 ? fracToBaseStr(fracVal, 2, 20) : "";
+      const groupSize = target === 16 ? 4 : (target === 8 ? 3 : 0);
+      lines.push("Step 1 — write the number in binary (each digit of base " + base + " becomes " + (base === 16 ? 4 : 3) + " bits):");
+      if(base === 2){
+        lines.push("   " + binOfInt + (binOfFrac ? "." + binOfFrac : ""));
+      } else {
+        const gs = base === 16 ? 4 : 3;
+        let row1 = "", row2 = "";
+        for(const ch of intStr){ const b = intToBaseStr(digitVal(ch), 2).padStart(gs,"0"); row1 += pad(ch,gs+1); row2 += b + " "; }
+        lines.push("   " + row1);
+        lines.push("   " + row2);
+      }
+      if(fracFracNeeded(fracStr) && binOfFrac){
+        lines.push("   Fraction: " + (fracStr || "") + " → ." + binOfFrac);
+      }
+      lines.push("");
+      if(target === 2){
+        lines.push("Answer (binary) — already computed in step 1: " + outStr);
+        steps.push({title:"Convert via binary", lines:lines});
+      } else {
+        lines.push("Step 2 — split the integer part into groups of " + groupSize + " bits FROM THE RIGHT, padding the leftmost group with zeros:");
+        const padded = binOfInt.padStart(Math.ceil(binOfInt.length / groupSize) * groupSize, "0");
+        const chunks = padded.match(new RegExp(".{1," + groupSize + "}", "g")) || [];
+        lines.push("   " + chunks.map(c => pad(c, groupSize + 1)).join("|"));
+        lines.push("   " + chunks.map(c => pad(valDigit(intFromBase(c, 2)), groupSize + 1)).join("|"));
+        lines.push("");
+        lines.push("Step 3 — replace each group by its base-" + target + " digit → " + tIntStr);
+        steps.push({title:"Convert via binary (grouping)", lines:lines});
+      }
+      lines.push("");
+      lines.push("Cross-check through decimal: " + fmtNum(decValue) + " (base 10)");
+    } else {
+      lines.push("Go through decimal — the safe route for any two bases:");
+      lines.push("");
+      lines.push("Step 1 — base " + base + " → decimal using weights:");
+      lines.push("   " + s + " (base " + base + ") = " + fmtNum(decValue) + " (decimal)");
+      lines.push("");
+      lines.push("Step 2 — decimal → base " + target + " by repeated division:");
+      let n = intVal;
+      while(n > 0){
+        const q = Math.floor(n / target), r = n % target;
+        lines.push("   " + pad(String(n), 8) + " ÷ " + pad(String(target), 4) + " → " + pad(String(q), 8) + "   remainder " + r + " (" + valDigit(r) + ")   ↑");
+        n = q;
+      }
+      lines.push("");
+      lines.push("Answer: " + outStr + " (base " + target + ")");
+      steps.push({title:"Via decimal", lines:lines});
+    }
+  }
+
+  return {str: outStr, value: decValue, intVal: intVal, fracVal: fracVal, steps: steps, exact: fracStr === ""};
+}
+function fracFracNeeded(s){ return s && s.length > 0; }
+function pad(s, n){ s = String(s); while(s.length < n) s = " " + s; return s; }
+function fmtNum(v){
+  if(Number.isInteger(v)) return String(v);
+  return (Math.round(v * 1e10) / 1e10).toString();
+}
+/* ==================== CORE END ==================== */
+
+/* ==================== UI ==================== */
+const $ = (id) => document.getElementById(id);
+
+/* tabs */
+document.querySelectorAll('.tabs button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    $('panel-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* converter */
+function runConvert(){
+  const raw = $('num').value, from = parseInt($('from').value, 10), to = parseInt($('to').value, 10);
+  const out = $('convOut');
+  const err = validate(raw, from);
+  if(err){ out.innerHTML = '<div class="card"><div class="err">' + err + '</div></div>'; return; }
+  const r = convert(raw, from, to);
+  const dStr = convert(raw, from, 10);
+  const bStr = convert(raw, from, 2);
+  const oStr = convert(raw, from, 8);
+  const hStr = convert(raw, from, 16);
+  let html = '<div class="card">';
+  html += '<div class="resgrid">' +
+    '<div class="resbox"><div class="lbl">Binary</div><div class="val">' + bStr.str + '</div></div>' +
+    '<div class="resbox"><div class="lbl">Octal</div><div class="val">' + oStr.str + '</div></div>' +
+    '<div class="resbox"><div class="lbl">Decimal</div><div class="val">' + dStr.str + '</div></div>' +
+    '<div class="resbox"><div class="lbl">Hexadecimal</div><div class="val">' + hStr.str + '</div></div>' +
+    '</div>';
+  if(!r.exact || (r.fracVal && !Number.isInteger(r.value)))
+    html += '<div class="note">The fraction does not terminate in the target base, so the answer is shown approximately to 12 digits.</div>';
+  r.steps.forEach(st => {
+    html += '<div class="steptitle">' + st.title + '</div>';
+    html += '<pre class="steps">' + st.lines.join("\n").replace(/&/g,"&amp;").replace(/</g,"&lt;") + '</pre>';
+  });
+  html += '<div class="note">Final answer: <b>' + cleanInput(raw) + '</b><sub>' + from + '</sub> = <b>' + r.str + '</b><sub>' + to + '</sub>' +
+          (from === to ? '' : ' &nbsp;·&nbsp; decimal value = ' + fmtNum(r.value)) + '</div>';
+  html += '</div>';
+  out.innerHTML = html;
+}
+$('convertBtn').addEventListener('click', runConvert);
+$('num').addEventListener('keydown', e => { if(e.key === 'Enter') runConvert(); });
+document.querySelectorAll('[data-preset]').forEach(b => {
+  b.addEventListener('click', () => {
+    const [n, f, t] = b.dataset.preset.split('|');
+    $('num').value = n; $('from').value = f; $('to').value = t;
+    runConvert();
+  });
+});
+
+/* ---------- quiz ---------- */
+let score = 0, total = 0, current = null;
+
+const rnd = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
+function randBits(len){ let s = "1"; for(let i = 1; i < len; i++) s += rnd(0,1); return s; }
+function normAns(s, strict){
+  let t = String(s).trim().toUpperCase().replace(/\s+/g,"");
+  if(strict) return t;
+  return t.split(",").map(part => part.replace(/^0+(?=[0-9A-F])/,"")).join(",");
+}
+
+const generators = {
+  d2b(){ const n = rnd(5, 250); return { q:"Convert (" + n + ")₁₀ to binary.", a:intToBaseStr(n,2), how:"Repeated division by 2 — read remainders bottom to top.", num:n, base:10, to:2 }; },
+  b2d(){ const b = randBits(rnd(4,8)); return { q:"Convert (" + b + ")₂ to decimal.", a:String(intFromBase(b,2)), how:"Weights: multiply each bit by 2^position and add.", num:b, base:2, to:10 }; },
+  d2h(){ const n = rnd(16, 4095); return { q:"Convert (" + n + ")₁₀ to hexadecimal.", a:intToBaseStr(n,16), how:"Repeated division by 16 — remainders 10-15 become A-F.", num:n, base:10, to:16 }; },
+  h2d(){ const h = randBits(8); const v = intFromBase(h,2); return { q:"Convert (" + intToBaseStr(v,16) + ")₁₆ to decimal.", a:String(v), how:"Each hex digit is worth 16^position.", num:intToBaseStr(v,16), base:16, to:10 }; },
+  d2o(){ const n = rnd(8, 511); return { q:"Convert (" + n + ")₁₀ to octal.", a:intToBaseStr(n,8), how:"Repeated division by 8.", num:n, base:10, to:8 }; },
+  b2o(){ const b = randBits(rnd(4,9)); return { q:"Convert (" + b + ")₂ to octal.", a:intToBaseStr(intFromBase(b,2),8), how:"Group bits in threes from the right and pad with zeros.", num:b, base:2, to:8 }; },
+  o2b(){ const n = rnd(8, 777); return { q:"Convert (" + intToBaseStr(n,8) + ")₈ to binary.", a:intToBaseStr(n,2), how:"Each octal digit expands into exactly 3 bits.", num:intToBaseStr(n,8), base:8, to:2 }; },
+  b2h(){ const b = randBits(rnd(4,10)); return { q:"Convert (" + b + ")₂ to hexadecimal.", a:intToBaseStr(intFromBase(b,2),16), how:"Group bits in fours from the right and pad with zeros.", num:b, base:2, to:16 }; },
+  comp(){ const bits = rnd(6,8); let b = "1"; for(let i=1;i<bits;i++) b += rnd(0,1);
+    const inv = b.split("").map(c => c === "0" ? "1" : "0").join("");
+    const twos = intToBaseStr(intFromBase(inv,2) + 1, 2).padStart(bits, "0").slice(-bits);
+    return { kind:"comp", q:"For the " + bits + "-bit binary number " + b + ", write the 1's complement, then the 2's complement.<br>Answer format: <span class='mono'>1s=XXXXXXXX , 2s=YYYYYYYY</span>",
+      a:"1S=" + inv + ",2S=" + twos, alt:["1s=" + inv + " 2s=" + twos], how:"1's complement = invert every bit. 2's complement = 1's complement + 1.", num:b, base:2, to:2 };
+  },
+  add(){ const a = randBits(rnd(4,6)), b = randBits(rnd(4,6));
+    return { kind:"add", operands:[a,b], q:"Add in binary: " + a + " + " + b + " = ?", a:intToBaseStr(intFromBase(a,2)+intFromBase(b,2),2), how:"Binary addition: 1+1 = 10 (write 0, carry 1). Verify in decimal: " + intFromBase(a,2) + " + " + intFromBase(b,2) + " = " + (intFromBase(a,2)+intFromBase(b,2)) + ".", num:a, base:2, to:2 };
+  },
+  bcd(){ const n = rnd(10, 999); const s = String(n).split("").map(d => intToBaseStr(Number(d),2).padStart(4,"0")).join(" ");
+    return { q:"Write (" + n + ")₁₀ in BCD (8421 code). Separate the 4-bit groups with spaces.", a:s, how:"Code each decimal digit separately in 4-bit binary (weights 8-4-2-1).", num:String(n), base:10, to:2, bcd:true, strict:true };
+  }
+};
+
+function newQuestion(){
+  const sel = $('qtype').value;
+  let key = sel;
+  if(sel === 'mixed'){ const keys = Object.keys(generators); key = keys[Math.floor(Math.random()*keys.length)]; }
+  current = generators[key]();
+  $('qtext').innerHTML = current.q;
+  $('ansInput').value = ""; $('ansInput').disabled = false;
+  $('checkBtn').disabled = false; $('showBtn').disabled = false;
+  $('qfeedback').innerHTML = "";
+  $('ansInput').focus();
+}
+
+function checkAnswer(){
+  if(!current) return;
+  const given = normAns($('ansInput').value, !!current.strict);
+  if(!given){ $('qfeedback').innerHTML = '<div class="err">Type an answer first.</div>'; return; }
+  const wanted = normAns(current.a, !!current.strict);
+  const ok = given === wanted || (current.alt || []).some(x => normAns(x, !!current.strict) === given);
+  total++;
+  if(ok) score++;
+  $('score').textContent = "Score: " + score + " / " + total;
+  $('qfeedback').innerHTML = ok
+    ? '<div class="ok"><b>✔ Correct!</b> Answer: <span class="mono">' + current.a + '</span><br>' + current.how + '</div>'
+    : '<div class="err"><b>✘ Not quite.</b> Your answer: <span class="mono">' + $('ansInput').value + '</span> · Correct answer: <span class="mono">' + current.a + '</span><br>' + current.how + '</div>';
+}
+
+function esc(t){ return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+
+/* adds two binary strings and returns an aligned display with the carry row */
+function addBinDisplay(a, b){
+  const len = Math.max(a.length, b.length);
+  const A = a.padStart(len, "0"), B = b.padStart(len, "0");
+  const carries = new Array(len).fill(0);
+  let carry = 0, sum = "";
+  for(let i = len - 1; i >= 0; i--){
+    const s = Number(A[i]) + Number(B[i]) + carry;
+    carries[i] = carry;
+    sum = (s % 2) + sum;
+    carry = s >= 2 ? 1 : 0;
+  }
+  const carryRow = (carry ? "1" : " ") + " " + carries.slice().reverse().join(" ");
+  const lines = [];
+  lines.push("   " + carryRow + "   ← carries");
+  lines.push("   " + "  " + A.split("").join(" "));
+  lines.push(" + " + "  " + B.split("").join(" "));
+  lines.push("   " + "-".repeat(2 * len + 2));
+  lines.push("   " + "  " + ((carry ? "1" : "") + sum).split("").join(" "));
+  lines.push("");
+  lines.push("Decimal check: " + intFromBase(A,2) + " + " + intFromBase(B,2) + " = " + (intFromBase(A,2) + intFromBase(B,2)) + " = " + ((carry ? "1" : "") + sum) + "₂ ✔");
+  return lines;
+}
+
+function showSteps(){
+  if(!current) return;
+  let html = '';
+
+  if(current.bcd){
+    const digs = String(current.num).split("");
+    const lines = [];
+    lines.push("Code each decimal digit separately in 4 bits (weights 8 4 2 1):");
+    lines.push("");
+    digs.forEach(d => {
+      const b = intToBaseStr(Number(d), 2).padStart(4, "0");
+      lines.push("   digit " + d + "  →  " + b.slice(0,1) + " " + b.slice(1,2) + " " + b.slice(2,3) + " " + b.slice(3,4) + "   (8·" + b[0] + " + 4·" + b[1] + " + 2·" + b[2] + " + 1·" + b[3] + " = " + d + ")");
+    });
+    lines.push("");
+    lines.push("Put the groups together → " + current.a);
+    lines.push("(Remember: 1010-1111 never appear in BCD.)");
+    html = '<div class="steptitle">BCD 8421 coding</div><pre class="steps">' + esc(lines.join("\n")) + '</pre>';
+  } else if(current.kind === "comp"){
+    const b = current.num, bits = b.length;
+    const inv = b.split("").map(c => c === "0" ? "1" : "0").join("");
+    const twos = intToBaseStr(intFromBase(inv,2) + 1, 2).padStart(bits, "0").slice(-bits);
+    const tot = intFromBase(b,2) + intFromBase(twos,2);
+    const lines = [];
+    lines.push("Number            : " + b);
+    lines.push("1's complement    : " + inv + "   (invert every bit: 0→1, 1→0)");
+    lines.push("Add 1 to it       : " + inv + " + 1 = " + twos + "   ← this is the 2's complement (represents -" + intFromBase(b,2) + ")");
+    lines.push("");
+    lines.push("Check that they cancel out:");
+    lines.push("   " + b + " + " + twos + " = " + tot.toString(2) + " → the " + (bits + 1) + "th bit is a carry that is DISCARDED → " + "0".repeat(bits) + " ✔");
+    lines.push("");
+    lines.push("Shortcut for 2's complement: copy bits from the right up to and including the first 1, then invert all the rest.");
+    html = '<div class="steptitle">Complements, step by step</div><pre class="steps">' + esc(lines.join("\n")) + '</pre>';
+  } else if(current.kind === "add"){
+    const [a, b] = current.operands;
+    const lines = addBinDisplay(a, b);
+    lines.push("");
+    lines.push("Rule used: 0+0=0, 0+1=1, 1+0=1, 1+1=10 (write 0, carry 1), 1+1+1=11 (write 1, carry 1).");
+    html = '<div class="steptitle">Column-by-column binary addition</div><pre class="steps">' + esc(lines.join("\n")) + '</pre>';
+  } else {
+    const r = convert(current.num, current.base, current.to);
+    r.steps.forEach(st => { html += '<div class="steptitle">' + st.title + '</div><pre class="steps">' + esc(st.lines.join("\n")) + '</pre>'; });
+  }
+
+  html += '<div class="note">Answer: <b class="mono">' + current.a + '</b> — ' + current.how + '</div>';
+  $('qfeedback').innerHTML = html;
+}
+
+$('newQ').addEventListener('click', newQuestion);
+$('checkBtn').addEventListener('click', checkAnswer);
+$('showBtn').addEventListener('click', showSteps);
+$('resetScore').addEventListener('click', () => { score = 0; total = 0; $('score').textContent = "Score: 0 / 0"; });
+$('ansInput').addEventListener('keydown', e => { if(e.key === 'Enter') checkAnswer(); });
+$('qtype').addEventListener('change', newQuestion);
+
+/* tables */
+(function buildTables(){
+  const tb = $('digTable').querySelector('tbody');
+  for(let i = 0; i <= 15; i++){
+    const b4 = i.toString(2).padStart(4,"0");
+    tb.insertAdjacentHTML('beforeend', '<tr><td>' + i + '</td><td class="mono">' + b4 + '</td><td class="mono">' + intToBaseStr(i,8) + '</td><td class="mono">' + valDigit(i) + '</td><td class="mono">' + b4 + '</td></tr>');
+  }
+  const pt = $('powTable').querySelector('tbody');
+  const rows = [[0,1],[8,256],[1,2],[9,512],[2,4],[10,1024],[3,8],[16,65536],[4,16],[20,1048576],[5,32],[32,4294967296],[6,64],[40,"≈1.1 × 10¹² (1 TB in bytes)"],[7,128],[60,"≈1.15 × 10¹⁸"]];
+  rows.forEach(r => pt.insertAdjacentHTML('beforeend','<tr><td class="mono">2<sup>' + r[0] + '</sup></td><td class="mono">' + r[1] + '</td></tr>'));
+})();
+
+/* initial demo */
+runConvert();
+</script>
+</body>
+</html>

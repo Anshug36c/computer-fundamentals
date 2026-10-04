@@ -1,0 +1,381 @@
+  <!-- ================= MODULE 8 ================= -->
+  <section id="m8">
+    <span class="modnum">Module 8</span>
+    <h2 class="title">Number Systems</h2>
+    <p class="lede">The most numerical part of Unit 1 — and the easiest full marks if you practise the methods below. Read the rules once, then work every example on paper yourself.</p>
+
+    <h3>8.1 What is a number system?</h3>
+    <p><b>A number system is a set of symbols (digits) and rules for representing numbers.</b> Every number system has a <b>base</b> or <b>radix (r)</b>, which tells you:</p>
+    <ul>
+      <li>How many different symbols (digits) exist → exactly <b>r</b> digits, from <b>0 to r−1</b>.</li>
+      <li>The <b>place value</b> (weight) of each position → powers of r: …, r³, r², r¹, r⁰ . r⁻¹, r⁻², …</li>
+      <li>When a carry is generated — after reaching r−1, the next count rolls over to 10.</li>
+    </ul>
+    <p>Example in decimal (r = 10): <code>3472</code> means <code>3×10³ + 4×10² + 7×10¹ + 2×10⁰ = 3000 + 400 + 70 + 2</code>.</p>
+    <p>Each digit has a <b>face value</b> (the digit itself) and a <b>place value</b> (digit × weight of its position). The <b>radix point</b> separates the integer part from the fraction part.</p>
+
+    <h3>8.2 The four number systems you must know</h3>
+    <div class="tw"><table>
+      <thead><tr><th>System</th><th>Base (r)</th><th>Digits used</th><th>Weight pattern</th><th>Where you meet it</th></tr></thead>
+      <tbody>
+        <tr><td><b>Binary</b></td><td>2</td><td>0, 1</td><td>… 8, 4, 2, 1 . 1/2, 1/4, 1/8</td><td>Inside every computer — circuits have two states ON/OFF</td></tr>
+        <tr><td><b>Octal</b></td><td>8</td><td>0–7</td><td>… 64, 8, 1 . 1/8 …</td><td>Shorthand for binary (1 octal digit = 3 bits); Unix/Linux file permissions <code>chmod 755</code></td></tr>
+        <tr><td><b>Decimal</b></td><td>10</td><td>0–9</td><td>… 1000, 100, 10, 1</td><td>Human everyday counting</td></tr>
+        <tr><td><b>Hexadecimal</b></td><td>16</td><td>0–9, A–F<br>(A=10, B=11, C=12, D=13, E=14, F=15)</td><td>… 256, 16, 1 . 1/16 …</td><td>Shorthand for binary (1 hex digit = 4 bits); memory addresses, colour codes <code>#FF0000</code>, MAC addresses</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>How to write a number with its base</b> — either as a subscript or a suffix: <code>(1011)₂ = 1011₂ = 0b1011</code> (binary), <code>(745)₈ = 745₈ = 0o745</code> (octal), <code>(2F3)₁₆ = 2F3₁₆ = 0x2F3</code> (hex). Decimal is written plainly: 156.</p>
+
+    <h3>8.3 Other bases (bonus knowledge, one line each)</h3>
+    <span class="pill">Base 3 — ternary</span><span class="pill">Base 5 — quinary</span><span class="pill">Base 7</span><span class="pill">Base 8 — octal</span><span class="pill">Base 12 — duodecimal (dozen, months, clock)</span><span class="pill">Base 16 — hexadecimal</span><span class="pill">Base 20 — vigesimal</span><span class="pill">Base 32/64 — in URL &amp; data encoding</span><span class="pill">Base 60 — sexagesimal (time, angles)</span>
+    <p class="mono" style="font-size:15px">The rule never changes: base r means digits 0 … r−1, and weights are powers of r. Validity check: in octal, the digits 8 and 9 do <b>not</b> exist. (234)₈ is valid; (289)₈ is invalid; (102)₂ is valid; (12A)₁₆ is valid; (1G)₁₆ is invalid.</p>
+
+    <h3>8.4 Positional vs non-positional</h3>
+    <div class="tw"><table>
+      <thead><tr><th></th><th>Positional</th><th>Non-positional</th></tr></thead>
+      <tbody>
+        <tr><td>Meaning</td><td>The value of a digit depends on its <b>position</b></td><td>The value of a symbol is <b>fixed</b>, wherever it is written</td></tr>
+        <tr><td>Examples</td><td>Decimal 47 ≠ 74; binary; octal; hex</td><td>Roman numerals: X = 10 in XIX and in XI; tally marks</td></tr>
+        <tr><td>Arithmetic</td><td>Easy (carry/borrow rules)</td><td>Difficult</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box hook"><span class="bt">Memory hook for weights</span> In any base r, moving one place left multiplies the weight by r; moving right divides it by r. So the weights are just powers of the base — read them right-to-left starting at 1.</div>
+
+    <h3>8.5 Counting in different bases (write this table once, everything else clicks)</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Decimal</th><th>Binary (r=2)</th><th>Octal (r=8)</th><th>Hex (r=16)</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+        <tr><td>2</td><td>10</td><td>2</td><td>2</td></tr>
+        <tr><td>3</td><td>11</td><td>3</td><td>3</td></tr>
+        <tr><td>4</td><td>100</td><td>4</td><td>4</td></tr>
+        <tr><td>5</td><td>101</td><td>5</td><td>5</td></tr>
+        <tr><td>6</td><td>110</td><td>6</td><td>6</td></tr>
+        <tr><td>7</td><td>111</td><td>7</td><td>7</td></tr>
+        <tr><td>8</td><td>1000</td><td>10</td><td>8</td></tr>
+        <tr><td>9</td><td>1001</td><td>11</td><td>9</td></tr>
+        <tr><td>10</td><td>1010</td><td>12</td><td>A</td></tr>
+        <tr><td>11</td><td>1011</td><td>13</td><td>B</td></tr>
+        <tr><td>12</td><td>1100</td><td>14</td><td>C</td></tr>
+        <tr><td>13</td><td>1101</td><td>15</td><td>D</td></tr>
+        <tr><td>14</td><td>1110</td><td>16</td><td>E</td></tr>
+        <tr><td>15</td><td>1111</td><td>17</td><td>F</td></tr>
+        <tr><td>16</td><td>10000</td><td>20</td><td>10</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Powers of 2 — the table that saves you time</h4>
+    <div class="tw"><table>
+      <thead><tr><th>2⁰</th><th>2¹</th><th>2²</th><th>2³</th><th>2⁴</th><th>2⁵</th><th>2⁶</th><th>2⁷</th><th>2⁸</th><th>2⁹</th><th>2¹⁰</th><th>2¹⁶</th><th>2²⁰</th><th>2³²</th></tr></thead>
+      <tbody><tr class="c"><td>1</td><td>2</td><td>4</td><td>8</td><td>16</td><td>32</td><td>64</td><td>128</td><td>256</td><td>512</td><td>1024</td><td>65536</td><td>~10.5 lakh</td><td>~4.3 billion</td></tr></tbody>
+    </table></div>
+    <p class="mono" style="font-size:14.5px">Binary weights for 8 bits: 128 64 32 16 8 4 2 1 — memorise this one row and you can convert any 8-bit number mentally.</p>
+  </section>
+
+  <section id="m8b">
+    <span class="modnum">Module 8 · Part 2</span>
+    <h2 class="title">Conversion from One Number System to Another</h2>
+    <p class="lede">All twelve possible conversions reduce to <b>three basic methods</b>. Learn these three and you can convert between <i>any</i> bases (base 5 → base 12 included).</p>
+
+    <div class="tw"><table>
+      <thead><tr><th>From → To</th><th>Method</th><th>One-line rule</th></tr></thead>
+      <tbody>
+        <tr><td>Decimal → any base (integer)</td><td><b>Repeated Division</b></td><td>Divide by the base again and again; collect remainders; read <b>bottom to top</b>.</td></tr>
+        <tr><td>Decimal → any base (fraction)</td><td><b>Repeated Multiplication</b></td><td>Multiply by the base; collect integer parts; read <b>top to bottom</b>.</td></tr>
+        <tr><td>Any base → Decimal</td><td><b>Positional Expansion</b></td><td>Multiply each digit by its weight (power of base) and add.</td></tr>
+        <tr><td>Binary ↔ Octal</td><td><b>Grouping 3 bits</b></td><td>Pad to groups of 3 from the radix point; replace each group by its octal digit.</td></tr>
+        <tr><td>Binary ↔ Hex</td><td><b>Grouping 4 bits</b></td><td>Pad to groups of 4 from the radix point; replace each group by its hex digit.</td></tr>
+        <tr><td>Octal ↔ Hex (or any two non-decimal bases)</td><td><b>Via binary / via decimal</b></td><td>Go through binary (fast) or through decimal (safe).</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 id="c1">8.6 Conversion 1: Decimal → Binary</h3>
+    <h4>Method A — Repeated Division by 2 (use for the integer part)</h4>
+    <div class="box ex"><span class="bt">Worked example — convert (45)₁₀ to binary</span>
+<pre><code>Divide by 2    Quotient   Remainder
+45 ÷ 2    →      22         1   ↑
+22 ÷ 2    →      11         0   ↑
+11 ÷ 2    →       5         1   ↑   read the remainders
+ 5 ÷ 2    →       2         1   ↑   from BOTTOM to TOP
+ 2 ÷ 2    →       1         0   ↑
+ 1 ÷ 2    →       0         1   ↑
+Stop when the quotient becomes 0.
+Answer: (45)₁₀ = (101101)₂</code></pre>
+    <b>Verify</b> by expanding: 1×32 + 0×16 + 1×8 + 1×4 + 0×2 + 1×1 = 32+8+4+1 = <b>45</b> ✔</div>
+
+    <h4>Method B — Power Subtraction (faster for small numbers / mental work)</h4>
+    <div class="box ex"><span class="bt">Worked example — convert (156)₁₀ to binary</span>
+<pre><code>Weights:  128  64  32  16   8   4   2   1
+Pick the largest weight ≤ 156 → 128    156−128 = 28   → 1
+ 64 > 28                                        → 0
+ 32 > 28                                        → 0
+ 16 ≤ 28, 28−16 = 12                            → 1
+  8 ≤ 12, 12−8  =  4                            → 1
+  4 ≤  4,  4−4  =  0                            → 1
+  2 >  0                                        → 0
+  1 >  0                                        → 0
+Answer: (156)₁₀ = (10011100)₂      Check: 128+16+8+4 = 156 ✔</code></pre></div>
+    <div class="box warn"><span class="bt">Very common mistake</span> Reading the remainders <b>top to bottom</b>. Remember: <b>last remainder is the most significant bit (MSB)</b>, first remainder is the <b>least significant bit (LSB)</b>. Write "read upwards" on your answer sheet and draw the arrow.</div>
+
+    <h3 id="c2">8.7 Conversion 2: Decimal → Octal and Decimal → Hexadecimal</h3>
+    <p>Exactly the same repeated-division idea — just divide by <b>8</b> or <b>16</b> instead of 2. Remainders above 9 become letters A–F in hexadecimal.</p>
+    <div class="box ex"><span class="bt">(156)₁₀ → octal</span>
+<pre><code>156 ÷ 8 → 19, remainder 4   ↑
+ 19 ÷ 8 →  2, remainder 3   ↑
+  2 ÷ 8 →  0, remainder 2   ↑
+Answer: (156)₁₀ = (234)₈     Check: 2×64 + 3×8 + 4 = 128+24+4 = 156 ✔</code></pre></div>
+    <div class="box ex"><span class="bt">(156)₁₀ → hexadecimal</span>
+<pre><code>156 ÷ 16 → 9, remainder 12 → C   ↑
+  9 ÷ 16 → 0, remainder  9       ↑
+Answer: (156)₁₀ = (9C)₁₆     Check: 9×16 + 12 = 144 + 12 = 156 ✔</code></pre></div>
+    <div class="box ex"><span class="bt">Two more to memorise</span>
+<pre><code>(1000)₁₀ = (1750)₈       1000÷8=125 r0; 125÷8=15 r5; 15÷8=1 r7; 1÷8=0 r1
+(1000)₁₀ = (3E8)₁₆       1000÷16=62 r8; 62÷16=3 r14(E); 3÷16=0 r3
+(254)₁₀  = (FE)₁₆        254÷16=15 r14(E); 15÷16=0 r15(F)</code></pre></div>
+
+    <h3 id="c3">8.8 Conversion 3: Any base → Decimal (Positional Expansion)</h3>
+    <p><b>Rule:</b> number each position from the radix point outwards, multiply each digit by (base)<sup>position</sup>, and add. On the left the powers are 0, 1, 2, 3…; on the right they are −1, −2, −3…</p>
+    <div class="box ex"><span class="bt">Binary → Decimal: (1011.101)₂</span>
+<pre><code>Position:   3    2    1    0  .  −1    −2    −3
+Weight:     8    4    2    1  .  1/2   1/4   1/8
+Digit:      1    0    1    1  .   1     0     1
+= 1×8 + 0×4 + 1×2 + 1×1 + 1×0.5 + 0×0.25 + 1×0.125
+= 8 + 2 + 1 + 0.5 + 0.125
+= (11.625)₁₀</code></pre></div>
+    <div class="box ex"><span class="bt">Octal → Decimal: (745)₈</span>
+<pre><code>= 7×8² + 4×8¹ + 5×8⁰ = 7×64 + 4×8 + 5 = 448 + 32 + 5 = (485)₁₀</code></pre></div>
+    <div class="box ex"><span class="bt">Hexadecimal → Decimal: (2F3)₁₆ and (A2C)₁₆</span>
+<pre><code>(2F3)₁₆ = 2×256 + 15×16 + 3×1 = 512 + 240 + 3 = (755)₁₀
+(A2C)₁₆ = 10×256 + 2×16 + 12×1 = 2560 + 32 + 12 = (2604)₁₀</code></pre></div>
+    <div class="box ex"><span class="bt">Any base → Decimal (the general rule, exam-proof)</span>
+<pre><code>(345)₇  = 3×49 + 4×7 + 5 = 147 + 28 + 5 = (180)₁₀
+(2101)₃ = 2×27 + 1×9 + 0×3 + 1 = 54 + 9 + 0 + 1 = (64)₁₀</code></pre></div>
+
+    <h3 id="c4">8.9 Conversion 4: Binary ↔ Octal (group 3 bits)</h3>
+    <p><b>Why 3?</b> Because 2³ = 8 — one octal digit represents exactly three bits. Start grouping <b>from the radix point</b> and pad the left-most (and right-most in fractions) group with zeros if it is short.</p>
+    <div class="box ex"><span class="bt">Binary → Octal: (101101)₂</span>
+<pre><code>Group in threes from the right:   101 | 101
+Octal digits:                      5  |  5      → (55)₈
+Check: (55)₈ = 5×8 + 5 = 45 = (101101)₂ ✔</code></pre></div>
+    <div class="box ex"><span class="bt">Binary → Octal with padding: (11011010)₂</span>
+<pre><code>Pad to a multiple of 3:  011 | 011 | 010
+Octal:                     3  |  3  |  2   → (332)₈
+Check: 3×64 + 3×8 + 2 = 192 + 24 + 2 = 218 = (11011010)₂ ✔</code></pre></div>
+    <div class="box ex"><span class="bt">Octal → Binary: (745)₈</span>
+<pre><code>7 → 111      4 → 100      5 → 101
+(745)₈ = 111 100 101 = (111100101)₂
+Check: 256+128+64+32+4+1 = 485 ✔   (matches (745)₈ = 485)</code></pre></div>
+    <div class="box tip"><span class="bt">The 3-bit table you must know cold</span>
+    <code class="mono">0=000 &nbsp;1=001 &nbsp;2=010 &nbsp;3=011 &nbsp;4=100 &nbsp;5=101 &nbsp;6=110 &nbsp;7=111</code></div>
+
+    <h3 id="c5">8.10 Conversion 5: Binary ↔ Hexadecimal (group 4 bits)</h3>
+    <p><b>Why 4?</b> Because 2⁴ = 16 — one hex digit is exactly four bits (one nibble).</p>
+    <div class="box ex"><span class="bt">Binary → Hex: (101101)₂</span>
+<pre><code>Pad on the left to 8 bits:  0010 | 1101
+Hex:                          2  |  D      → (2D)₁₆
+Check: 2×16 + 13 = 45 ✔</code></pre></div>
+    <div class="box ex"><span class="bt">Binary → Hex: (11011010)₂</span>
+<pre><code>1101 | 1010  →  D | A  → (DA)₁₆      Check: 13×16 + 10 = 218 ✔</code></pre></div>
+    <div class="box ex"><span class="bt">Hex → Binary: (2F3)₁₆</span>
+<pre><code>2 → 0010,  F → 1111,  3 → 0011
+(2F3)₁₆ = 0010 1111 0011 = 001011110011 = (1011110011)₂  (leading zeros may be dropped)
+Check: (2F3)₁₆ = 755, and 512+128+64+32+16+2+1 = 755 ✔</code></pre></div>
+    <div class="box tip"><span class="bt">The 4-bit table you must know cold</span>
+<code class="mono">0=0000 1=0001 2=0010 3=0011 4=0100 5=0101 6=0110 7=0111<br>8=1000 9=1001 A=1010 B=1011 C=1100 D=1101 E=1110 F=1111</code></div>
+    <div class="box hook"><span class="bt">Why programmers love octal &amp; hex</span> A long binary string like <code>110110101011</code> is unreadable and error-prone. In hex it is just <code>DAB</code> — short, exact, and one keystroke per nibble. That is why machine-level programmers, colour codes (#RRGGBB), MAC addresses and memory dumps use hexadecimal.</div>
+
+    <h3 id="c6">8.11 Conversion 6: Octal ↔ Hex (go through binary)</h3>
+    <div class="box ex"><span class="bt">(2F3)₁₆ → octal</span>
+<pre><code>Step 1 — hex to binary:   2 = 0010,  F = 1111,  3 = 0011  → 0010 1111 0011
+Step 2 — regroup in 3s from the right:  001 | 011 | 110 | 011
+Step 3 — read octal:                      1  |  3  |  6  |  3
+Answer: (2F3)₁₆ = (1363)₈        Check: (1363)₈ = 512+192+48+3 = 755 = (2F3)₁₆ ✔</code></pre></div>
+    <div class="box ex"><span class="bt">(745)₈ → hexadecimal</span>
+<pre><code>Step 1 — octal to binary:  7=111, 4=100, 5=101  → 111100101
+Step 2 — pad left to a multiple of 4:  0001 1110 0101
+Step 3 — read hex:                       1    E    5
+Answer: (745)₈ = (1E5)₁₆         Check: (1E5)₁₆ = 256 + 224 + 5 = 485 = (745)₈ ✔</code></pre></div>
+    <p>Alternative (safe) route: convert the source to <b>decimal</b> first, then convert decimal to the target base. Works for <i>any</i> pair of bases, e.g. (345)₇ → decimal (180) → binary. Slower but impossible to mess up.</p>
+
+    <h3 id="c7">8.12 Conversion 7: Fractions (the part most students lose marks on)</h3>
+    <h4>Decimal fraction → other base: repeated MULTIPLICATION</h4>
+    <div class="box ex"><span class="bt">(0.6875)₁₀ → binary</span>
+<pre><code>Multiply by 2    Product   Integer part (this is the bit)
+0.6875 × 2   →    1.375        1   ↓
+0.3750 × 2   →    0.750        0   ↓   read the integer parts
+0.7500 × 2   →    1.500        1   ↓   from TOP to BOTTOM
+0.5000 × 2   →    1.000        1   ↓   (first one is the MSB of the fraction)
+Stop when the fraction part becomes 0.
+Answer: (0.6875)₁₀ = (0.1011)₂
+Check: 1/2 + 0/4 + 1/8 + 1/16 = 0.5 + 0.125 + 0.0625 = 0.6875 ✔</code></pre></div>
+    <div class="box ex"><span class="bt">Mixed number: (13.625)₁₀ → binary</span>
+<pre><code>Integer part:  13 → 1101        (13 = 8+4+1)
+Fraction part: 0.625 × 2 = 1.25 → 1
+               0.25  × 2 = 0.50 → 0
+               0.50  × 2 = 1.00 → 1
+Answer: (13.625)₁₀ = (1101.101)₂   Check: 8+4+1 = 13 and 0.5+0.125 = 0.625 ✔</code></pre></div>
+    <div class="box ex"><span class="bt">(0.625)₁₀ → octal and → hex</span>
+<pre><code>Octal:  0.625 × 8 = 5.000 → 5   → (0.5)₈      (check: 5/8 = 0.625 ✔)
+Hex:    0.625 × 16 = 10.000 → A → (0.A)₁₆     (check: 10/16 = 0.625 ✔)
+Also: (0.375)₁₀ × 8 = 3.000 → (0.3)₈          (check: 3/8 = 0.375 ✔)</code></pre></div>
+    <div class="box warn"><span class="bt">Non-terminating fractions</span> Many decimal fractions never end in binary — keep multiplying and you loop forever.
+<pre><code>(0.35)₁₀ = (0.0101100…)₂  ≈ (0.010110)₂  (0.34375, error 0.00625)
+Sequence: 0.35×2=0.7→0 · 0.7×2=1.4→1 · 0.4×2=0.8→0 · 0.8×2=1.6→1 · 0.6×2=1.2→1 · 0.2×2=0.4→0 …
+So the answer is "0.010110…", and you stop after the required number of bits and write it as approximate.
+Similarly (0.2)₁₀ = (0.0011001100…)₂  and (0.1)₁₀ = (0.000110011…)₂ — this is why 0.1+0.2 ≠ 0.3 exactly in programming languages!</code></pre></div>
+    <p><b>Other base fraction → decimal:</b> expand with negative powers. E.g. <code>(0.101)₂ = 1×2⁻¹ + 0×2⁻² + 1×2⁻³ = 0.5 + 0.125 = (0.625)₁₀</code>; &nbsp; <code>(0.11)₂ = 0.5 + 0.25 = (0.75)₁₀</code>; &nbsp; <code>(0.A)₁₆ = 10/16 = (0.625)₁₀</code>.</p>
+
+    <h3 id="c8">8.13 Full summary — the conversion map</h3>
+    <figure>
+      <svg viewBox="0 0 760 300" role="img" aria-label="Conversion map">
+        <defs><marker id="a4" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#4f46e5"/></marker></defs>
+        <rect x="290" y="20" width="180" height="52" rx="10" fill="#eef0ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="380" y="52" text-anchor="middle" font-size="15" font-weight="800" fill="#312e81">BINARY (2)</text>
+        <rect x="290" y="124" width="180" height="52" rx="10" fill="#e6f7f4" stroke="#0e9488" stroke-width="2"/>
+        <text x="380" y="156" text-anchor="middle" font-size="15" font-weight="800" fill="#065f56">DECIMAL (10)</text>
+        <rect x="40" y="228" width="180" height="52" rx="10" fill="#fdf3e3" stroke="#b45309" stroke-width="2"/>
+        <text x="130" y="260" text-anchor="middle" font-size="15" font-weight="800" fill="#92400e">OCTAL (8)</text>
+        <rect x="540" y="228" width="180" height="52" rx="10" fill="#f3ecff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="630" y="260" text-anchor="middle" font-size="15" font-weight="800" fill="#5b21b6">HEX (16)</text>
+
+        <line x1="360" y1="76" x2="330" y2="120" stroke="#4f46e5" stroke-width="2" marker-end="url(#a4)"/>
+        <line x1="400" y1="120" x2="400" y2="80" stroke="#4f46e5" stroke-width="2" marker-end="url(#a4)"/>
+        <text x="248" y="104" font-size="11" fill="#5b6279">grouping 3/4 bits ↑</text>
+        <text x="410" y="104" font-size="11" fill="#5b6279">weights ↓</text>
+
+        <line x1="230" y1="240" x2="310" y2="180" stroke="#b45309" stroke-width="2" marker-end="url(#a4)"/>
+        <line x1="330" y1="176" x2="250" y2="240" stroke="#b45309" stroke-width="2" marker-end="url(#a4)"/>
+        <text x="60" y="196" font-size="11" fill="#5b6279">weights / ÷8</text>
+
+        <line x1="530" y1="240" x2="450" y2="180" stroke="#7c3aed" stroke-width="2" marker-end="url(#a4)"/>
+        <line x1="430" y1="176" x2="510" y2="240" stroke="#7c3aed" stroke-width="2" marker-end="url(#a4)"/>
+        <text x="556" y="196" font-size="11" fill="#5b6279">weights / ÷16</text>
+
+        <path d="M220,254 C330,254 400,254 540,254" fill="none" stroke="#9aa0b8" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#a4)"/>
+        <path d="M540,272 C400,272 330,272 220,272" fill="none" stroke="#9aa0b8" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#a4)"/>
+        <text x="380" y="292" text-anchor="middle" font-size="11" fill="#5b6279">octal ↔ hex : go through binary (fast) or decimal (safe)</text>
+      </svg>
+      <figcaption>Learn this map and no conversion question can surprise you.</figcaption>
+    </figure>
+  </section>
+
+  <section id="m8c">
+    <span class="modnum">Module 8 · Part 3</span>
+    <h2 class="title">Binary Arithmetic, Complements &amp; Codes</h2>
+    <p class="lede">How a computer actually adds, subtracts and stores numbers, and how characters are coded — all closely related to number systems and commonly asked.</p>
+
+    <h3>8.14 Binary addition, subtraction, multiplication, division</h3>
+    <div class="grid2">
+      <div class="card"><h5>Addition rules</h5><p class="mono">0+0 = 0<br>0+1 = 1<br>1+0 = 1<br>1+1 = 10 (0, carry 1)<br>1+1+1 = 11 (1, carry 1)</p></div>
+      <div class="card"><h5>Subtraction rules</h5><p class="mono">0−0 = 0<br>1−0 = 1<br>1−1 = 0<br>0−1 = need borrow → 10−1 = 1<br>10−1 = 1 (borrow taken)</p></div>
+    </div>
+    <div class="box ex"><span class="bt">Addition: (1011)₂ + (0110)₂ &nbsp;(= 11 + 6 = 17)</span>
+<pre><code>   1 1 0 0   ← carries (each sits over the column it is carried INTO)
+     1 0 1 1
+   + 0 1 1 0
+   ─────────
+   1 0 0 0 1     → (10001)₂ = 16 + 1 = 17 ✔
+
+Column by column (right to left):
+  1+0 = 1, carry 0  |  1+1 = 10 → write 0, carry 1  |
+  0+1+1 = 10 → write 0, carry 1  |  1+0+1 = 10 → write 0, carry 1 (final carry = new MSB)</code></pre>
+    <span class="mono">Another: 1101 + 1011 = 11000 &nbsp;(13 + 11 = 24 = 11000 ✔)</span></div>
+    <div class="box ex"><span class="bt">Subtraction: (1010)₂ − (0111)₂ &nbsp;(= 10 − 7 = 3)</span>
+<pre><code>   1 0 1 0
+ − 0 1 1 1
+ ─────────
+   0 0 1 1     → (11)₂ = 3 ✔   (borrow column by column)
+Also: 11011 − 01011 = 10000   (27 − 11 = 16 ✔)</code></pre></div>
+    <div class="box ex"><span class="bt">Multiplication: (1011)₂ × (110)₂ &nbsp;(= 11 × 6 = 66)</span>
+<pre><code>       1 0 1 1        (11)
+     ×   1 1 0        (6)
+     ───────────
+       0 0 0 0        ← multiply by the rightmost bit (0)
+     1 0 1 1 0        ← multiply by the middle bit (1), shifted one place left
+   +1 0 1 1 0 0       ← multiply by the leftmost bit (1), shifted two places left
+   ─────────────
+    1 0 0 0 0 1 0     → (1000010)₂ = 64 + 2 = 66 ✔
+
+Shortcut: binary multiplication = additions and SHIFTS (shifting left doubles a number),
+which is why the CPU only really needs an adder.</code></pre></div>
+    <div class="box ex"><span class="bt">Division: (110110)₂ ÷ (110)₂ &nbsp;(= 54 ÷ 6 = 9)</span>
+<pre><code>         1 0 0 1        (= 9)
+       ┌─────────
+ 1 1 0 │ 1 1 0 1 1 0
+         1 1 0            subtract 110 from 110 → 000, bring down next bit
+         ─────
+             1 1 0        → 110 ÷ 110 = 1, subtract → 0
+             1 1 0
+             ─────
+               0 0 0     remainder 0
+Answer: quotient (1001)₂ = 9, remainder 0 ✔</code></pre></div>
+    <div class="box ex"><span class="bt">Octal &amp; hex arithmetic (same ideas, bigger bases)</span>
+<pre><code>Octal:  (57)₈ + (45)₈ :  7+5 = 12 = 1×8 + 4 → write 4, carry 1
+                           5+4+1 = 10 = 1×8 + 2 → write 2, carry 1 → (124)₈  ✔
+        (745)₈ − (456)₈ = (267)₈   (485 − 302 = 183 ✔)
+Hex:    (2B)₁₆ + (1A)₁₆ :  B+A = 11+10 = 21 = 1×16 + 5 → write 5, carry 1
+                           2+1+1 = 4 → (45)₁₆   (43 + 26 = 69 = 0x45 ✔)
+        (A2)₁₆ − (7C)₁₆ = (26)₁₆       (162 − 124 = 38 = 0x26 ✔)</code></pre></div>
+
+    <h3 id="compl">8.15 Complements — how computers subtract by adding</h3>
+    <p>A digital circuit that can add is easy to build; a subtractor is extra hardware. So computers subtract by <b>adding the complement</b> of the number. You will be asked to <i>define</i> and to <i>do</i> these.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Complement</th><th>How to find it (binary)</th><th>How to find it (decimal)</th></tr></thead>
+      <tbody>
+        <tr><td><b>Diminished radix / (r−1)'s</b> complement → in binary: <b>1's complement</b>; in decimal: <b>9's complement</b></td><td>Change every 0→1 and every 1→0 (Bitwise NOT / invert all bits)</td><td>Subtract every digit from 9. 9's complement of 4567 = 5432</td></tr>
+        <tr><td><b>Radix / r's complement</b> → in binary: <b>2's complement</b>; in decimal: <b>10's complement</b></td><td>1's complement <b>+ 1</b></td><td>9's complement + 1 = 10's complement of 4567 = 5433 (also = 10000 − 4567)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box ex"><span class="bt">Find the 1's and 2's complement of (45)₁₀ = (00101101)₂ (8-bit)</span>
+<pre><code>Number           : 0 0 1 0 1 1 0 1
+1's complement   : 1 1 0 1 0 0 1 0        (all bits inverted)
+Add 1            :                 1
+2's complement   : 1 1 0 1 0 0 1 1        → represents −45
+Check: 45 + (−45) = 0 :   0 0 1 0 1 1 0 1
+                        + 1 1 0 1 0 0 1 1
+                        = 1 0 0 0 0 0 0 0 0   → carry beyond 8 bits is DISCARDED → 00000000 ✔</code></pre></div>
+    <div class="box ex"><span class="bt">Subtraction by 2's complement: 45 − 17 (8-bit)</span>
+<pre><code>45 → 0 0 1 0 1 1 0 1
+17 → 0 0 0 1 0 0 0 1 ;  2's complement of 17 = 1 1 1 0 1 1 1 1
+Add:   0 0 1 0 1 1 0 1
+     + 1 1 1 0 1 1 1 1
+     = 1 0 0 0 1 1 1 0 0   → drop the final carry → 00011100 = 28 ✔</code></pre></div>
+    <div class="box ex"><span class="bt">When the answer is negative: 17 − 45</span>
+<pre><code>17 → 00010001 ;   2's complement of 45 = 11010011
+Add: 0 0 0 1 0 0 0 1
+   + 1 1 0 1 0 0 1 1
+   = 1 1 1 0 0 1 0 0   → no carry out, so the result is NEGATIVE and is in 2's complement form.
+Take 2's complement of 11100100 → 00011100 = 28 → answer = −28 ✔</code></pre></div>
+    <div class="box tip"><span class="bt">How signs are stored</span>
+    <ul style="margin:6px 0 0">
+      <li><b>Sign-magnitude:</b> MSB = sign (0 positive, 1 negative), rest = magnitude. Range for 8 bits: −127 to +127. Has two zeros (+0, −0).</li>
+      <li><b>1's complement:</b> negative numbers made by inversion. Range −127 to +127; still two zeros.</li>
+      <li><b>2's complement (used everywhere today):</b> range −128 to +127 for 8 bits, only one zero, and addition/subtraction work directly. Range formula: <b>−2<sup>n−1</sup> to +2<sup>n−1</sup> − 1</b>.</li>
+      <li><b>Overflow:</b> if the true sum lies outside that range, the sign flips wrongly. E.g. 127 + 1 in 8 bits = 01111111 + 1 = 10000000 = −128 (overflow). Detect it by comparing the carry into the MSB with the carry out of the MSB.</li>
+    </ul></div>
+
+    <h3 id="codes">8.16 Codes — how characters are represented</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Code</th><th>Bits</th><th>Key facts</th></tr></thead>
+      <tbody>
+        <tr><td><b>BCD — Binary Coded Decimal</b> (8421 code)</td><td>4 bits per digit</td><td>Each decimal digit is coded separately in pure binary. (45)₁₀ = <b>0100 0101</b>; (359)₁₀ = <b>0011 0101 1001</b>. Codes 1010–1111 are <b>invalid</b> in BCD. Simple for displays/calculators (hence the 8-4-2-1 weights) but wasteful — 4 bits can hold 16 values and BCD uses only 10.</td></tr>
+        <tr><td><b>Excess-3 (XS-3)</b></td><td>4 bits</td><td>Digit + 3, then binary. 0→0011, 5→1000, 9→1100. Self-complementing, used in older decimal machines.</td></tr>
+        <tr><td><b>Gray code</b></td><td>—</td><td>Only <b>one bit changes</b> between consecutive numbers → very few errors in mechanical/rotary encoders and in position sensors. Binary 1011 → Gray 1110 (each Gray bit = XOR of adjacent binary bits, MSB copied).</td></tr>
+        <tr><td><b>ASCII</b></td><td>7 bits (128 characters); extended 8-bit version = 256</td><td>American Standard Code for Information Interchange — for English letters, digits, punctuation, control codes. Remember: <b>'A' = 65</b>, <b>'a' = 97</b>, <b>'0' = 48</b>, space = 32, digits 48–57, uppercase 65–90, lowercase 97–122.</td></tr>
+        <tr><td><b>EBCDIC</b></td><td>8 bits</td><td>Extended Binary Coded Decimal Interchange Code — IBM mainframe code, 256 characters. Not compatible with ASCII.</td></tr>
+        <tr><td><b>Unicode</b></td><td>UTF-8 (8-bit units), UTF-16, UTF-32</td><td>The universal character set: 1,10,000+ characters covering all the world's scripts plus symbols and emoji. UTF-8 is backward-compatible with ASCII (first 128 characters identical) — that is why it dominates the web.</td></tr>
+        <tr><td><b>Parity bit</b></td><td>+1 bit</td><td>Extra bit added for <b>error detection</b>: with even parity the total number of 1s (data + parity) becomes even. Can detect 1-bit errors but cannot correct them. (Odd parity = total 1s odd.)</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>8.17 Why do computers use the binary system? (a favourite 5-mark theory question)</h3>
+    <ol class="steps">
+      <li><b>Two-state devices are simple and reliable.</b> A transistor/switch is either OFF or ON; a magnetic spot is either magnetised or not; a voltage is either high or low. Building circuits with ten distinguishable voltage levels would be expensive and error-prone — noise would flip digits. Two levels give a huge noise margin.</li>
+      <li><b>Boolean logic fits perfectly.</b> 0 = False, 1 = True, and logic gates (AND, OR, NOT) implement arithmetic with simple circuits.</li>
+      <li><b>Less hardware, less cost, less error.</b> Only two symbols to handle means simpler, cheaper, faster circuits and higher reliability.</li>
+      <li><b>Easy to store and transmit.</b> Storage media and signals naturally hold two states (magnetised/not, pit/no pit, high/low voltage).</li>
+      <li><b>Arithmetic is simple.</b> Only 4 addition rules and 4 multiplication rules in binary, and subtraction is done by complement addition (no need for a separate subtractor).</li>
+    </ol>
+    <p>Downside: long strings (a 4-digit decimal like 1000 needs 10 bits) — which is exactly why octal and hex exist as human-friendly shorthands.</p>
+  </section>

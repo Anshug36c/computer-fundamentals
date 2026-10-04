@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4f46e5">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Computer Fundamentals">
+<meta name="description" content="Complete Unit 1 notes: data vs information, information processing cycle, computer definition, characteristics, history and generations, types of computers, basic organization, number systems and conversions.">
+<title>Fundamentals of Computers — The Complete Guide</title>
+<style>
+  :root{
+    --bg:#f5f6fb;
+    --card:#ffffff;
+    --ink:#171a26;
+    --muted:#5b6279;
+    --accent:#4f46e5;
+    --accent-soft:#eef0ff;
+    --accent2:#0e9488;
+    --line:#e2e5f0;
+    --code:#f2f3f9;
+    --good:#0f766e;
+    --good-soft:#e6f7f4;
+    --warn:#b45309;
+    --warn-soft:#fdf3e3;
+    --hook:#7c3aed;
+    --hook-soft:#f3ecff;
+    --ex:#0369a1;
+    --ex-soft:#e8f4fd;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:17px;
+    line-height:1.68;
+  }
+  /* ---------- HERO ---------- */
+  .hero{
+    background:linear-gradient(135deg,#312e81 0%,#4f46e5 45%,#0e9488 100%);
+    color:#fff;
+    padding:56px 28px 48px;
+    text-align:center;
+  }
+  .hero .kicker{
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-size:12px;
+    opacity:.85;
+    font-weight:700;
+  }
+  .hero h1{
+    margin:10px 0 8px;
+    font-size:clamp(28px,5vw,46px);
+    line-height:1.15;
+    letter-spacing:-.02em;
+  }
+  .hero p{
+    max-width:760px;margin:0 auto;
+    font-size:17px;opacity:.94;
+  }
+  .hero .chips{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+  .chip{
+    background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.3);
+    padding:5px 12px;border-radius:999px;font-size:13px;
+    backdrop-filter:blur(4px);
+  }
+  /* ---------- LAYOUT ---------- */
+  .layout{
+    max-width:1200px;
+    margin:0 auto;
+    padding:28px 20px 80px;
+    display:grid;
+    grid-template-columns:280px minmax(0,1fr);
+    gap:34px;
+    align-items:start;
+  }
+  @media (max-width:980px){
+    .layout{grid-template-columns:1fr;gap:18px}
+    .toc{position:static !important;max-height:none !important}
+  }
+  .toc{
+    position:sticky;
+    top:16px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:18px 18px 22px;
+    font-size:14.5px;
+    max-height:calc(100vh - 40px);
+    overflow:auto;
+    box-shadow:0 2px 10px rgba(20,25,60,.05);
+  }
+  .toc h2{
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 12px;font-weight:700;
+  }
+  .toc a{
+    display:block;color:var(--muted);text-decoration:none;
+    padding:5px 8px;border-radius:8px;line-height:1.35;
+    border-left:3px solid transparent;
+  }
+  .toc a:hover{background:var(--accent-soft);color:var(--accent)}
+  .toc a.sub{padding-left:20px;font-size:13.5px}
+  main{min-width:0}
+  /* ---------- SECTIONS ---------- */
+  section{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:30px 32px 34px;
+    margin-bottom:26px;
+    box-shadow:0 2px 12px rgba(20,25,60,.045);
+    scroll-margin-top:16px;
+  }
+  @media (max-width:640px){
+    section{padding:22px 18px 26px;border-radius:14px}
+    body{font-size:16px}
+  }
+  .modnum{
+    display:inline-block;
+    background:var(--accent-soft);color:var(--accent);
+    font-weight:800;font-size:12px;letter-spacing:.12em;
+    padding:4px 10px;border-radius:999px;
+    text-transform:uppercase;margin-bottom:10px;
+  }
+  h2.title{
+    font-size:clamp(22px,3.4vw,30px);
+    margin:0 0 6px;letter-spacing:-.02em;line-height:1.2;
+  }
+  .lede{color:var(--muted);margin:0 0 22px;font-size:16.5px}
+  h3{
+    font-size:20px;margin:34px 0 10px;letter-spacing:-.01em;
+    padding-bottom:6px;border-bottom:1px solid var(--line);
+  }
+  h3:first-of-type{margin-top:10px}
+  h4{font-size:17px;margin:22px 0 6px;color:#252a3d}
+  p{margin:10px 0}
+  ul,ol{margin:10px 0;padding-left:26px}
+  li{margin:5px 0}
+  b,strong{color:#0f1220}
+  code{
+    background:var(--code);
+    padding:2px 6px;border-radius:6px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+    font-size:.9em;
+    color:#3730a3;
+    white-space:nowrap;
+  }
+  pre{
+    background:#1c2033;color:#e8ecff;padding:16px 18px;border-radius:12px;
+    overflow-x:auto;font-size:14px;line-height:1.6;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  pre code{background:none;color:inherit;padding:0;white-space:pre}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.02em}
+  /* ---------- TABLES ---------- */
+  .tw{overflow-x:auto;margin:16px 0}
+  table{border-collapse:collapse;width:100%;font-size:15px;background:#fff}
+  th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+  th{background:#f0f2fa;font-weight:700;font-size:14px;color:#2b3050}
+  tbody tr:nth-child(even){background:#fafbff}
+  td.c,th.c{text-align:center}
+  /* ---------- CALLOUTS ---------- */
+  .box{
+    border-radius:12px;padding:14px 18px;margin:16px 0;
+    border-left:5px solid; font-size:16px;
+  }
+  .box .bt{font-weight:800;display:block;margin-bottom:4px;font-size:14px;letter-spacing:.04em;text-transform:uppercase}
+  .tip{background:var(--good-soft);border-color:var(--good)}
+  .tip .bt{color:var(--good)}
+  .warn{background:var(--warn-soft);border-color:var(--warn)}
+  .warn .bt{color:var(--warn)}
+  .hook{background:var(--hook-soft);border-color:var(--hook)}
+  .hook .bt{color:var(--hook)}
+  .ex{background:var(--ex-soft);border-color:var(--ex)}
+  .ex .bt{color:var(--ex)}
+  .kv{background:#f7f8fd;border-color:#c7cbe6}
+  .kv .bt{color:#3b3f66}
+  /* ---------- CARDS ---------- */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
+  .card{
+    border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:#fcfcff;
+  }
+  .card h5{margin:0 0 6px;font-size:15.5px;color:var(--accent)}
+  .card p{margin:4px 0;font-size:14.5px;color:#3c4258}
+  /* ---------- DETAILS / Q&A ---------- */
+  details{
+    border:1px solid var(--line);border-radius:12px;padding:10px 16px;
+    margin:10px 0;background:#fbfbfe;
+  }
+  details[open]{background:#fff;box-shadow:0 1px 6px rgba(20,25,60,.06)}
+  summary{cursor:pointer;font-weight:600;color:#22263c;outline:none}
+  summary::marker{color:var(--accent)}
+  details p:first-of-type{margin-top:10px}
+  .ans{border-left:3px solid var(--accent);padding-left:14px;margin-top:10px}
+  /* ---------- STEPS ---------- */
+  .steps{counter-reset:s;list-style:none;padding-left:0;margin:14px 0}
+  .steps>li{
+    counter-increment:s;position:relative;padding:8px 0 8px 46px;border-bottom:1px dashed var(--line);
+  }
+  .steps>li:last-child{border-bottom:none}
+  .steps>li::before{
+    content:counter(s);
+    position:absolute;left:0;top:9px;
+    width:28px;height:28px;border-radius:50%;
+    background:var(--accent);color:#fff;font-weight:700;font-size:14px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  /* ---------- MISC ---------- */
+  .pill{display:inline-block;background:#eef1fb;border:1px solid #d8ddf2;color:#3b3f66;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:600;margin:2px 4px 2px 0}
+  figure{margin:20px 0;text-align:center}
+  figure svg{max-width:100%;height:auto}
+  figcaption{font-size:14px;color:var(--muted);margin-top:8px}
+  hr{border:none;border-top:1px solid var(--line);margin:26px 0}
+  .studybar{
+    max-width:1200px;margin:18px auto -4px;padding:0 20px;
+    display:flex;flex-wrap:wrap;gap:8px;justify-content:center;
+  }
+  .sbtn{
+    display:inline-flex;align-items:center;gap:6px;
+    background:#fff;border:1.5px solid rgba(79,70,229,.35);color:#3730a3;
+    padding:9px 15px;border-radius:999px;font-size:14.5px;font-weight:600;
+    cursor:pointer;text-decoration:none;line-height:1.2;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .sbtn:hover,.sbtn:active{background:var(--accent-soft)}
+  .sbtn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .sbtn.primary:hover{background:#4338ca}
+  .footer{
+    text-align:center;color:var(--muted);font-size:14px;
+    padding:20px;border-top:1px solid var(--line);margin-top:10px;
+  }
+  .hl{background:linear-gradient(transparent 60%, #ffe680 60%);font-weight:600}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:700px){.grid2{grid-template-columns:1fr}}
+  @media print{
+    @page{margin:14mm}
+    body{background:#fff;font-size:11.5pt}
+    .toc,.hero .chips,.studybar{display:none}
+    .hero{background:#312e81 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    section{break-inside:auto}
+    pre,table,figure,.box{break-inside:avoid}
+    a{color:inherit;text-decoration:none}
+    .layout{display:block;max-width:none;padding:0}
+    section{box-shadow:none;border:none;padding:0 0 18px;page-break-inside:auto}
+    details{page-break-inside:avoid}
+    details>summary{list-style:none}
+    details[open] .ans{display:block}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <div class="kicker">Computer Fundamentals · Unit 1</div>
+  <h1>Fundamentals of Computers</h1>
+  <p>Data &amp; Information · Information Processing Cycle · What a Computer Is · Characteristics · Evolution &amp; History · Types of Computers · Basic Organization of a Digital Computer · Number Systems &amp; Conversions</p>
+  <div class="chips">
+    <span class="chip">8 Modules</span>
+    <span class="chip">Worked Examples</span>
+    <span class="chip">Exams &amp; Interviews</span>
+    <span class="chip">Interview-ready explanations</span>
+    <span class="chip">40+ Practice Qs</span>
+  </div>
+</header>
+
+<nav class="studybar" aria-label="Study tools">
+  <a class="sbtn primary" href="number-system-lab.html">🎯 Open the practice lab</a>
+  <button class="sbtn" id="btnExpand" type="button">👁 Show all answers</button>
+  <button class="sbtn" id="btnCollapse" type="button">🙈 Hide all answers</button>
+  <button class="sbtn" id="btnPrint" type="button">🖨 Print / save as PDF</button>
+  <a class="sbtn" href="#m10">⚡ Quick revision</a>
+  <a class="sbtn" href="#top">↑ Top</a>
+</nav>
+
+<div class="layout">
+
+  <!-- ================= TOC ================= -->
+  <aside class="toc">
+    <h2>Contents</h2>
+    <a href="#how">How to use this guide</a>
+    <a href="#m1">1 · Data vs Information</a>
+    <a href="#m2">2 · Information Processing Cycle</a>
+    <a href="#m3">3 · What is a Computer?</a>
+    <a href="#m4">4 · Characteristics of Computers</a>
+    <a href="#m5">5 · Evolution &amp; History</a>
+    <a href="#m5b" class="sub">↳ Generations at a glance</a>
+    <a href="#m5c" class="sub">↳ Timeline &amp; pioneers</a>
+    <a href="#m6">6 · Types of Computers</a>
+    <a href="#m7">7 · Organization of a Digital Computer</a>
+    <a href="#m7b" class="sub">↳ CPU, memory, buses, cycle</a>
+    <a href="#m8">8 · Number Systems</a>
+    <a href="#m8b" class="sub">↳ All conversions, step by step</a>
+    <a href="#c1" class="sub" style="padding-left:32px">Dec → binary / octal / hex</a>
+    <a href="#c3" class="sub" style="padding-left:32px">Any base → decimal</a>
+    <a href="#c4" class="sub" style="padding-left:32px">Binary ↔ octal ↔ hex</a>
+    <a href="#c7" class="sub" style="padding-left:32px">Fractions</a>
+    <a href="#m8c" class="sub">↳ Binary arithmetic</a>
+    <a href="#compl" class="sub" style="padding-left:32px">Complements</a>
+    <a href="#codes" class="sub" style="padding-left:32px">Codes (BCD, ASCII…)</a>
+    <a href="#m9">9 · Related Essentials</a>
+    <a href="#m10">10 · Quick Revision Sheet</a>
+    <a href="#m11">11 · Practice Questions (with answers)</a>
+    <a href="#glossary">Glossary</a>
+  </aside>
+
+  <main>
+
+  <!-- ================= HOW TO USE ================= -->
+  <section id="how">
+    <span class="modnum">Start here</span>
+    <h2 class="title">How to use this guide</h2>
+    <p class="lede">This is the whole of "Fundamentals of Computers" — Unit 1 — in one place: theory, diagrams, worked numericals, memory tricks and practice questions.</p>
+    <div class="cards">
+      <div class="card"><h5>1. Read a module</h5><p>Each module starts simple and then goes exam-deep. Definitions are in <b>bold</b>, so you can revise by scanning for bold text.</p></div>
+      <div class="card"><h5>2. Try the examples</h5><p>Blue boxes are worked examples. Cover the solution with your hand and redo it. In number systems, actually write the divisions — never just read them.</p></div>
+      <div class="card"><h5>3. Practise</h5><p>Open the companion file <b>number-system-lab.html</b> to convert numbers with step-by-step working and take auto-checked quiz questions.</p></div>
+      <div class="card"><h5>4. Self-test</h5><p>Answer Module 11's questions from memory. Click a question to reveal its answer. Anything you miss — reread that section only.</p></div>
+    </div>
+    <div class="box tip"><span class="bt">Exam tip</span> Unit-1 questions are usually: <b>define + differentiate + 2 marks for example + 5-mark diagram</b>. Learn the <i>definitions verbatim</i>, one difference table per pair of terms, and the three diagrams (computer block diagram, IPOS cycle, memory hierarchy). Those alone cover most of the paper.</div>
+  </section>
+
+  <!-- ================= MODULE 1 ================= -->
+  <section id="m1">
+    <span class="modnum">Module 1</span>
+    <h2 class="title">Data vs Information</h2>
+    <p class="lede">Everything a computer does is about turning raw <b>data</b> into useful <b>information</b>. If you understand this one idea, the whole subject falls into place.</p>
+
+    <h3>1.1 What is Data?</h3>
+    <p><b>Data</b> means raw, unorganised, unprocessed facts and figures that have little or no meaning by themselves. Data is the <i>input</i> to a computer.</p>
+    <ul>
+      <li><b>Examples:</b> <code>45, 78, 92, 67</code> &nbsp;·&nbsp; <code>Rahul, 21, Kichha</code> &nbsp;·&nbsp; the letters typed on a keyboard, the pixels from a camera, the reading of a thermometer.</li>
+      <li>Data on its own does not tell you what it is about. Is <code>45</code> a temperature, a mark, an age or a price? You cannot say.</li>
+      <li>Data is <b>factual</b>, <b>uninterpreted</b> and often <b>huge in quantity</b>.</li>
+    </ul>
+    <h4>Types of data</h4>
+    <div class="tw"><table>
+      <thead><tr><th>Basis</th><th>Types</th><th>Meaning &amp; example</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="2">Nature</td><td><b>Quantitative</b></td><td>Numeric, measurable — marks = 78, height = 172 cm</td></tr>
+        <tr><td><b>Qualitative</b></td><td>Descriptive, non-numeric — "good student", "blue colour"</td></tr>
+        <tr><td rowspan="2">Structure</td><td><b>Structured</b></td><td>Rows and columns — a marksheet in Excel</td></tr>
+        <tr><td><b>Unstructured</b></td><td>No fixed format — photos, videos, WhatsApp messages, audio</td></tr>
+        <tr><td rowspan="2">Continuity</td><td><b>Discrete</b></td><td>Countable values — number of students = 47</td></tr>
+        <tr><td><b>Continuous</b></td><td>Any value in a range — temperature = 31.62 °C</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>1.2 What is Information?</h3>
+    <p><b>Information</b> is data that has been processed, organised and given context so that it becomes meaningful and useful for decision making. Information is the <i>output</i> of a computer.</p>
+    <ul>
+      <li><b>Example:</b> the numbers <code>45, 78, 92, 67</code> become information when presented as <i>"Rahul scored 78 out of 100 — Grade B, class average 70.5, position 3rd."</i></li>
+      <li>Information is <b>processed</b>, <b>interpreted</b> and <b>decision-oriented</b>.</li>
+    </ul>
+
+    <h3>1.3 Data vs Information — the difference table</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Point</th><th>Data</th><th>Information</th></tr></thead>
+      <tbody>
+        <tr><td>Meaning</td><td>Raw, unprocessed facts</td><td>Processed, meaningful facts</td></tr>
+        <tr><td>Form</td><td>Scattered, disorganised</td><td>Organised, structured, in context</td></tr>
+        <tr><td>Usefulness</td><td>Not directly usable for decisions</td><td>Directly usable for decisions</td></tr>
+        <tr><td>Role in IPO cycle</td><td>Input</td><td>Output</td></tr>
+        <tr><td>Dependency</td><td>Independent — same data can give many informations</td><td>Depends on data (and on how it is processed)</td></tr>
+        <tr><td>Example</td><td>Temperature readings of 30 days: 30.1, 29.8, 32.4 …</td><td>"Highest temperature this month was 32.4 °C on the 12th"</td></tr>
+        <tr><td>Quantity/size</td><td>Usually very large in volume</td><td>Small, condensed and specific</td></tr>
+        <tr><td>Analogy</td><td>Individual bricks, cement, sand</td><td>The finished house</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box hook"><span class="bt">Memory hook</span> <b>D</b>ata = <b>D</b>umb facts. <b>I</b>nformation = <b>I</b>ntelligent facts (data + meaning). Another classic line: <i>"Data is processed to get information; information is data in context."</i></div>
+
+    <h3>1.4 The DIKW hierarchy (data → wisdom)</h3>
+    <p>Related and often asked: information itself is only a step in a ladder.</p>
+    <figure>
+      <svg viewBox="0 0 620 330" role="img" aria-label="DIKW pyramid">
+        <polygon points="310,10 355,70 265,70" fill="#4f46e5"/>
+        <polygon points="265,74 355,74 400,134 220,134" fill="#6d63ef"/>
+        <polygon points="220,138 400,138 445,198 175,198" fill="#0e9488"/>
+        <polygon points="175,202 445,202 490,262 130,262" fill="#0f766e"/>
+        <text x="310" y="60" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">WISDOM</text>
+        <text x="310" y="112" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">KNOWLEDGE</text>
+        <text x="310" y="174" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">INFORMATION</text>
+        <text x="310" y="238" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">DATA</text>
+        <text x="500" y="55" font-size="12" fill="#5b6279">judgement, actions</text>
+        <text x="500" y="112" font-size="12" fill="#5b6279">understanding, patterns</text>
+        <text x="500" y="174" font-size="12" fill="#5b6279">data + context</text>
+        <text x="500" y="238" font-size="12" fill="#5b6279">raw facts</text>
+      </svg>
+      <figcaption>More data → information → knowledge → wisdom. Each level adds meaning, not volume.</figcaption>
+    </figure>
+    <div class="tw"><table>
+      <thead><tr><th>Level</th><th>Question it answers</th><th>Example (weather)</th></tr></thead>
+      <tbody>
+        <tr><td><b>Data</b></td><td>—</td><td>28.4, 29.1, 31.7 (°C)</td></tr>
+        <tr><td><b>Information</b></td><td>Who / what / when?</td><td>Average temperature rose 4 °C in June</td></tr>
+        <tr><td><b>Knowledge</b></td><td>How?</td><td>Temperature rises as monsoon approaches</td></tr>
+        <tr><td><b>Wisdom</b></td><td>Why / what to do?</td><td>Plan irrigation before June</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>1.5 Qualities of good information</h3>
+    <p>Marked as: <b>accurate, complete, relevant, timely, clear, verifiable, cost-effective, accessible, reliable</b>. Remember them with <b>"ACRTVCCAR"</b> or just the four big ones: <b>ACCURATE · COMPLETE · RELEVANT · TIMELY</b>.</p>
+
+    <h3>1.6 Related terms you should know</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Term</th><th>Quick meaning</th></tr></thead>
+      <tbody>
+        <tr><td><b>GIGO</b></td><td>Garbage In Garbage Out — a computer is only as good as the data you feed it.</td></tr>
+        <tr><td><b>Knowledge</b></td><td>Information + experience + understanding of patterns.</td></tr>
+        <tr><td><b>Metadata</b></td><td>Data about data, e.g. date created, file size, author.</td></tr>
+        <tr><td><b>Data processing</b></td><td>Any operation (calculating, sorting, summarising, comparing) performed on data to obtain information.</td></tr>
+        <tr><td><b>Big Data (5 V's)</b></td><td>Volume, Velocity, Variety, Veracity, Value.</td></tr>
+        <tr><td><b>Information system</b></td><td>People + procedures + hardware + software + data that turn data into information.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box ex"><span class="bt">Classic 5-mark question</span> "With an example, distinguish between data and information." → Give 1 definition each, the difference table (any 4 points), then one clean example: <i>marks of all students (data) → progress report with average and grade (information)</i>.</div>
+  </section>

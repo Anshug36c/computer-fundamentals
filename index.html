@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4f46e5">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Computer Fundamentals">
+<meta name="description" content="Complete Unit 1 notes: data vs information, information processing cycle, computer definition, characteristics, history and generations, types of computers, basic organization, number systems and conversions.">
+<title>Fundamentals of Computers — The Complete Guide</title>
+<style>
+  :root{
+    --bg:#f5f6fb;
+    --card:#ffffff;
+    --ink:#171a26;
+    --muted:#5b6279;
+    --accent:#4f46e5;
+    --accent-soft:#eef0ff;
+    --accent2:#0e9488;
+    --line:#e2e5f0;
+    --code:#f2f3f9;
+    --good:#0f766e;
+    --good-soft:#e6f7f4;
+    --warn:#b45309;
+    --warn-soft:#fdf3e3;
+    --hook:#7c3aed;
+    --hook-soft:#f3ecff;
+    --ex:#0369a1;
+    --ex-soft:#e8f4fd;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:17px;
+    line-height:1.68;
+  }
+  /* ---------- HERO ---------- */
+  .hero{
+    background:linear-gradient(135deg,#312e81 0%,#4f46e5 45%,#0e9488 100%);
+    color:#fff;
+    padding:56px 28px 48px;
+    text-align:center;
+  }
+  .hero .kicker{
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-size:12px;
+    opacity:.85;
+    font-weight:700;
+  }
+  .hero h1{
+    margin:10px 0 8px;
+    font-size:clamp(28px,5vw,46px);
+    line-height:1.15;
+    letter-spacing:-.02em;
+  }
+  .hero p{
+    max-width:760px;margin:0 auto;
+    font-size:17px;opacity:.94;
+  }
+  .hero .chips{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+  .chip{
+    background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.3);
+    padding:5px 12px;border-radius:999px;font-size:13px;
+    backdrop-filter:blur(4px);
+  }
+  /* ---------- LAYOUT ---------- */
+  .layout{
+    max-width:1200px;
+    margin:0 auto;
+    padding:28px 20px 80px;
+    display:grid;
+    grid-template-columns:280px minmax(0,1fr);
+    gap:34px;
+    align-items:start;
+  }
+  @media (max-width:980px){
+    .layout{grid-template-columns:1fr;gap:18px}
+    .toc{position:static !important;max-height:none !important}
+  }
+  .toc{
+    position:sticky;
+    top:16px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:18px 18px 22px;
+    font-size:14.5px;
+    max-height:calc(100vh - 40px);
+    overflow:auto;
+    box-shadow:0 2px 10px rgba(20,25,60,.05);
+  }
+  .toc h2{
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 12px;font-weight:700;
+  }
+  .toc a{
+    display:block;color:var(--muted);text-decoration:none;
+    padding:5px 8px;border-radius:8px;line-height:1.35;
+    border-left:3px solid transparent;
+  }
+  .toc a:hover{background:var(--accent-soft);color:var(--accent)}
+  .toc a.sub{padding-left:20px;font-size:13.5px}
+  main{min-width:0}
+  /* ---------- SECTIONS ---------- */
+  section{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:30px 32px 34px;
+    margin-bottom:26px;
+    box-shadow:0 2px 12px rgba(20,25,60,.045);
+    scroll-margin-top:16px;
+  }
+  @media (max-width:640px){
+    section{padding:22px 18px 26px;border-radius:14px}
+    body{font-size:16px}
+  }
+  .modnum{
+    display:inline-block;
+    background:var(--accent-soft);color:var(--accent);
+    font-weight:800;font-size:12px;letter-spacing:.12em;
+    padding:4px 10px;border-radius:999px;
+    text-transform:uppercase;margin-bottom:10px;
+  }
+  h2.title{
+    font-size:clamp(22px,3.4vw,30px);
+    margin:0 0 6px;letter-spacing:-.02em;line-height:1.2;
+  }
+  .lede{color:var(--muted);margin:0 0 22px;font-size:16.5px}
+  h3{
+    font-size:20px;margin:34px 0 10px;letter-spacing:-.01em;
+    padding-bottom:6px;border-bottom:1px solid var(--line);
+  }
+  h3:first-of-type{margin-top:10px}
+  h4{font-size:17px;margin:22px 0 6px;color:#252a3d}
+  p{margin:10px 0}
+  ul,ol{margin:10px 0;padding-left:26px}
+  li{margin:5px 0}
+  b,strong{color:#0f1220}
+  code{
+    background:var(--code);
+    padding:2px 6px;border-radius:6px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+    font-size:.9em;
+    color:#3730a3;
+    white-space:nowrap;
+  }
+  pre{
+    background:#1c2033;color:#e8ecff;padding:16px 18px;border-radius:12px;
+    overflow-x:auto;font-size:14px;line-height:1.6;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  pre code{background:none;color:inherit;padding:0;white-space:pre}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.02em}
+  /* ---------- TABLES ---------- */
+  .tw{overflow-x:auto;margin:16px 0}
+  table{border-collapse:collapse;width:100%;font-size:15px;background:#fff}
+  th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+  th{background:#f0f2fa;font-weight:700;font-size:14px;color:#2b3050}
+  tbody tr:nth-child(even){background:#fafbff}
+  td.c,th.c{text-align:center}
+  /* ---------- CALLOUTS ---------- */
+  .box{
+    border-radius:12px;padding:14px 18px;margin:16px 0;
+    border-left:5px solid; font-size:16px;
+  }
+  .box .bt{font-weight:800;display:block;margin-bottom:4px;font-size:14px;letter-spacing:.04em;text-transform:uppercase}
+  .tip{background:var(--good-soft);border-color:var(--good)}
+  .tip .bt{color:var(--good)}
+  .warn{background:var(--warn-soft);border-color:var(--warn)}
+  .warn .bt{color:var(--warn)}
+  .hook{background:var(--hook-soft);border-color:var(--hook)}
+  .hook .bt{color:var(--hook)}
+  .ex{background:var(--ex-soft);border-color:var(--ex)}
+  .ex .bt{color:var(--ex)}
+  .kv{background:#f7f8fd;border-color:#c7cbe6}
+  .kv .bt{color:#3b3f66}
+  /* ---------- CARDS ---------- */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
+  .card{
+    border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:#fcfcff;
+  }
+  .card h5{margin:0 0 6px;font-size:15.5px;color:var(--accent)}
+  .card p{margin:4px 0;font-size:14.5px;color:#3c4258}
+  /* ---------- DETAILS / Q&A ---------- */
+  details{
+    border:1px solid var(--line);border-radius:12px;padding:10px 16px;
+    margin:10px 0;background:#fbfbfe;
+  }
+  details[open]{background:#fff;box-shadow:0 1px 6px rgba(20,25,60,.06)}
+  summary{cursor:pointer;font-weight:600;color:#22263c;outline:none}
+  summary::marker{color:var(--accent)}
+  details p:first-of-type{margin-top:10px}
+  .ans{border-left:3px solid var(--accent);padding-left:14px;margin-top:10px}
+  /* ---------- STEPS ---------- */
+  .steps{counter-reset:s;list-style:none;padding-left:0;margin:14px 0}
+  .steps>li{
+    counter-increment:s;position:relative;padding:8px 0 8px 46px;border-bottom:1px dashed var(--line);
+  }
+  .steps>li:last-child{border-bottom:none}
+  .steps>li::before{
+    content:counter(s);
+    position:absolute;left:0;top:9px;
+    width:28px;height:28px;border-radius:50%;
+    background:var(--accent);color:#fff;font-weight:700;font-size:14px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  /* ---------- MISC ---------- */
+  .pill{display:inline-block;background:#eef1fb;border:1px solid #d8ddf2;color:#3b3f66;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:600;margin:2px 4px 2px 0}
+  figure{margin:20px 0;text-align:center}
+  figure svg{max-width:100%;height:auto}
+  figcaption{font-size:14px;color:var(--muted);margin-top:8px}
+  hr{border:none;border-top:1px solid var(--line);margin:26px 0}
+  .studybar{
+    max-width:1200px;margin:18px auto -4px;padding:0 20px;
+    display:flex;flex-wrap:wrap;gap:8px;justify-content:center;
+  }
+  .sbtn{
+    display:inline-flex;align-items:center;gap:6px;
+    background:#fff;border:1.5px solid rgba(79,70,229,.35);color:#3730a3;
+    padding:9px 15px;border-radius:999px;font-size:14.5px;font-weight:600;
+    cursor:pointer;text-decoration:none;line-height:1.2;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .sbtn:hover,.sbtn:active{background:var(--accent-soft)}
+  .sbtn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .sbtn.primary:hover{background:#4338ca}
+  .footer{
+    text-align:center;color:var(--muted);font-size:14px;
+    padding:20px;border-top:1px solid var(--line);margin-top:10px;
+  }
+  .hl{background:linear-gradient(transparent 60%, #ffe680 60%);font-weight:600}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:700px){.grid2{grid-template-columns:1fr}}
+  @media print{
+    @page{margin:14mm}
+    body{background:#fff;font-size:11.5pt}
+    .toc,.hero .chips,.studybar{display:none}
+    .hero{background:#312e81 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    section{break-inside:auto}
+    pre,table,figure,.box{break-inside:avoid}
+    a{color:inherit;text-decoration:none}
+    .layout{display:block;max-width:none;padding:0}
+    section{box-shadow:none;border:none;padding:0 0 18px;page-break-inside:auto}
+    details{page-break-inside:avoid}
+    details>summary{list-style:none}
+    details[open] .ans{display:block}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <div class="kicker">Computer Fundamentals · Unit 1</div>
+  <h1>Fundamentals of Computers</h1>
+  <p>Data &amp; Information · Information Processing Cycle · What a Computer Is · Characteristics · Evolution &amp; History · Types of Computers · Basic Organization of a Digital Computer · Number Systems &amp; Conversions</p>
+  <div class="chips">
+    <span class="chip">8 Modules</span>
+    <span class="chip">Worked Examples</span>
+    <span class="chip">Exams &amp; Interviews</span>
+    <span class="chip">Interview-ready explanations</span>
+    <span class="chip">40+ Practice Qs</span>
+  </div>
+</header>
+
+
+<nav class="studybar" aria-label="Study tools">
+  <a class="sbtn primary" href="number-system-lab.html">🎯 Open the practice lab</a>
+  <button class="sbtn" id="btnExpand" type="button">👁 Show all answers</button>
+  <button class="sbtn" id="btnCollapse" type="button">🙈 Hide all answers</button>
+  <button class="sbtn" id="btnPrint" type="button">🖨 Print / save as PDF</button>
+  <a class="sbtn" href="#m10">⚡ Quick revision</a>
+  <a class="sbtn" href="#top">↑ Top</a>
+</nav>
+
+<div class="layout">
+
+  <!-- ================= TOC ================= -->
+  <aside class="toc">
+    <h2>Contents</h2>
+    <a href="#how">How to use this guide</a>
+    <a href="#m1">1 · Data vs Information</a>
+    <a href="#m2">2 · Information Processing Cycle</a>
+    <a href="#m3">3 · What is a Computer?</a>
+    <a href="#m4">4 · Characteristics of Computers</a>
+    <a href="#m5">5 · Evolution &amp; History</a>
+    <a href="#m5b" class="sub">↳ Generations at a glance</a>
+    <a href="#m5c" class="sub">↳ Timeline &amp; pioneers</a>
+    <a href="#m6">6 · Types of Computers</a>
+    <a href="#m7">7 · Organization of a Digital Computer</a>
+    <a href="#m7b" class="sub">↳ CPU, memory, buses, cycle</a>
+    <a href="#m8">8 · Number Systems</a>
+    <a href="#m8b" class="sub">↳ All conversions, step by step</a>
+    <a href="#c1" class="sub" style="padding-left:32px">Dec → binary / octal / hex</a>
+    <a href="#c3" class="sub" style="padding-left:32px">Any base → decimal</a>
+    <a href="#c4" class="sub" style="padding-left:32px">Binary ↔ octal ↔ hex</a>
+    <a href="#c7" class="sub" style="padding-left:32px">Fractions</a>
+    <a href="#m8c" class="sub">↳ Binary arithmetic</a>
+    <a href="#compl" class="sub" style="padding-left:32px">Complements</a>
+    <a href="#codes" class="sub" style="padding-left:32px">Codes (BCD, ASCII…)</a>
+    <a href="#m9">9 · Related Essentials</a>
+    <a href="#m10">10 · Quick Revision Sheet</a>
+    <a href="#m11">11 · Practice Questions (with answers)</a>
+    <a href="#glossary">Glossary</a>
+  </aside>
+
+  <main>
+
+  <!-- ================= HOW TO USE ================= -->
+  <section id="how">
+    <span class="modnum">Start here</span>
+    <h2 class="title">How to use this guide</h2>
+    <p class="lede">This is the whole of "Fundamentals of Computers" — Unit 1 — in one place: theory, diagrams, worked numericals, memory tricks and practice questions.</p>
+    <div class="cards">
+      <div class="card"><h5>1. Read a module</h5><p>Each module starts simple and then goes exam-deep. Definitions are in <b>bold</b>, so you can revise by scanning for bold text.</p></div>
+      <div class="card"><h5>2. Try the examples</h5><p>Blue boxes are worked examples. Cover the solution with your hand and redo it. In number systems, actually write the divisions — never just read them.</p></div>
+      <div class="card"><h5>3. Practise</h5><p>Open the companion file <b>number-system-lab.html</b> to convert numbers with step-by-step working and take auto-checked quiz questions.</p></div>
+      <div class="card"><h5>4. Self-test</h5><p>Answer Module 11's questions from memory. Click a question to reveal its answer. Anything you miss — reread that section only.</p></div>
+    </div>
+    <div class="box tip"><span class="bt">Exam tip</span> Unit-1 questions are usually: <b>define + differentiate + 2 marks for example + 5-mark diagram</b>. Learn the <i>definitions verbatim</i>, one difference table per pair of terms, and the three diagrams (computer block diagram, IPOS cycle, memory hierarchy). Those alone cover most of the paper.</div>
+  </section>
+
+  <!-- ================= MODULE 1 ================= -->
+  <section id="m1">
+    <span class="modnum">Module 1</span>
+    <h2 class="title">Data vs Information</h2>
+    <p class="lede">Everything a computer does is about turning raw <b>data</b> into useful <b>information</b>. If you understand this one idea, the whole subject falls into place.</p>
+
+    <h3>1.1 What is Data?</h3>
+    <p><b>Data</b> means raw, unorganised, unprocessed facts and figures that have little or no meaning by themselves. Data is the <i>input</i> to a computer.</p>
+    <ul>
+      <li><b>Examples:</b> <code>45, 78, 92, 67</code> &nbsp;·&nbsp; <code>Rahul, 21, Kichha</code> &nbsp;·&nbsp; the letters typed on a keyboard, the pixels from a camera, the reading of a thermometer.</li>
+      <li>Data on its own does not tell you what it is about. Is <code>45</code> a temperature, a mark, an age or a price? You cannot say.</li>
+      <li>Data is <b>factual</b>, <b>uninterpreted</b> and often <b>huge in quantity</b>.</li>
+    </ul>
+    <h4>Types of data</h4>
+    <div class="tw"><table>
+      <thead><tr><th>Basis</th><th>Types</th><th>Meaning &amp; example</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="2">Nature</td><td><b>Quantitative</b></td><td>Numeric, measurable — marks = 78, height = 172 cm</td></tr>
+        <tr><td><b>Qualitative</b></td><td>Descriptive, non-numeric — "good student", "blue colour"</td></tr>
+        <tr><td rowspan="2">Structure</td><td><b>Structured</b></td><td>Rows and columns — a marksheet in Excel</td></tr>
+        <tr><td><b>Unstructured</b></td><td>No fixed format — photos, videos, WhatsApp messages, audio</td></tr>
+        <tr><td rowspan="2">Continuity</td><td><b>Discrete</b></td><td>Countable values — number of students = 47</td></tr>
+        <tr><td><b>Continuous</b></td><td>Any value in a range — temperature = 31.62 °C</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>1.2 What is Information?</h3>
+    <p><b>Information</b> is data that has been processed, organised and given context so that it becomes meaningful and useful for decision making. Information is the <i>output</i> of a computer.</p>
+    <ul>
+      <li><b>Example:</b> the numbers <code>45, 78, 92, 67</code> become information when presented as <i>"Rahul scored 78 out of 100 — Grade B, class average 70.5, position 3rd."</i></li>
+      <li>Information is <b>processed</b>, <b>interpreted</b> and <b>decision-oriented</b>.</li>
+    </ul>
+
+    <h3>1.3 Data vs Information — the difference table</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Point</th><th>Data</th><th>Information</th></tr></thead>
+      <tbody>
+        <tr><td>Meaning</td><td>Raw, unprocessed facts</td><td>Processed, meaningful facts</td></tr>
+        <tr><td>Form</td><td>Scattered, disorganised</td><td>Organised, structured, in context</td></tr>
+        <tr><td>Usefulness</td><td>Not directly usable for decisions</td><td>Directly usable for decisions</td></tr>
+        <tr><td>Role in IPO cycle</td><td>Input</td><td>Output</td></tr>
+        <tr><td>Dependency</td><td>Independent — same data can give many informations</td><td>Depends on data (and on how it is processed)</td></tr>
+        <tr><td>Example</td><td>Temperature readings of 30 days: 30.1, 29.8, 32.4 …</td><td>"Highest temperature this month was 32.4 °C on the 12th"</td></tr>
+        <tr><td>Quantity/size</td><td>Usually very large in volume</td><td>Small, condensed and specific</td></tr>
+        <tr><td>Analogy</td><td>Individual bricks, cement, sand</td><td>The finished house</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box hook"><span class="bt">Memory hook</span> <b>D</b>ata = <b>D</b>umb facts. <b>I</b>nformation = <b>I</b>ntelligent facts (data + meaning). Another classic line: <i>"Data is processed to get information; information is data in context."</i></div>
+
+    <h3>1.4 The DIKW hierarchy (data → wisdom)</h3>
+    <p>Related and often asked: information itself is only a step in a ladder.</p>
+    <figure>
+      <svg viewBox="0 0 620 330" role="img" aria-label="DIKW pyramid">
+        <polygon points="310,10 355,70 265,70" fill="#4f46e5"/>
+        <polygon points="265,74 355,74 400,134 220,134" fill="#6d63ef"/>
+        <polygon points="220,138 400,138 445,198 175,198" fill="#0e9488"/>
+        <polygon points="175,202 445,202 490,262 130,262" fill="#0f766e"/>
+        <text x="310" y="60" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">WISDOM</text>
+        <text x="310" y="112" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">KNOWLEDGE</text>
+        <text x="310" y="174" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">INFORMATION</text>
+        <text x="310" y="238" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">DATA</text>
+        <text x="500" y="55" font-size="12" fill="#5b6279">judgement, actions</text>
+        <text x="500" y="112" font-size="12" fill="#5b6279">understanding, patterns</text>
+        <text x="500" y="174" font-size="12" fill="#5b6279">data + context</text>
+        <text x="500" y="238" font-size="12" fill="#5b6279">raw facts</text>
+      </svg>
+      <figcaption>More data → information → knowledge → wisdom. Each level adds meaning, not volume.</figcaption>
+    </figure>
+    <div class="tw"><table>
+      <thead><tr><th>Level</th><th>Question it answers</th><th>Example (weather)</th></tr></thead>
+      <tbody>
+        <tr><td><b>Data</b></td><td>—</td><td>28.4, 29.1, 31.7 (°C)</td></tr>
+        <tr><td><b>Information</b></td><td>Who / what / when?</td><td>Average temperature rose 4 °C in June</td></tr>
+        <tr><td><b>Knowledge</b></td><td>How?</td><td>Temperature rises as monsoon approaches</td></tr>
+        <tr><td><b>Wisdom</b></td><td>Why / what to do?</td><td>Plan irrigation before June</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>1.5 Qualities of good information</h3>
+    <p>Marked as: <b>accurate, complete, relevant, timely, clear, verifiable, cost-effective, accessible, reliable</b>. Remember them with <b>"ACRTVCCAR"</b> or just the four big ones: <b>ACCURATE · COMPLETE · RELEVANT · TIMELY</b>.</p>
+
+    <h3>1.6 Related terms you should know</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Term</th><th>Quick meaning</th></tr></thead>
+      <tbody>
+        <tr><td><b>GIGO</b></td><td>Garbage In Garbage Out — a computer is only as good as the data you feed it.</td></tr>
+        <tr><td><b>Knowledge</b></td><td>Information + experience + understanding of patterns.</td></tr>
+        <tr><td><b>Metadata</b></td><td>Data about data, e.g. date created, file size, author.</td></tr>
+        <tr><td><b>Data processing</b></td><td>Any operation (calculating, sorting, summarising, comparing) performed on data to obtain information.</td></tr>
+        <tr><td><b>Big Data (5 V's)</b></td><td>Volume, Velocity, Variety, Veracity, Value.</td></tr>
+        <tr><td><b>Information system</b></td><td>People + procedures + hardware + software + data that turn data into information.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box ex"><span class="bt">Classic 5-mark question</span> "With an example, distinguish between data and information." → Give 1 definition each, the difference table (any 4 points), then one clean example: <i>marks of all students (data) → progress report with average and grade (information)</i>.</div>
+  </section>
+
+  <!-- ================= MODULE 2 ================= -->
+  <section id="m2">
+    <span class="modnum">Module 2</span>
+    <h2 class="title">The Information Processing Cycle</h2>
+    <p class="lede">Also called the <b>IPO cycle</b> (Input–Process–Output) or <b>IPOS cycle</b>. It describes how a computer converts data into information. Almost every diagram question in Unit 1 comes from here.</p>
+
+    <h3>2.1 The stages</h3>
+    <figure>
+      <svg viewBox="0 0 900 260" role="img" aria-label="Information processing cycle">
+        <defs>
+          <marker id="ar" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+            <path d="M0,0 L10,4 L0,8 z" fill="#4f46e5"/>
+          </marker>
+        </defs>
+        <rect x="20" y="60" width="150" height="70" rx="12" fill="#eef0ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="95" y="90" text-anchor="middle" font-size="17" font-weight="700" fill="#312e81">INPUT</text>
+        <text x="95" y="112" text-anchor="middle" font-size="12" fill="#5b6279">data entered</text>
+
+        <rect x="240" y="60" width="170" height="70" rx="12" fill="#e6f7f4" stroke="#0e9488" stroke-width="2"/>
+        <text x="325" y="90" text-anchor="middle" font-size="17" font-weight="700" fill="#065f56">PROCESSING</text>
+        <text x="325" y="112" text-anchor="middle" font-size="12" fill="#5b6279">CPU works on data</text>
+
+        <rect x="480" y="60" width="150" height="70" rx="12" fill="#fdf3e3" stroke="#b45309" stroke-width="2"/>
+        <text x="555" y="90" text-anchor="middle" font-size="17" font-weight="700" fill="#92400e">OUTPUT</text>
+        <text x="555" y="112" text-anchor="middle" font-size="12" fill="#5b6279">information shown</text>
+
+        <rect x="700" y="60" width="170" height="70" rx="12" fill="#f3ecff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="785" y="90" text-anchor="middle" font-size="17" font-weight="700" fill="#5b21b6">STORAGE</text>
+        <text x="785" y="112" text-anchor="middle" font-size="12" fill="#5b6279">saved for later use</text>
+
+        <line x1="174" y1="95" x2="234" y2="95" stroke="#4f46e5" stroke-width="2.5" marker-end="url(#ar)"/>
+        <line x1="414" y1="95" x2="474" y2="95" stroke="#4f46e5" stroke-width="2.5" marker-end="url(#ar)"/>
+        <line x1="634" y1="95" x2="694" y2="95" stroke="#4f46e5" stroke-width="2.5" marker-end="url(#ar)"/>
+        <path d="M785,134 C785,205 95,205 95,138" fill="none" stroke="#9aa0b8" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#ar)"/>
+        <text x="440" y="228" text-anchor="middle" font-size="12.5" fill="#5b6279">feedback / stored data can become input for the next cycle</text>
+        <text x="440" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#171a26">THE INFORMATION PROCESSING CYCLE (IPOS)</text>
+      </svg>
+      <figcaption>The four stages of the cycle. Storage is what makes a computer different from a calculator.</figcaption>
+    </figure>
+
+    <ol class="steps">
+      <li><b>Input</b> — Data and instructions are fed in using input devices (keyboard, mouse, scanner, mic, sensor, touchscreen) and stored in memory. <i>At this moment data has no meaning yet.</i></li>
+      <li><b>Processing</b> — The CPU (ALU + Control Unit) performs arithmetic and logical operations: calculating, comparing, sorting, searching, classifying, summarising, formatting. Raw data becomes information. <i>This is the "brain" step.</i></li>
+      <li><b>Output</b> — The result is presented in a human-usable form through output devices: monitor (soft copy), printer (hard copy), speakers, projector. <i>This is the information.</i></li>
+      <li><b>Storage</b> — Data and results are kept for future use in primary memory (RAM) or secondary storage (HDD, SSD, pen drive, cloud). Without storage, every task would have to start from zero.</li>
+    </ol>
+    <p>Some books add a 5th stage: <b>Communication / Distribution</b> — sending the output over a network to another user or machine. Others list <b>Control/Feedback</b> as a stage, because the control unit supervises the whole cycle. Mentioning either shows deeper knowledge.</p>
+
+    <div class="box tip"><span class="bt">Teacher's note</span> Input devices + output devices together are called <b>peripherals</b>. The processor is the CPU. Storage is memory. So the cycle = <b>Peripherals → CPU → Peripherals, with memory alongside</b>.</div>
+
+    <h3>2.2 The cycle in real life (use these as examples in exams)</h3>
+    <div class="tw"><table>
+      <thead><tr><th>System</th><th>Input</th><th>Processing</th><th>Output</th><th>Storage</th></tr></thead>
+      <tbody>
+        <tr><td><b>ATM</b></td><td>Card + PIN + amount</td><td>Verify PIN, check balance, debit</td><td>Cash + receipt + new balance</td><td>Updated account record</td></tr>
+        <tr><td><b>Billing in a shop</b></td><td>Barcode scans</td><td>Look up price, add tax, total</td><td>Printed bill</td><td>Sales record</td></tr>
+        <tr><td><b>Weather forecasting</b></td><td>Temperature, wind, satellite data</td><td>Run prediction model</td><td>Rain alert, forecast map</td><td>Historical weather database</td></tr>
+        <tr><td><b>Marksheet app</b></td><td>Student marks</td><td>Total, percentage, grade</td><td>Report card</td><td>School database</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>2.3 Extended view — the computing system around the cycle</h3>
+    <div class="cards">
+      <div class="card"><h5>Hardware</h5><p>The physical parts: keyboard, CPU, monitor, printer, disk.</p></div>
+      <div class="card"><h5>Software</h5><p>Instructions that tell hardware what to do: OS, apps, drivers.</p></div>
+      <div class="card"><h5>Data</h5><p>The raw material being processed (now often called the "new oil").</p></div>
+      <div class="card"><h5>People / Users</h5><p>Operators, programmers, end users — the "liveware".</p></div>
+      <div class="card"><h5>Procedures</h5><p>Rules and steps followed to operate the system.</p></div>
+      <div class="card"><h5>Connectivity</h5><p>Networks, internet, cloud — allow sharing and communication.</p></div>
+    </div>
+  </section>
+
+  <!-- ================= MODULE 3 ================= -->
+  <section id="m3">
+    <span class="modnum">Module 3</span>
+    <h2 class="title">Introduction to Computers — What is a Computer?</h2>
+    <p class="lede">The definition, word origin, and the exact reason a computer is different from a calculator.</p>
+
+    <h3>3.1 Definition (learn one long + one short)</h3>
+    <div class="box kv"><span class="bt">Definition — full version</span>
+      <b>A computer is an electronic, programmable device that accepts data and instructions as input, processes them automatically according to a stored set of instructions (a program), produces meaningful information as output, and stores the results for future use.</b>
+    </div>
+    <div class="box kv"><span class="bt">Definition — short version</span>
+      "A computer is an electronic device that takes <b>input</b>, <b>processes</b> it according to instructions, gives <b>output</b> and can <b>store</b> the data." (The word is derived from the Latin <i>computare</i> = "to calculate".)
+    </div>
+
+    <h3>3.2 Breaking the definition down — every keyword matters</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Word</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td><b>Electronic</b></td><td>It runs on electricity and uses electronic circuits (transistors, ICs); it works with binary signals 0 and 1.</td></tr>
+        <tr><td><b>Programmable</b></td><td>It can follow a <i>set of stored instructions</i>. Change the program → the same machine does a completely different job. This is the stored-program concept of John von Neumann, and it is the single most important idea in computing.</td></tr>
+        <tr><td><b>Accepts data (input)</b></td><td>It cannot think of anything by itself; the data must be supplied.</td></tr>
+        <tr><td><b>Automatic</b></td><td>Once started, it works without human intervention (a "self-acting" machine).</td></tr>
+        <tr><td><b>Produces information (output)</b></td><td>It converts raw data into a usable form.</td></tr>
+        <tr><td><b>Stores</b></td><td>It remembers data and instructions — unlike a calculator which forgets.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>3.3 Computer vs Calculator vs Human</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Feature</th><th>Calculator</th><th>Computer</th></tr></thead>
+      <tbody>
+        <tr><td>Memory</td><td>Minimal / temporary (only last result)</td><td>Large; primary + secondary storage</td></tr>
+        <tr><td>Programmable</td><td>No (fixed operations)</td><td>Yes (any program can be run)</td></tr>
+        <tr><td>Automatic working</td><td>Needs key presses for every step</td><td>Runs a whole program automatically</td></tr>
+        <tr><td>Devices</td><td>Keypad + display only</td><td>Keyboard, mouse, printer, disk, network…</td></tr>
+        <tr><td>Logic &amp; decisions</td><td>No</td><td>Yes, via conditional instructions ("if… then…")</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>3.4 The five-part picture of any computer system</h3>
+    <p><b>Hardware</b> (input + CPU + output + storage) + <b>Software</b> (system + application) + <b>Data</b> + <b>Users/People</b> + <b>Procedure/Connectivity</b>. In one line: <i>"A computer system = hardware + software working together on data for people."</i></p>
+    <p>Note the difference between the two words:</p>
+    <ul>
+      <li><b>Computer</b> = the machine (hardware).</li>
+      <li><b>Computer system</b> = the complete working setup: hardware + software + data + users + procedures.</li>
+    </ul>
+    <div class="box warn"><span class="bt">Common mistake</span> Do not define a computer as "a machine that calculates fast". Speed is a property, not the definition. A calculator can also be fast. The <b>stored program</b> ability is the real definition of a computer.</div>
+  </section>
+
+  <!-- ================= MODULE 4 ================= -->
+  <section id="m4">
+    <span class="modnum">Module 4</span>
+    <h2 class="title">Characteristics of Computers</h2>
+    <p class="lede">The classic 10 powers and the equally classic 5 limitations. You will be asked "explain any four characteristics" — so learn the bold keyword and one example for each.</p>
+
+    <h3>4.1 The strengths</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Characteristic</th><th>Meaning</th><th>Example / figure to quote</th></tr></thead>
+      <tbody>
+        <tr><td><b>1. Speed</b></td><td>Works at incredibly high speed — millions of instructions per second.</td><td>Modern CPUs do billions of operations per second (GHz). A task of 1000 calculations takes microseconds; supercomputers measure speed in <b>FLOPS</b> (floating point operations per second).</td></tr>
+        <tr><td><b>2. Accuracy</b></td><td>Gives 100% correct results if the input and program are correct.</td><td>Errors are due to bad data (GIGO) or bad logic — never due to "carelessness".</td></tr>
+        <tr><td><b>3. Diligence (consistency)</b></td><td>Performs the same task repeatedly with the same accuracy — no tiredness, no boredom, no lunch breaks.</td><td>Processing 10 lakh bank transactions at 3 a.m. just as carefully as the first one.</td></tr>
+        <tr><td><b>4. Versatility</b></td><td>The same machine does many different jobs — typing, music, design, science, gaming, accounting, teaching. (Its sister term: <b>adaptability</b> / <b>flexibility</b>.)</td><td>One laptop can be a music studio in the morning and an accounting office in the evening — only the software changes.</td></tr>
+        <tr><td><b>5. Storage capacity</b></td><td>Stores enormous amounts of data permanently and retrieves it instantly.</td><td>From kilobytes (KB) in the 1980s to <b>terabytes &amp; petabytes</b> today; cloud storage adds practically unlimited space.</td></tr>
+        <tr><td><b>6. Automatism</b></td><td>Once a program is started it does the whole job itself without human help.</td><td>Overnight batch processing; automatic backup at 2 a.m.</td></tr>
+        <tr><td><b>7. Reliability</b></td><td>Results are dependable and repeatable; modern chips run for years.</td><td>Same input + same program = same output, always.</td></tr>
+        <tr><td><b>8. Cost-effectiveness</b></td><td>Work that needs many clerks can be done by one machine, cheaper per unit of work (even though initial hardware cost is high).</td><td>One payroll server replaces 20 accountants' manual work.</td></tr>
+        <tr><td><b>9. Logical decision-making</b></td><td>Can compare and take decisions like "if marks ≥ 33 then pass" using logical/branching instructions.</td><td>Automatic fee calculation with discounts for the right category.</td></tr>
+        <tr><td><b>10. Power of remembering (retrieval)</b></td><td>Keeps data safe and can find any record instantly among millions.</td><td>Searching a customer by name in a database of one crore records in milliseconds.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box hook"><span class="bt">Memory hook</span> <b>S-A-D-V-S-A-R-C-L-P</b> → <i>"Some Androids Don't Very Simply Accept Random Crazy Logical Problems"</i>. Or, more simply, remember the famous trio first: <b>Speed · Accuracy · Diligence</b>, then Storage, Versatility, Automation.</div>
+
+    <h3>4.2 The limitations (no machine is perfect)</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Limitation</th><th>Explanation</th></tr></thead>
+      <tbody>
+        <tr><td><b>No intelligence of its own (no "IQ")</b></td><td>A computer cannot think, reason or take its own decisions. It only obeys the instructions written by a human. (AI is software imitating certain intelligent behaviours — the machine itself still follows instructions.)</td></tr>
+        <tr><td><b>No emotions, feelings or judgement</b></td><td>It cannot sense love, taste, beauty or ethics. It cannot judge "should we do this?" — only "can this be computed?".</td></tr>
+        <tr><td><b>GIGO — depends on input</b></td><td>Wrong data or wrong program → wrong output. Its accuracy is only as good as its input.</td></tr>
+        <tr><td><b>Needs electricity and maintenance</b></td><td>No power, no computer. It also needs a controlled, clean environment especially for large systems.</td></tr>
+        <tr><td><b>Cannot learn from experience by itself</b></td><td>It never gets "better with practice"; it must be reprogrammed/retrained.</td></tr>
+        <tr><td><b>Zero common sense</b></td><td>Ask it to "take a break" and it has no idea — instructions must be literal and exact.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box ex"><span class="bt">Typical exam framing</span> "Computer is a dumb machine with a great memory." Explain in 4 lines: it has immense speed/accuracy/storage but no IQ, no emotions and no decision-making of its own — it is <b>"garbage in, garbage out"</b> and depends fully on the program (a human creation).</div>
+  </section>
+
+  <!-- ================= MODULE 5 ================= -->
+  <section id="m5">
+    <span class="modnum">Module 5</span>
+    <h2 class="title">Evolution and History of Computers</h2>
+    <p class="lede">The story runs in two tracks: <b>before</b> electronic computers (calculating devices → Babbage) and <b>the five generations</b> (vacuum tubes → transistors → ICs → microprocessors → AI).</p>
+
+    <h3>5.1 Why computers were invented — a one-line story</h3>
+    <p>Humans needed to <b>count, calculate, store and communicate</b> faster and more accurately than hands and brains allow. So they invented calculating aids first (abacus, mechanical calculators), then machines that could follow <i>stored instructions</i> (Babbage, Hollerith), and finally fully electronic machines (ENIAC onwards) — which got smaller, cheaper, faster and more reliable with every generation.</p>
+
+    <h3>5.2 Pre-history — the calculating aids (before electronic computers)</h3>
+    <div class="tw"><table>
+      <thead><tr><th>When</th><th>Invention / Person</th><th>Contribution — remember this line</th></tr></thead>
+      <tbody>
+        <tr><td>~3000 BC</td><td><b>Abacus</b> (Babylon/China)</td><td>First known manual calculating device; beads on rods; still used for teaching arithmetic. Called the <i>first computer</i> in many books — but it is manual, not automatic.</td></tr>
+        <tr><td>1617</td><td><b>Napier's Bones</b> — John Napier</td><td>Rods for multiplication &amp; division; Napier also invented logarithms.</td></tr>
+        <tr><td>1622</td><td><b>Slide Rule</b> — William Oughtred</td><td>Mechanical analog calculating device used by engineers for 300+ years.</td></tr>
+        <tr><td>1642</td><td><b>Pascaline</b> — Blaise Pascal</td><td>First mechanical calculator: gears, could add and subtract (built to help his father with tax work).</td></tr>
+        <tr><td>1673</td><td><b>Stepped Reckoner</b> — Gottfried Leibniz</td><td>First machine that could multiply and divide; also gave us the <b>binary number system</b> (0 &amp; 1).</td></tr>
+        <tr><td>1801</td><td><b>Jacquard Loom</b> — Joseph Marie Jacquard</td><td>Used <b>punched cards</b> to control weaving patterns — the first idea of "instructions stored on cards" (weaving a picture = programming).</td></tr>
+        <tr><td>1822 / 1837</td><td><b>Difference Engine &amp; Analytical Engine</b> — Charles Babbage</td><td>Called the <b>"Father of the Computer"</b>. The Analytical Engine had a mill (CPU), store (memory), input (cards) and printer — the first general-purpose programmable design. It was never completed in his lifetime.</td></tr>
+        <tr><td>1843</td><td><b>Ada Lovelace</b></td><td>Wrote the algorithm for the Analytical Engine to compute Bernoulli numbers → <b>first computer programmer</b>; foresaw that machines could work on music, not just numbers.</td></tr>
+        <tr><td>1890</td><td><b>Herman Hollerith</b></td><td>Punched-card tabulating machine for the US Census (cut processing from 8 years to 2). His company later became <b>IBM</b> (1924, Thomas J. Watson).</td></tr>
+        <tr><td>1936–1950</td><td><b>Alan Turing</b></td><td>Proposed the <b>Turing Machine</b> (mathematical model of a computer) and the concept of a universal programmable machine; cracked the Enigma code in WWII; in 1950 proposed the <b>Turing Test</b> for machine intelligence. Called the "father of computer science" / "father of AI".</td></tr>
+        <tr><td>1938–41</td><td><b>Z1 / Z3</b> — Konrad Zuse (Germany)</td><td>Z3 was the first <b>programmable, fully automatic digital computer</b> — using electromagnetic relays, not tubes.</td></tr>
+        <tr><td>1937–42</td><td><b>ABC</b> — Atanasoff &amp; Berry</td><td>First electronic digital computer (used vacuum tubes) but not fully programmable.</td></tr>
+        <tr><td>1943–44</td><td><b>Colossus</b> (UK)</td><td>Electronic code-breaking machine used at Bletchley Park; not general purpose.</td></tr>
+        <tr><td>1944</td><td><b>Harvard Mark-I</b> — Howard Aiken &amp; IBM</td><td>Electro-mechanical general-purpose calculator; 50 feet long; used relay &amp; mechanical parts.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>5.3 The machines that start the "computer" story properly</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Machine</th><th>Year</th><th>Key facts (high-yield for exams)</th></tr></thead>
+      <tbody>
+        <tr><td><b>ENIAC</b><br>Electronic Numerical Integrator And Computer</td><td>1946</td><td>Built by <b>J. Presper Eckert &amp; John Mauchly</b> at the University of Pennsylvania. First large <b>general-purpose electronic digital computer</b>. Used ~18,000 vacuum tubes, weighed ~30 tonnes, occupied a room, did ~5,000 additions/second. Programming was done by re-wiring plugboards.</td></tr>
+        <tr><td><b>EDVAC</b><br>Electronic Discrete Variable Automatic Computer</td><td>Design 1945, built 1951</td><td>Introduced the <b>stored-program concept</b> in the famous "First Draft of a Report on the EDVAC" by <b>John von Neumann</b> — both data <i>and</i> instructions live in the same memory. This is the <b>von Neumann architecture</b> used in virtually all computers today.</td></tr>
+        <tr><td><b>EDSAC</b></td><td>1949</td><td>Cambridge University (Maurice Wilkes) — the first <b>practical stored-program</b> computer put to regular work.</td></tr>
+        <tr><td><b>Manchester Baby (SSEM)</b></td><td>1948</td><td>First machine to actually <b>run</b> a program stored in electronic memory.</td></tr>
+        <tr><td><b>UNIVAC-I</b></td><td>1951</td><td>First <b>commercial</b> computer sold in the USA (Eckert–Mauchly / Remington Rand). Famously predicted the 1952 US election result from sample data.</td></tr>
+        <tr><td><b>IBM System/360</b></td><td>1964</td><td>First <b>family</b> of compatible computers (same software ran on small and large models) — a landmark of the 3rd generation.</td></tr>
+        <tr><td><b>Intel 4004</b></td><td>1971</td><td>First <b>microprocessor</b> — a complete CPU on one chip (4-bit). Started the 4th generation and made the PC possible.</td></tr>
+        <tr><td><b>Altair 8800 / Apple II / IBM PC</b></td><td>1975 / 1977 / 1981</td><td>The personal-computer revolution. IBM PC made the PC an office standard; Microsoft supplied MS-DOS.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 id="m5b">5.4 The Five Generations of Computers</h3>
+    <div class="box tip"><span class="bt">Structure for a full-mark answer</span> For each generation write: <b>Period · Main technology · Features · Examples · Languages/Software</b>. That's the standard 5-mark table.</div>
+    <div class="tw"><table>
+      <thead><tr><th>Gen</th><th>Period</th><th>Core technology</th><th>Key features</th><th>Examples</th><th>Languages / Software</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>First</b></td><td>1940–56</td>
+          <td><b>Vacuum tubes</b> (thermionic valves)</td>
+          <td>Huge size, heavy, very costly, generated lots of heat, unreliable (tubes burnt out), consumed huge power, slow (milliseconds), machine-level programming, punched cards &amp; paper tape, only one program at a time (batch).</td>
+          <td>ENIAC, EDVAC, EDSAC, UNIVAC-I, IBM 701/650, Harvard Mark-I</td>
+          <td><b>Machine language</b> (0s &amp; 1s); punched cards</td>
+        </tr>
+        <tr>
+          <td><b>Second</b></td><td>1956–63</td>
+          <td><b>Transistors</b> (invented 1947 at Bell Labs by Bardeen, Brattain &amp; Shockley)</td>
+          <td>Smaller, cheaper, faster, less heat, more reliable, less power; magnetic core memory &amp; magnetic tape introduced; <b>assembly language</b> and early <b>high-level languages</b>; batch operating systems; printers and disks appear.</td>
+          <td>IBM 1401, IBM 7094, CDC 1604, UNIVAC 1108, Honeywell 200</td>
+          <td><b>FORTRAN (1957), COBOL (1959), ALGOL, LISP</b>, Assembly</td>
+        </tr>
+        <tr>
+          <td><b>Third</b></td><td>1964–71</td>
+          <td><b>Integrated Circuits (ICs)</b> — many transistors on one silicon chip (Kilby &amp; Noyce, 1958); SSI/MSI</td>
+          <td>Much smaller &amp; faster, more reliable, lower cost; keyboard + monitor interaction instead of only punched cards; <b>operating systems</b>, <b>time-sharing</b> and <b>multiprogramming</b>; minicomputers appear.</td>
+          <td>IBM System/360, PDP-8, PDP-11, ICL 1900, Honeywell 6000</td>
+          <td>BASIC, PASCAL, C; OS like Unix (1969)</td>
+        </tr>
+        <tr>
+          <td><b>Fourth</b></td><td>1971–1980s → today (some books say 1971–present)</td>
+          <td><b>Microprocessors</b> &amp; <b>LSI/VLSI/ULSI</b> — thousands to billions of transistors on one chip</td>
+          <td>Personal computers; very small, very cheap, extremely fast; GUI, mouse, icons, windows; magnetic &amp; optical storage, pen drives; networks, internet, email, multimedia; laptops, mobiles, tablets; huge memory at low cost.</td>
+          <td>IBM PC, Apple Macintosh, Intel 4004/8086/Pentium, Cray supercomputers, smartphones</td>
+          <td>C++, Java, Python, SQL; Windows, Linux, macOS, Android; MS Office, browsers</td>
+        </tr>
+        <tr>
+          <td><b>Fifth</b></td><td>1980s (Japan's FGCS project 1982) → present &amp; future</td>
+          <td><b>Artificial Intelligence</b>, parallel processing, ULSI, <b>quantum computing</b>, nanotechnology, neuromorphic chips</td>
+          <td>Machines that "learn" and assist decisions: machine learning, natural-language &amp; voice processing, computer vision, robotics, expert systems, cloud + IoT + Big Data. Focus on <b>knowledge processing</b>, not just data processing. Quantum processors explore qubits for exponentially hard problems.</td>
+          <td>IBM Watson, Google/DeepMind systems, AlphaGo, self-driving cars, Alexa/Siri/Google Assistant, ChatGPT-style generative AI, quantum computers (IBM, Google)</td>
+          <td>Python &amp; ML frameworks (TensorFlow, PyTorch), PROLOG; voice and vision APIs</td>
+        </tr>
+      </tbody>
+    </table></div>
+    <div class="box hook"><span class="bt">Memory hook — the generation ladder</span> <b>V-T-I-M-A</b> → <i>"Very Tall Indians Make Achievements"</i><br>
+    <b>V</b>acuum tube → <b>T</b>ransistor → <b>I</b>C → <b>M</b>icroprocessor (VLSI) → <b>A</b>rtificial intelligence.</div>
+
+    <h3 id="m5c">5.5 Timeline of key milestones (quick-revision strip)</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Year</th><th>Milestone</th></tr></thead>
+      <tbody>
+        <tr><td>3000 BC</td><td>Abacus</td></tr>
+        <tr><td>1642 / 1673</td><td>Pascaline (Pascal) / Stepped Reckoner (Leibniz, binary system)</td></tr>
+        <tr><td>1837</td><td>Babbage's Analytical Engine — "Father of the Computer"</td></tr>
+        <tr><td>1843</td><td>Ada Lovelace — first program</td></tr>
+        <tr><td>1890</td><td>Hollerith punched-card tabulator → later IBM</td></tr>
+        <tr><td>1936</td><td>Turing Machine (theory of computation)</td></tr>
+        <tr><td>1946</td><td>ENIAC — first general-purpose electronic digital computer</td></tr>
+        <tr><td>1945/1951</td><td>Von Neumann's stored-program EDVAC design</td></tr>
+        <tr><td>1947 / 1958</td><td>Transistor invented / Integrated Circuit invented</td></tr>
+        <tr><td>1951</td><td>UNIVAC-I — first commercial computer</td></tr>
+        <tr><td>1971</td><td>Intel 4004 — first microprocessor; floppy disk era begins</td></tr>
+        <tr><td>1975–81</td><td>Altair 8800, Apple II, IBM PC — personal computing</td></tr>
+        <tr><td>1989–91</td><td>World Wide Web (Tim Berners-Lee); Linux; PARAM 8000 (India)</td></tr>
+        <tr><td>1997</td><td>Deep Blue beats world chess champion Kasparov</td></tr>
+        <tr><td>2011–16</td><td>Watson wins Jeopardy! · AlphaGo beats Go champion</td></tr>
+        <tr><td>2019–2024</td><td>Quantum supremacy claims; exascale supercomputers; generative-AI boom</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>5.6 India corner (bonus marks &amp; good for viva)</h3>
+    <ul>
+      <li><b>1955 — HEC-2M</b> installed at the Indian Statistical Institute, Kolkata: the first electronic computer in India.</li>
+      <li><b>1960 — TIFRAC</b>, built at Tata Institute of Fundamental Research, Mumbai: India's first indigenously designed computer.</li>
+      <li><b>1970s–80s — ECIL, HCL, Wipro</b> and the <b>param/ C-DAC</b> era; "Param" means "supreme" in Sanskrit.</li>
+      <li><b>1991 — PARAM 8000</b>: India's first indigenous supercomputer, developed by <b>C-DAC</b> under Dr. Vijay Bhatkar. Led to National Supercomputing Mission (2015).</li>
+      <li><b>Today</b> — PARAM series, PARAM Siddhi-AI (AI supercomputer) and the National Supercomputing Mission's PARAM Rudra systems power Indian research. India is also a global hub for software services (IT industry) and semiconductor/chip manufacturing is being expanded.</li>
+    </ul>
+  </section>
+
+  <!-- ================= MODULE 6 ================= -->
+  <section id="m6">
+    <span class="modnum">Module 6</span>
+    <h2 class="title">Types of Computers</h2>
+    <p class="lede">Three favourite classification bases: <b>by data handling</b> (analog/digital/hybrid), <b>by size &amp; power</b> (super → micro), and <b>by purpose</b> (general / special). Learn the first and second in detail.</p>
+
+    <h3>6.1 Classification by data handling (by the type of signal)</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Type</th><th>Works on</th><th>Working principle</th><th>Speed/Accuracy</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>Analog computer</b></td>
+          <td><b>Continuous</b> physical quantities — voltage, pressure, temperature, rotation</td>
+          <td>Measures and represents data by continuously varying physical quantities; gives results as graphs/dials</td>
+          <td>Very fast (in real-time) but <b>less accurate</b>; output is approximate</td>
+          <td>Speedometer, thermometer (mercury), analog watch, old slide rule, analog speed governor, oscilloscope, flight simulators, car "fuel gauge"</td>
+        </tr>
+        <tr>
+          <td><b>Digital computer</b></td>
+          <td><b>Discrete</b> data — counts, digits, 0s &amp; 1s</td>
+          <td>Works by counting; all data is converted to binary and processed logically with arithmetic circuits</td>
+          <td>Very accurate; results in exact numbers; can store data; slower in real-time than analog but that gap is gone</td>
+          <td>Laptop, desktop, smartphone, calculator, digital watch, ATM, server</td>
+        </tr>
+        <tr>
+          <td><b>Hybrid computer</b></td>
+          <td>Both — accepts analog input, digitises it, processes digitally, may output analog</td>
+          <td>Combines the speed of analog with the accuracy, memory and control of digital</td>
+          <td>Accurate + real-time</td>
+          <td>Aircraft/spacecraft control systems, ECG &amp; ICU patient-monitoring machines, petrol pumps, hybrid speech synthesiser, weather &amp; defence systems</td>
+        </tr>
+      </tbody>
+    </table></div>
+    <div class="box hook"><span class="bt">Memory hook</span> <b>Analog = A</b>nalog is <b>A</b>pproximate (continuous waves). <b>Digital = D</b>igital is <b>D</b>efinite (0/1 digits). <b>Hybrid = H</b>ybrid is <b>H</b>alf and half — the best of both.</div>
+
+    <h3>6.2 Classification by size, speed, power &amp; cost</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Type</th><th>Size / power</th><th>Speed</th><th>Cost</th><th>Features &amp; users</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>Supercomputer</b></td><td>Largest &amp; most powerful; room-filling, thousands of processors working in parallel</td>
+          <td>Highest — petaFLOPS to <b>exaFLOPS</b> (10¹⁸ operations/sec)</td>
+          <td>Crores of rupees; needs cooling, special power</td>
+          <td>Used for weather &amp; cyclone forecasting, climate modelling, nuclear simulation, drug &amp; genome research, oil exploration, defence, AI training, animation rendering. Government &amp; big research only.</td>
+          <td>Frontier &amp; El Capitan (USA), Fugaku (Japan), Sunway TaihuLight (China), <b>PARAM Siddhi-AI, PARAM Rudra</b> (India)</td>
+        </tr>
+        <tr>
+          <td><b>Mainframe</b></td><td>Very large; supports thousands of users at once</td>
+          <td>Very high (millions of transactions/hour)</td>
+          <td>Very expensive</td>
+          <td>Centralised, high-volume, high-reliability transaction processing: banking, railways (IRCTC), insurance, census, stock exchanges. Famous for reliability ("five nines" uptime) and vast batch processing.</td>
+          <td>IBM z Series (z15, z16), IBM ES/9000, UNIVAC 1100</td>
+        </tr>
+        <tr>
+          <td><b>Minicomputer / Midrange</b></td><td>Medium — between mainframe and micro (term now largely replaced by "midrange server")</td>
+          <td>High</td>
+          <td>Moderate to high</td>
+          <td>Multi-user, department-level server: hospital, college, small bank branch; handles dozens to hundreds of users.</td>
+          <td>PDP-8, PDP-11, IBM AS/400 (now IBM i), VAX, modern midrange servers</td>
+        </tr>
+        <tr>
+          <td><b>Microcomputer (Personal Computer)</b></td><td>Smallest; CPU on a microprocessor chip</td>
+          <td>High for one user; today's phone beats 1990s supercomputers</td>
+          <td>Cheapest; for individuals</td>
+          <td>Single-user, general purpose. Sub-forms:
+            <br>• <b>Desktop</b> — fixed, powerful, upgradable
+            <br>• <b>Laptop/Notebook</b> — portable, battery, all-in-one
+            <br>• <b>Tablet &amp; Smartphone</b> — touch, ultra-portable
+            <br>• <b>Workstation</b> — high-end desktop for CAD, engineering, animation
+            <br>• <b>PDA/embedded</b> — since merged into phones</td>
+          <td>HP/Dell/Lenovo desktops, MacBook, iPad, Android phone, Sun/Oracle workstations</td>
+        </tr>
+      </tbody>
+    </table></div>
+    <div class="box tip"><span class="bt">Increasing order to quote in exams</span> Supercomputer &gt; Mainframe &gt; Minicomputer &gt; Microcomputer &nbsp;(size, power, cost). For <b>portability</b> the order reverses.</div>
+
+    <h3>6.3 Classification by purpose</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Type</th><th>Meaning</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr><td><b>General-purpose</b></td><td>Versatile; can run any program for any task — the normal PC, laptop, smartphone.</td><td>Desktop, laptop, mainframe running many applications, server</td></tr>
+        <tr><td><b>Special-purpose (dedicated)</b></td><td>Built for one specific task only; logic is fixed in the machine; usually faster/cheaper for that job.</td><td>ATM, washing machine controller, digital camera, microwave, car engine ECU, missile guidance, traffic-light controller, POS billing machine, MRI machine</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>6.4 Other modern classifications worth one line each</h3>
+    <div class="cards">
+      <div class="card"><h5>Embedded computer</h5><p>A specialised computer built <i>inside</i> another device to control it — Washing machine, AC, car, router, smart TV.</p></div>
+      <div class="card"><h5>Server</h5><p>A computer that provides services/data to other computers (clients) over a network — web server, mail server, file server.</p></div>
+      <div class="card"><h5>Workstation</h5><p>High-performance single-user machine for engineering, design, video editing, scientific work.</p></div>
+      <div class="card"><h5>Wearable / IoT / Edge device</h5><p>Smartwatch, fitness band, smart sensor node; collects data and often sends it to the cloud.</p></div>
+      <div class="card"><h5>Quantum computer</h5><p>Uses <b>qubits</b> (superposition + entanglement) instead of bits; can explore many solutions at once for specific problems.</p></div>
+      <div class="card"><h5>Grid / Cluster / Cloud</h5><p>Many computers joined to work as one big resource; the cloud sells this as a service (IaaS/PaaS/SaaS).</p></div>
+    </div>
+  </section>
+
+  <!-- ================= MODULE 7 ================= -->
+  <section id="m7">
+    <span class="modnum">Module 7</span>
+    <h2 class="title">Basic Organization of a Digital Computer</h2>
+    <p class="lede">This is the highest-value diagram in the whole syllabus. Learn to draw the block diagram from memory and to explain each block in two lines.</p>
+
+    <h3>7.1 The five functional units — block diagram</h3>
+    <figure>
+      <svg viewBox="0 0 940 430" role="img" aria-label="Block diagram of a digital computer">
+        <defs>
+          <marker id="a2" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+            <path d="M0,0 L10,4 L0,8 z" fill="#4f46e5"/>
+          </marker>
+          <marker id="a3" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+            <path d="M0,0 L10,4 L0,8 z" fill="#0e9488"/>
+          </marker>
+        </defs>
+
+        <!-- CPU big box -->
+        <rect x="330" y="70" width="290" height="180" rx="14" fill="#eef0ff" stroke="#4f46e5" stroke-width="2.5"/>
+        <text x="475" y="96" text-anchor="middle" font-size="15" font-weight="800" fill="#312e81">CENTRAL PROCESSING UNIT (CPU)</text>
+        <rect x="352" y="112" width="112" height="56" rx="10" fill="#fff" stroke="#4f46e5" stroke-width="1.8"/>
+        <text x="408" y="136" text-anchor="middle" font-size="13.5" font-weight="700" fill="#312e81">ALU</text>
+        <text x="408" y="154" text-anchor="middle" font-size="11" fill="#5b6279">arithmetic + logic</text>
+        <rect x="486" y="112" width="112" height="56" rx="10" fill="#fff" stroke="#4f46e5" stroke-width="1.8"/>
+        <text x="542" y="136" text-anchor="middle" font-size="13.5" font-weight="700" fill="#312e81">CONTROL UNIT</text>
+        <text x="542" y="154" text-anchor="middle" font-size="11" fill="#5b6279">directs everything</text>
+        <rect x="352" y="180" width="246" height="52" rx="10" fill="#fff" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="5 4"/>
+        <text x="475" y="202" text-anchor="middle" font-size="13.5" font-weight="700" fill="#5b21b6">REGISTERS</text>
+        <text x="475" y="220" text-anchor="middle" font-size="11" fill="#5b6279">ACC · PC · IR · MAR · MDR (fastest storage inside CPU)</text>
+
+        <!-- Left: input -->
+        <rect x="30" y="120" width="180" height="86" rx="12" fill="#e6f7f4" stroke="#0e9488" stroke-width="2"/>
+        <text x="120" y="150" text-anchor="middle" font-size="15" font-weight="800" fill="#065f56">INPUT UNIT</text>
+        <text x="120" y="172" text-anchor="middle" font-size="11.5" fill="#3c4258">keyboard · mouse · scanner</text>
+        <text x="120" y="190" text-anchor="middle" font-size="11.5" fill="#3c4258">mic · camera · sensor · touch</text>
+
+        <!-- Right: output -->
+        <rect x="740" y="120" width="180" height="86" rx="12" fill="#fdf3e3" stroke="#b45309" stroke-width="2"/>
+        <text x="830" y="150" text-anchor="middle" font-size="15" font-weight="800" fill="#92400e">OUTPUT UNIT</text>
+        <text x="830" y="172" text-anchor="middle" font-size="11.5" fill="#3c4258">monitor · printer · speakers</text>
+        <text x="830" y="190" text-anchor="middle" font-size="11.5" fill="#3c4258">projector · plotter</text>
+
+        <!-- Bottom: memory -->
+        <rect x="300" y="305" width="350" height="96" rx="12" fill="#f3ecff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="475" y="330" text-anchor="middle" font-size="14.5" font-weight="800" fill="#5b21b6">MEMORY UNIT</text>
+        <text x="475" y="353" text-anchor="middle" font-size="11.5" fill="#3c4258">Primary — RAM, ROM, Cache (fast, small)</text>
+        <text x="475" y="373" text-anchor="middle" font-size="11.5" fill="#3c4258">Secondary — HDD, SSD, pen drive, cloud (slow, huge)</text>
+
+        <!-- arrows -->
+        <line x1="214" y1="150" x2="326" y2="150" stroke="#0e9488" stroke-width="2.5" marker-end="url(#a3)"/>
+        <text x="270" y="140" text-anchor="middle" font-size="11" fill="#0e9488" font-weight="700">data + instructions</text>
+
+        <line x1="624" y1="150" x2="736" y2="150" stroke="#b45309" stroke-width="2.5" marker-end="url(#a2)"/>
+        <text x="680" y="140" text-anchor="middle" font-size="11" fill="#b45309" font-weight="700">results / information</text>
+
+        <path d="M475,254 L475,300" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#a2)"/>
+        <path d="M500,300 L500,254" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#a2)"/>
+        <text x="560" y="282" font-size="11.5" fill="#5b21b6" font-weight="700">SYSTEM BUS — data, address &amp; control</text>
+
+        <text x="475" y="40" text-anchor="middle" font-size="13" font-weight="700" fill="#171a26">BASIC ORGANIZATION OF A DIGITAL COMPUTER (von Neumann model)</text>
+        <text x="475" y="425" text-anchor="middle" font-size="11.5" fill="#5b6279">Data flows: input → CPU ↔ memory → output. The control unit supervises every step.</text>
+      </svg>
+      <figcaption>Draw exactly this in the exam: three top blocks, memory below, arrows showing data flow. Label both primary and secondary memory.</figcaption>
+    </figure>
+
+    <h3>7.2 What each unit does</h3>
+    <h4>a) Input Unit</h4>
+    <ul>
+      <li>Accepts data and instructions from the outside world.</li>
+      <li>Converts them into the computer's internal <b>binary (machine-readable)</b> form.</li>
+      <li>Passes them to the CPU / memory. <b>Without input, the computer cannot do anything.</b></li>
+      <li>Devices: keyboard, mouse, trackball, joystick, scanner, mic, webcam, touchscreen, light pen, digitizer, barcode/QR reader, OMR, OCR, MICR, biometric sensor, game controller.</li>
+      <li>Two families: <b>keyboard-based</b> (typed entry) and <b>point-and-click / direct-entry</b> (mouse, scanner, mic, sensor).</li>
+    </ul>
+
+    <h4>b) CPU — Central Processing Unit ("the brain")</h4>
+    <p>Where all processing happens. It has three parts:</p>
+    <div class="tw"><table>
+      <thead><tr><th>Part</th><th>Function</th><th>Details</th></tr></thead>
+      <tbody>
+        <tr><td><b>ALU — Arithmetic Logic Unit</b></td><td>Does the <i>actual work</i> on data</td><td><b>Arithmetic:</b> + − × ÷. <b>Logical:</b> comparisons (&gt;, &lt;, =, ≠) and Boolean operations (AND, OR, NOT). Produces the result, which is stored in a register — usually the <b>Accumulator (ACC)</b>. It also sets <b>flags</b> (zero, carry, sign, overflow).</td></tr>
+        <tr><td><b>CU — Control Unit</b></td><td><i>Directs and coordinates</i> — it does not process data</td><td>Fetches instructions from memory, decodes them, tells the ALU what operation to do, tells memory when to read/write, tells input/output devices when to act, and keeps everything in step with the system clock. It is the <b>traffic police</b> of the computer.</td></tr>
+        <tr><td><b>Registers</b></td><td>Extremely small, extremely fast storage <i>inside</i> the CPU</td><td><b>PC</b> (program counter — address of next instruction) · <b>IR</b> (instruction register — current instruction) · <b>MAR</b> (memory address register) · <b>MDR</b> (memory data register) · <b>ACC</b> (accumulator) · general-purpose registers. Size measured in bits (32-bit / 64-bit).</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box hook"><span class="bt">Memory hook</span> <b>ALU = A</b>ll <b>L</b>ogic <b>U</b>nderstanding (does the sums) · <b>CU = C</b>hief <b>U</b>mpire (gives the orders). A CPU is also called the computer's <b>brain</b> or <b>processor</b>; the chip itself is the <b>microprocessor</b>.</div>
+
+    <h4>c) Memory Unit (storage)</h4>
+    <ul>
+      <li>Holds data, instructions and results. Memory is a giant array of numbered boxes ("cells"), each with a unique <b>address</b>.</li>
+      <li><b>Primary memory</b> — directly accessed by the CPU, fast, small, costlier: <b>RAM</b> (volatile, read/write, working memory), <b>ROM</b> (non-volatile, read-only, stores start-up instructions), <b>Cache</b> (fastest, keeps frequently used data).</li>
+      <li><b>Secondary memory</b> — permanent, huge, cheap, slower: HDD, SSD, optical discs, pen drive, memory card, cloud.</li>
+      <li>Why two levels? Because extremely fast memory is extremely expensive and small. This compromise is called the <b>memory hierarchy</b>.</li>
+    </ul>
+
+    <h4>d) Output Unit</h4>
+    <ul>
+      <li>Converts the machine's binary results back into human-readable form.</li>
+      <li><b>Soft copy</b> (on screen — temporary): monitor/LCD/LED/OLED, projector, speakers, headphones.</li>
+      <li><b>Hard copy</b> (physical — permanent): printers — <b>impact</b> (dot-matrix, daisy wheel, line printer) and <b>non-impact</b> (inkjet, laser, thermal, 3D printer); plotter for engineering drawings.</li>
+    </ul>
+
+    <h3>7.3 The system bus — how the units talk</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Bus</th><th>Direction</th><th>Carries</th><th>Key point</th></tr></thead>
+      <tbody>
+        <tr><td><b>Data bus</b></td><td>Bidirectional</td><td>Actual data &amp; instructions</td><td>Width (8/16/32/64 bits) decides how much is transferred at one time.</td></tr>
+        <tr><td><b>Address bus</b></td><td>Unidirectional (CPU → memory)</td><td>Address of the location to read/write</td><td>With n address lines you can address <b>2ⁿ locations</b>. E.g. 32 address lines → 2³² ≈ 4 GB locations.</td></tr>
+        <tr><td><b>Control bus</b></td><td>Bidirectional</td><td>Control signals: read, write, interrupt, clock, reset</td><td>Synchronises and supervises everything — this is the Control Unit's channel.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>7.4 How an instruction actually runs — the instruction cycle</h3>
+    <p>Every program is just a list of instructions like "ADD 5" or "LOAD A". The CPU repeats this cycle billions of times per second:</p>
+    <ol class="steps">
+      <li><b>FETCH</b> — The Control Unit reads the next instruction from memory. Address comes from the <b>PC</b> (program counter), which is then incremented to point to the next instruction.</li>
+      <li><b>DECODE</b> — The instruction is placed in the <b>IR</b> and the CU figures out what it means: what operation, which data (operand).</li>
+      <li><b>EXECUTE</b> — The ALU performs the operation, or data is moved between registers/memory, or the CU signals a device to act.</li>
+      <li><b>STORE / WRITE-BACK</b> — The result is stored in a register or in memory, and status flags are updated. Then the cycle repeats for the next instruction.</li>
+    </ol>
+    <div class="box tip"><span class="bt">Exam tip</span> This cycle is also called the <b>fetch–decode–execute cycle</b> or <b>machine cycle</b>. Mentioning that the same memory holds both data and instructions (the <b>stored-program concept</b>) is what distinguishes the <b>von Neumann architecture</b> from the <b>Harvard architecture</b> (separate instruction and data memories — used in many microcontrollers and DSPs).</div>
+
+    <h3 id="m7b">7.5 Memory hierarchy, storage units, and speed</h3>
+    <figure>
+      <svg viewBox="0 0 720 300" role="img" aria-label="Memory hierarchy">
+        <polygon points="360,10 400,70 320,70" fill="#4f46e5"/>
+        <polygon points="320,74 400,74 440,134 280,134" fill="#6d63ef"/>
+        <polygon points="280,138 440,138 480,198 240,198" fill="#0e9488"/>
+        <polygon points="240,202 480,202 520,262 200,262" fill="#0f766e"/>
+        <text x="360" y="60" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700">REGISTERS</text>
+        <text x="360" y="112" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700">CACHE (L1/L2/L3)</text>
+        <text x="360" y="174" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700">PRIMARY MEMORY — RAM / ROM</text>
+        <text x="360" y="238" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700">SECONDARY / TERTIARY STORAGE</text>
+        <text x="540" y="45" font-size="11.5" fill="#5b6279">fastest · tiny</text>
+        <text x="540" y="110" font-size="11.5" fill="#5b6279">very fast · small</text>
+        <text x="540" y="172" font-size="11.5" fill="#5b6279">fast · moderate</text>
+        <text x="540" y="236" font-size="11.5" fill="#5b6279">slow · vast</text>
+        <text x="120" y="45" font-size="11.5" fill="#5b6279">costliest per byte</text>
+        <text x="90" y="236" font-size="11.5" fill="#5b6279">cheapest per byte</text>
+      </svg>
+      <figcaption>Going up: faster, costlier, smaller. Going down: slower, cheaper, bigger. Cache exists to bridge the speed gap between CPU and RAM.</figcaption>
+    </figure>
+
+    <div class="tw"><table>
+      <thead><tr><th>Storage</th><th>Type</th><th>Volatile?</th><th>Typical size</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><b>Registers</b></td><td>Primary (inside CPU)</td><td>Yes</td><td>Bytes</td><td>Fastest; part of CPU.</td></tr>
+        <tr><td><b>Cache</b></td><td>Primary</td><td>Yes</td><td>KB – MB</td><td>L1 (in core, ~ns), L2, L3 (shared). Stores recently/frequently used data.</td></tr>
+        <tr><td><b>RAM</b></td><td>Primary</td><td><b>Yes</b> (loses content on power off)</td><td>GB</td><td>Read/Write. <b>SRAM</b> (fast, cache, flip-flops) vs <b>DRAM</b> (main memory, capacitors, needs refreshing).</td></tr>
+        <tr><td><b>ROM</b></td><td>Primary</td><td><b>No</b> (permanent)</td><td>KB – MB</td><td>Read-only; holds BIOS/firmware. Types: PROM (write once), EPROM (erase with UV), EEPROM (erase electrically), Flash.</td></tr>
+        <tr><td><b>SSD / Flash</b></td><td>Secondary</td><td>No</td><td>GB – TB</td><td>No moving parts, silent, fast, shock-resistant.</td></tr>
+        <tr><td><b>HDD</b></td><td>Secondary</td><td>No</td><td>TB</td><td>Magnetic platters + read/write head; mechanical, slower, cheap per TB.</td></tr>
+        <tr><td><b>Optical</b> (CD/DVD/Blu-ray)</td><td>Secondary</td><td>No</td><td>700 MB / 4.7 GB / 25 GB</td><td>Read by laser; good for archiving media.</td></tr>
+        <tr><td><b>Pen drive / Memory card</b></td><td>Secondary</td><td>No</td><td>GB – TB</td><td>USB / flash-based portable storage.</td></tr>
+        <tr><td><b>Magnetic tape</b></td><td>Tertiary</td><td>No</td><td>TB+</td><td>Sequential access; used for backups/archives.</td></tr>
+        <tr><td><b>Cloud</b></td><td>Remote</td><td>No</td><td>Practically unlimited</td><td>Stored on someone else's servers, accessed over the internet (Google Drive, OneDrive, S3).</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Units of memory — memorise this ladder</h4>
+    <div class="tw"><table>
+      <thead><tr><th>Unit</th><th>Value</th><th>Roughly</th></tr></thead>
+      <tbody>
+        <tr><td><b>Bit</b></td><td>1 binary digit (0 or 1)</td><td>Smallest unit of data</td></tr>
+        <tr><td><b>Nibble</b></td><td>4 bits</td><td>One hexadecimal digit</td></tr>
+        <tr><td><b>Byte</b></td><td>8 bits</td><td>One character (e.g. 'A')</td></tr>
+        <tr><td><b>Word</b></td><td>Machine dependent (8/16/32/64 bits)</td><td>Size of data the CPU handles at once</td></tr>
+        <tr><td><b>Kilobyte (KB)</b></td><td>2¹⁰ = 1,024 bytes</td><td>A page of text</td></tr>
+        <tr><td><b>Megabyte (MB)</b></td><td>2²⁰ = 1,048,576 bytes</td><td>A photo / 1 min of MP3</td></tr>
+        <tr><td><b>Gigabyte (GB)</b></td><td>2³⁰ bytes</td><td>A movie / phone storage</td></tr>
+        <tr><td><b>Terabyte (TB)</b></td><td>2⁴⁰ bytes</td><td>Laptop hard disk</td></tr>
+        <tr><td><b>Petabyte (PB)</b></td><td>2⁵⁰ bytes</td><td>Data-centre scale</td></tr>
+        <tr><td><b>Exabyte (EB) / Zettabyte (ZB) / Yottabyte (YB)</b></td><td>2⁶⁰ / 2⁷⁰ / 2⁸⁰ bytes</td><td>Global internet traffic scale</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box warn"><span class="bt">Careful</span> In computing a kilobyte is <b>1024 bytes</b> (powers of 2), but hard-disk makers advertise 1 KB = 1000 bytes — that is why a "500 GB" drive shows less. (Strictly, 1024 B = 1 KiB "kibibyte"; exams usually use 1024 for KB, MB, GB.)</div>
+
+    <h4>Speed terms to sprinkle into answers</h4>
+    <ul>
+      <li><b>Clock speed</b> — cycles per second (Hz, MHz, GHz); the heartbeat that times all operations.</li>
+      <li><b>MIPS</b> — Million Instructions Per Second.</li>
+      <li><b>FLOPS</b> — Floating-point Operations Per Second; supercomputer speed is quoted in tera/peta/exaFLOPS.</li>
+      <li><b>Latency</b> — delay before data arrives; <b>Bandwidth</b> — how much data can flow per second.</li>
+    </ul>
+
+    <h3>7.6 Hardware vs Software (and firmware)</h3>
+    <div class="tw"><table>
+      <thead><tr><th></th><th>Hardware</th><th>Software</th></tr></thead>
+      <tbody>
+        <tr><td>Nature</td><td>Physical, touchable parts</td><td>Set of programs/instructions — intangible</td></tr>
+        <tr><td>Failure</td><td>Wears out with time ("hardware failure")</td><td>Does not wear out; can become obsolete ("software failure" = bug)</td></tr>
+        <tr><td>Dependency</td><td>Cannot do anything without software</td><td>Cannot run without hardware</td></tr>
+        <tr><td>Examples</td><td>CPU, RAM, keyboard, monitor, motherboard</td><td>Windows, MS Word, Chrome, WhatsApp, a compiler</td></tr>
+        <tr><td>Made by</td><td>Manufactured in factories</td><td>Written/engineered by programmers</td></tr>
+      </tbody>
+    </table></div>
+    <div class="grid2">
+      <div class="card">
+        <h5>System software</h5>
+        <p>Runs and manages the machine itself. <b>Operating System</b> (Windows, Linux, macOS, Android, iOS), <b>device drivers</b>, <b>utilities</b> (antivirus, disk cleanup), <b>language processors</b> (assembler, compiler, interpreter), <b>linker/loader</b>, <b>BIOS/firmware</b>.</p>
+      </div>
+      <div class="card">
+        <h5>Application software</h5>
+        <p>Does the user's actual job. <b>General purpose:</b> word processor, spreadsheet, presentation, browser, media player. <b>Specific purpose:</b> payroll, railway reservation, banking, hospital management, Tally, AutoCAD.</p>
+      </div>
+    </div>
+    <p><b>Firmware</b> = software permanently stored in hardware (ROM/BIOS) so the machine can start. <b>Middleware</b> = software that connects two applications, e.g. a payment gateway connecting a shopping website to a bank.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Language processor</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><b>Assembler</b></td><td>Converts assembly language → machine language</td></tr>
+        <tr><td><b>Compiler</b></td><td>Converts the <i>whole</i> high-level program into machine code at once, then runs it (C, C++). Reports all errors together.</td></tr>
+        <tr><td><b>Interpreter</b></td><td>Converts and runs high-level program <i>line by line</i> (Python, BASIC). Stops at the first error; slower but easier to debug.</td></tr>
+        <tr><td><b>Linker</b></td><td>Joins the object code with library code to make one executable file</td></tr>
+        <tr><td><b>Loader</b></td><td>Loads the executable from disk into RAM for execution</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>7.7 The motherboard and ports (one-liners)</h3>
+    <ul>
+      <li><b>Motherboard</b> — the main circuit board that holds the CPU, memory slots, chipset and expansion slots so all parts can communicate.</li>
+      <li><b>Ports</b> — physical connection points: USB, HDMI, VGA, Ethernet (RJ-45), audio jack, and wireless links (Wi-Fi, Bluetooth, NFC).</li>
+      <li><b>Expansion cards</b> — add capability: graphics card (GPU), sound card, network card.</li>
+      <li><b>SMPS / battery</b> — supplies clean, regulated power.</li>
+    </ul>
+  </section>
+
+  <!-- ================= MODULE 8 ================= -->
+  <section id="m8">
+    <span class="modnum">Module 8</span>
+    <h2 class="title">Number Systems</h2>
+    <p class="lede">The most numerical part of Unit 1 — and the easiest full marks if you practise the methods below. Read the rules once, then work every example on paper yourself.</p>
+
+    <h3>8.1 What is a number system?</h3>
+    <p><b>A number system is a set of symbols (digits) and rules for representing numbers.</b> Every number system has a <b>base</b> or <b>radix (r)</b>, which tells you:</p>
+    <ul>
+      <li>How many different symbols (digits) exist → exactly <b>r</b> digits, from <b>0 to r−1</b>.</li>
+      <li>The <b>place value</b> (weight) of each position → powers of r: …, r³, r², r¹, r⁰ . r⁻¹, r⁻², …</li>
+      <li>When a carry is generated — after reaching r−1, the next count rolls over to 10.</li>
+    </ul>
+    <p>Example in decimal (r = 10): <code>3472</code> means <code>3×10³ + 4×10² + 7×10¹ + 2×10⁰ = 3000 + 400 + 70 + 2</code>.</p>
+    <p>Each digit has a <b>face value</b> (the digit itself) and a <b>place value</b> (digit × weight of its position). The <b>radix point</b> separates the integer part from the fraction part.</p>
+
+    <h3>8.2 The four number systems you must know</h3>
+    <div class="tw"><table>
+      <thead><tr><th>System</th><th>Base (r)</th><th>Digits used</th><th>Weight pattern</th><th>Where you meet it</th></tr></thead>
+      <tbody>
+        <tr><td><b>Binary</b></td><td>2</td><td>0, 1</td><td>… 8, 4, 2, 1 . 1/2, 1/4, 1/8</td><td>Inside every computer — circuits have two states ON/OFF</td></tr>
+        <tr><td><b>Octal</b></td><td>8</td><td>0–7</td><td>… 64, 8, 1 . 1/8 …</td><td>Shorthand for binary (1 octal digit = 3 bits); Unix/Linux file permissions <code>chmod 755</code></td></tr>
+        <tr><td><b>Decimal</b></td><td>10</td><td>0–9</td><td>… 1000, 100, 10, 1</td><td>Human everyday counting</td></tr>
+        <tr><td><b>Hexadecimal</b></td><td>16</td><td>0–9, A–F<br>(A=10, B=11, C=12, D=13, E=14, F=15)</td><td>… 256, 16, 1 . 1/16 …</td><td>Shorthand for binary (1 hex digit = 4 bits); memory addresses, colour codes <code>#FF0000</code>, MAC addresses</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>How to write a number with its base</b> — either as a subscript or a suffix: <code>(1011)₂ = 1011₂ = 0b1011</code> (binary), <code>(745)₈ = 745₈ = 0o745</code> (octal), <code>(2F3)₁₆ = 2F3₁₆ = 0x2F3</code> (hex). Decimal is written plainly: 156.</p>
+
+    <h3>8.3 Other bases (bonus knowledge, one line each)</h3>
+    <span class="pill">Base 3 — ternary</span><span class="pill">Base 5 — quinary</span><span class="pill">Base 7</span><span class="pill">Base 8 — octal</span><span class="pill">Base 12 — duodecimal (dozen, months, clock)</span><span class="pill">Base 16 — hexadecimal</span><span class="pill">Base 20 — vigesimal</span><span class="pill">Base 32/64 — in URL &amp; data encoding</span><span class="pill">Base 60 — sexagesimal (time, angles)</span>
+    <p class="mono" style="font-size:15px">The rule never changes: base r means digits 0 … r−1, and weights are powers of r. Validity check: in octal, the digits 8 and 9 do <b>not</b> exist. (234)₈ is valid; (289)₈ is invalid; (102)₂ is valid; (12A)₁₆ is valid; (1G)₁₆ is invalid.</p>
+
+    <h3>8.4 Positional vs non-positional</h3>
+    <div class="tw"><table>
+      <thead><tr><th></th><th>Positional</th><th>Non-positional</th></tr></thead>
+      <tbody>
+        <tr><td>Meaning</td><td>The value of a digit depends on its <b>position</b></td><td>The value of a symbol is <b>fixed</b>, wherever it is written</td></tr>
+        <tr><td>Examples</td><td>Decimal 47 ≠ 74; binary; octal; hex</td><td>Roman numerals: X = 10 in XIX and in XI; tally marks</td></tr>
+        <tr><td>Arithmetic</td><td>Easy (carry/borrow rules)</td><td>Difficult</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box hook"><span class="bt">Memory hook for weights</span> In any base r, moving one place left multiplies the weight by r; moving right divides it by r. So the weights are just powers of the base — read them right-to-left starting at 1.</div>
+
+    <h3>8.5 Counting in different bases (write this table once, everything else clicks)</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Decimal</th><th>Binary (r=2)</th><th>Octal (r=8)</th><th>Hex (r=16)</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+        <tr><td>2</td><td>10</td><td>2</td><td>2</td></tr>
+        <tr><td>3</td><td>11</td><td>3</td><td>3</td></tr>
+        <tr><td>4</td><td>100</td><td>4</td><td>4</td></tr>
+        <tr><td>5</td><td>101</td><td>5</td><td>5</td></tr>
+        <tr><td>6</td><td>110</td><td>6</td><td>6</td></tr>
+        <tr><td>7</td><td>111</td><td>7</td><td>7</td></tr>
+        <tr><td>8</td><td>1000</td><td>10</td><td>8</td></tr>
+        <tr><td>9</td><td>1001</td><td>11</td><td>9</td></tr>
+        <tr><td>10</td><td>1010</td><td>12</td><td>A</td></tr>
+        <tr><td>11</td><td>1011</td><td>13</td><td>B</td></tr>
+        <tr><td>12</td><td>1100</td><td>14</td><td>C</td></tr>
+        <tr><td>13</td><td>1101</td><td>15</td><td>D</td></tr>
+        <tr><td>14</td><td>1110</td><td>16</td><td>E</td></tr>
+        <tr><td>15</td><td>1111</td><td>17</td><td>F</td></tr>
+        <tr><td>16</td><td>10000</td><td>20</td><td>10</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Powers of 2 — the table that saves you time</h4>
+    <div class="tw"><table>
+      <thead><tr><th>2⁰</th><th>2¹</th><th>2²</th><th>2³</th><th>2⁴</th><th>2⁵</th><th>2⁶</th><th>2⁷</th><th>2⁸</th><th>2⁹</th><th>2¹⁰</th><th>2¹⁶</th><th>2²⁰</th><th>2³²</th></tr></thead>
+      <tbody><tr class="c"><td>1</td><td>2</td><td>4</td><td>8</td><td>16</td><td>32</td><td>64</td><td>128</td><td>256</td><td>512</td><td>1024</td><td>65536</td><td>~10.5 lakh</td><td>~4.3 billion</td></tr></tbody>
+    </table></div>
+    <p class="mono" style="font-size:14.5px">Binary weights for 8 bits: 128 64 32 16 8 4 2 1 — memorise this one row and you can convert any 8-bit number mentally.</p>
+  </section>
+
+  <section id="m8b">
+    <span class="modnum">Module 8 · Part 2</span>
+    <h2 class="title">Conversion from One Number System to Another</h2>
+    <p class="lede">All twelve possible conversions reduce to <b>three basic methods</b>. Learn these three and you can convert between <i>any</i> bases (base 5 → base 12 included).</p>
+
+    <div class="tw"><table>
+      <thead><tr><th>From → To</th><th>Method</th><th>One-line rule</th></tr></thead>
+      <tbody>
+        <tr><td>Decimal → any base (integer)</td><td><b>Repeated Division</b></td><td>Divide by the base again and again; collect remainders; read <b>bottom to top</b>.</td></tr>
+        <tr><td>Decimal → any base (fraction)</td><td><b>Repeated Multiplication</b></td><td>Multiply by the base; collect integer parts; read <b>top to bottom</b>.</td></tr>
+        <tr><td>Any base → Decimal</td><td><b>Positional Expansion</b></td><td>Multiply each digit by its weight (power of base) and add.</td></tr>
+        <tr><td>Binary ↔ Octal</td><td><b>Grouping 3 bits</b></td><td>Pad to groups of 3 from the radix point; replace each group by its octal digit.</td></tr>
+        <tr><td>Binary ↔ Hex</td><td><b>Grouping 4 bits</b></td><td>Pad to groups of 4 from the radix point; replace each group by its hex digit.</td></tr>
+        <tr><td>Octal ↔ Hex (or any two non-decimal bases)</td><td><b>Via binary / via decimal</b></td><td>Go through binary (fast) or through decimal (safe).</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 id="c1">8.6 Conversion 1: Decimal → Binary</h3>
+    <h4>Method A — Repeated Division by 2 (use for the integer part)</h4>
+    <div class="box ex"><span class="bt">Worked example — convert (45)₁₀ to binary</span>
+<pre><code>Divide by 2    Quotient   Remainder
+45 ÷ 2    →      22         1   ↑
+22 ÷ 2    →      11         0   ↑
+11 ÷ 2    →       5         1   ↑   read the remainders
+ 5 ÷ 2    →       2         1   ↑   from BOTTOM to TOP
+ 2 ÷ 2    →       1         0   ↑
+ 1 ÷ 2    →       0         1   ↑
+Stop when the quotient becomes 0.
+Answer: (45)₁₀ = (101101)₂</code></pre>
+    <b>Verify</b> by expanding: 1×32 + 0×16 + 1×8 + 1×4 + 0×2 + 1×1 = 32+8+4+1 = <b>45</b> ✔</div>
+
+    <h4>Method B — Power Subtraction (faster for small numbers / mental work)</h4>
+    <div class="box ex"><span class="bt">Worked example — convert (156)₁₀ to binary</span>
+<pre><code>Weights:  128  64  32  16   8   4   2   1
+Pick the largest weight ≤ 156 → 128    156−128 = 28   → 1
+ 64 > 28                                        → 0
+ 32 > 28                                        → 0
+ 16 ≤ 28, 28−16 = 12                            → 1
+  8 ≤ 12, 12−8  =  4                            → 1
+  4 ≤  4,  4−4  =  0                            → 1
+  2 >  0                                        → 0
+  1 >  0                                        → 0
+Answer: (156)₁₀ = (10011100)₂      Check: 128+16+8+4 = 156 ✔</code></pre></div>
+    <div class="box warn"><span class="bt">Very common mistake</span> Reading the remainders <b>top to bottom</b>. Remember: <b>last remainder is the most significant bit (MSB)</b>, first remainder is the <b>least significant bit (LSB)</b>. Write "read upwards" on your answer sheet and draw the arrow.</div>
+
+    <h3 id="c2">8.7 Conversion 2: Decimal → Octal and Decimal → Hexadecimal</h3>
+    <p>Exactly the same repeated-division idea — just divide by <b>8</b> or <b>16</b> instead of 2. Remainders above 9 become letters A–F in hexadecimal.</p>
+    <div class="box ex"><span class="bt">(156)₁₀ → octal</span>
+<pre><code>156 ÷ 8 → 19, remainder 4   ↑
+ 19 ÷ 8 →  2, remainder 3   ↑
+  2 ÷ 8 →  0, remainder 2   ↑
+Answer: (156)₁₀ = (234)₈     Check: 2×64 + 3×8 + 4 = 128+24+4 = 156 ✔</code></pre></div>
+    <div class="box ex"><span class="bt">(156)₁₀ → hexadecimal</span>
+<pre><code>156 ÷ 16 → 9, remainder 12 → C   ↑
+  9 ÷ 16 → 0, remainder  9       ↑
+Answer: (156)₁₀ = (9C)₁₆     Check: 9×16 + 12 = 144 + 12 = 156 ✔</code></pre></div>
+    <div class="box ex"><span class="bt">Two more to memorise</span>
+<pre><code>(1000)₁₀ = (1750)₈       1000÷8=125 r0; 125÷8=15 r5; 15÷8=1 r7; 1÷8=0 r1
+(1000)₁₀ = (3E8)₁₆       1000÷16=62 r8; 62÷16=3 r14(E); 3÷16=0 r3
+(254)₁₀  = (FE)₁₆        254÷16=15 r14(E); 15÷16=0 r15(F)</code></pre></div>
+
+    <h3 id="c3">8.8 Conversion 3: Any base → Decimal (Positional Expansion)</h3>
+    <p><b>Rule:</b> number each position from the radix point outwards, multiply each digit by (base)<sup>position</sup>, and add. On the left the powers are 0, 1, 2, 3…; on the right they are −1, −2, −3…</p>
+    <div class="box ex"><span class="bt">Binary → Decimal: (1011.101)₂</span>
+<pre><code>Position:   3    2    1    0  .  −1    −2    −3
+Weight:     8    4    2    1  .  1/2   1/4   1/8
+Digit:      1    0    1    1  .   1     0     1
+= 1×8 + 0×4 + 1×2 + 1×1 + 1×0.5 + 0×0.25 + 1×0.125
+= 8 + 2 + 1 + 0.5 + 0.125
+= (11.625)₁₀</code></pre></div>
+    <div class="box ex"><span class="bt">Octal → Decimal: (745)₈</span>
+<pre><code>= 7×8² + 4×8¹ + 5×8⁰ = 7×64 + 4×8 + 5 = 448 + 32 + 5 = (485)₁₀</code></pre></div>
+    <div class="box ex"><span class="bt">Hexadecimal → Decimal: (2F3)₁₆ and (A2C)₁₆</span>
+<pre><code>(2F3)₁₆ = 2×256 + 15×16 + 3×1 = 512 + 240 + 3 = (755)₁₀
+(A2C)₁₆ = 10×256 + 2×16 + 12×1 = 2560 + 32 + 12 = (2604)₁₀</code></pre></div>
+    <div class="box ex"><span class="bt">Any base → Decimal (the general rule, exam-proof)</span>
+<pre><code>(345)₇  = 3×49 + 4×7 + 5 = 147 + 28 + 5 = (180)₁₀
+(2101)₃ = 2×27 + 1×9 + 0×3 + 1 = 54 + 9 + 0 + 1 = (64)₁₀</code></pre></div>
+
+    <h3 id="c4">8.9 Conversion 4: Binary ↔ Octal (group 3 bits)</h3>
+    <p><b>Why 3?</b> Because 2³ = 8 — one octal digit represents exactly three bits. Start grouping <b>from the radix point</b> and pad the left-most (and right-most in fractions) group with zeros if it is short.</p>
+    <div class="box ex"><span class="bt">Binary → Octal: (101101)₂</span>
+<pre><code>Group in threes from the right:   101 | 101
+Octal digits:                      5  |  5      → (55)₈
+Check: (55)₈ = 5×8 + 5 = 45 = (101101)₂ ✔</code></pre></div>
+    <div class="box ex"><span class="bt">Binary → Octal with padding: (11011010)₂</span>
+<pre><code>Pad to a multiple of 3:  011 | 011 | 010
+Octal:                     3  |  3  |  2   → (332)₈
+Check: 3×64 + 3×8 + 2 = 192 + 24 + 2 = 218 = (11011010)₂ ✔</code></pre></div>
+    <div class="box ex"><span class="bt">Octal → Binary: (745)₈</span>
+<pre><code>7 → 111      4 → 100      5 → 101
+(745)₈ = 111 100 101 = (111100101)₂
+Check: 256+128+64+32+4+1 = 485 ✔   (matches (745)₈ = 485)</code></pre></div>
+    <div class="box tip"><span class="bt">The 3-bit table you must know cold</span>
+    <code class="mono">0=000 &nbsp;1=001 &nbsp;2=010 &nbsp;3=011 &nbsp;4=100 &nbsp;5=101 &nbsp;6=110 &nbsp;7=111</code></div>
+
+    <h3 id="c5">8.10 Conversion 5: Binary ↔ Hexadecimal (group 4 bits)</h3>
+    <p><b>Why 4?</b> Because 2⁴ = 16 — one hex digit is exactly four bits (one nibble).</p>
+    <div class="box ex"><span class="bt">Binary → Hex: (101101)₂</span>
+<pre><code>Pad on the left to 8 bits:  0010 | 1101
+Hex:                          2  |  D      → (2D)₁₆
+Check: 2×16 + 13 = 45 ✔</code></pre></div>
+    <div class="box ex"><span class="bt">Binary → Hex: (11011010)₂</span>
+<pre><code>1101 | 1010  →  D | A  → (DA)₁₆      Check: 13×16 + 10 = 218 ✔</code></pre></div>
+    <div class="box ex"><span class="bt">Hex → Binary: (2F3)₁₆</span>
+<pre><code>2 → 0010,  F → 1111,  3 → 0011
+(2F3)₁₆ = 0010 1111 0011 = 001011110011 = (1011110011)₂  (leading zeros may be dropped)
+Check: (2F3)₁₆ = 755, and 512+128+64+32+16+2+1 = 755 ✔</code></pre></div>
+    <div class="box tip"><span class="bt">The 4-bit table you must know cold</span>
+<code class="mono">0=0000 1=0001 2=0010 3=0011 4=0100 5=0101 6=0110 7=0111<br>8=1000 9=1001 A=1010 B=1011 C=1100 D=1101 E=1110 F=1111</code></div>
+    <div class="box hook"><span class="bt">Why programmers love octal &amp; hex</span> A long binary string like <code>110110101011</code> is unreadable and error-prone. In hex it is just <code>DAB</code> — short, exact, and one keystroke per nibble. That is why machine-level programmers, colour codes (#RRGGBB), MAC addresses and memory dumps use hexadecimal.</div>
+
+    <h3 id="c6">8.11 Conversion 6: Octal ↔ Hex (go through binary)</h3>
+    <div class="box ex"><span class="bt">(2F3)₁₆ → octal</span>
+<pre><code>Step 1 — hex to binary:   2 = 0010,  F = 1111,  3 = 0011  → 0010 1111 0011
+Step 2 — regroup in 3s from the right:  001 | 011 | 110 | 011
+Step 3 — read octal:                      1  |  3  |  6  |  3
+Answer: (2F3)₁₆ = (1363)₈        Check: (1363)₈ = 512+192+48+3 = 755 = (2F3)₁₆ ✔</code></pre></div>
+    <div class="box ex"><span class="bt">(745)₈ → hexadecimal</span>
+<pre><code>Step 1 — octal to binary:  7=111, 4=100, 5=101  → 111100101
+Step 2 — pad left to a multiple of 4:  0001 1110 0101
+Step 3 — read hex:                       1    E    5
+Answer: (745)₈ = (1E5)₁₆         Check: (1E5)₁₆ = 256 + 224 + 5 = 485 = (745)₈ ✔</code></pre></div>
+    <p>Alternative (safe) route: convert the source to <b>decimal</b> first, then convert decimal to the target base. Works for <i>any</i> pair of bases, e.g. (345)₇ → decimal (180) → binary. Slower but impossible to mess up.</p>
+
+    <h3 id="c7">8.12 Conversion 7: Fractions (the part most students lose marks on)</h3>
+    <h4>Decimal fraction → other base: repeated MULTIPLICATION</h4>
+    <div class="box ex"><span class="bt">(0.6875)₁₀ → binary</span>
+<pre><code>Multiply by 2    Product   Integer part (this is the bit)
+0.6875 × 2   →    1.375        1   ↓
+0.3750 × 2   →    0.750        0   ↓   read the integer parts
+0.7500 × 2   →    1.500        1   ↓   from TOP to BOTTOM
+0.5000 × 2   →    1.000        1   ↓   (first one is the MSB of the fraction)
+Stop when the fraction part becomes 0.
+Answer: (0.6875)₁₀ = (0.1011)₂
+Check: 1/2 + 0/4 + 1/8 + 1/16 = 0.5 + 0.125 + 0.0625 = 0.6875 ✔</code></pre></div>
+    <div class="box ex"><span class="bt">Mixed number: (13.625)₁₀ → binary</span>
+<pre><code>Integer part:  13 → 1101        (13 = 8+4+1)
+Fraction part: 0.625 × 2 = 1.25 → 1
+               0.25  × 2 = 0.50 → 0
+               0.50  × 2 = 1.00 → 1
+Answer: (13.625)₁₀ = (1101.101)₂   Check: 8+4+1 = 13 and 0.5+0.125 = 0.625 ✔</code></pre></div>
+    <div class="box ex"><span class="bt">(0.625)₁₀ → octal and → hex</span>
+<pre><code>Octal:  0.625 × 8 = 5.000 → 5   → (0.5)₈      (check: 5/8 = 0.625 ✔)
+Hex:    0.625 × 16 = 10.000 → A → (0.A)₁₆     (check: 10/16 = 0.625 ✔)
+Also: (0.375)₁₀ × 8 = 3.000 → (0.3)₈          (check: 3/8 = 0.375 ✔)</code></pre></div>
+    <div class="box warn"><span class="bt">Non-terminating fractions</span> Many decimal fractions never end in binary — keep multiplying and you loop forever.
+<pre><code>(0.35)₁₀ = (0.0101100…)₂  ≈ (0.010110)₂  (0.34375, error 0.00625)
+Sequence: 0.35×2=0.7→0 · 0.7×2=1.4→1 · 0.4×2=0.8→0 · 0.8×2=1.6→1 · 0.6×2=1.2→1 · 0.2×2=0.4→0 …
+So the answer is "0.010110…", and you stop after the required number of bits and write it as approximate.
+Similarly (0.2)₁₀ = (0.0011001100…)₂  and (0.1)₁₀ = (0.000110011…)₂ — this is why 0.1+0.2 ≠ 0.3 exactly in programming languages!</code></pre></div>
+    <p><b>Other base fraction → decimal:</b> expand with negative powers. E.g. <code>(0.101)₂ = 1×2⁻¹ + 0×2⁻² + 1×2⁻³ = 0.5 + 0.125 = (0.625)₁₀</code>; &nbsp; <code>(0.11)₂ = 0.5 + 0.25 = (0.75)₁₀</code>; &nbsp; <code>(0.A)₁₆ = 10/16 = (0.625)₁₀</code>.</p>
+
+    <h3 id="c8">8.13 Full summary — the conversion map</h3>
+    <figure>
+      <svg viewBox="0 0 760 300" role="img" aria-label="Conversion map">
+        <defs><marker id="a4" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#4f46e5"/></marker></defs>
+        <rect x="290" y="20" width="180" height="52" rx="10" fill="#eef0ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="380" y="52" text-anchor="middle" font-size="15" font-weight="800" fill="#312e81">BINARY (2)</text>
+        <rect x="290" y="124" width="180" height="52" rx="10" fill="#e6f7f4" stroke="#0e9488" stroke-width="2"/>
+        <text x="380" y="156" text-anchor="middle" font-size="15" font-weight="800" fill="#065f56">DECIMAL (10)</text>
+        <rect x="40" y="228" width="180" height="52" rx="10" fill="#fdf3e3" stroke="#b45309" stroke-width="2"/>
+        <text x="130" y="260" text-anchor="middle" font-size="15" font-weight="800" fill="#92400e">OCTAL (8)</text>
+        <rect x="540" y="228" width="180" height="52" rx="10" fill="#f3ecff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="630" y="260" text-anchor="middle" font-size="15" font-weight="800" fill="#5b21b6">HEX (16)</text>
+
+        <line x1="360" y1="76" x2="330" y2="120" stroke="#4f46e5" stroke-width="2" marker-end="url(#a4)"/>
+        <line x1="400" y1="120" x2="400" y2="80" stroke="#4f46e5" stroke-width="2" marker-end="url(#a4)"/>
+        <text x="248" y="104" font-size="11" fill="#5b6279">grouping 3/4 bits ↑</text>
+        <text x="410" y="104" font-size="11" fill="#5b6279">weights ↓</text>
+
+        <line x1="230" y1="240" x2="310" y2="180" stroke="#b45309" stroke-width="2" marker-end="url(#a4)"/>
+        <line x1="330" y1="176" x2="250" y2="240" stroke="#b45309" stroke-width="2" marker-end="url(#a4)"/>
+        <text x="60" y="196" font-size="11" fill="#5b6279">weights / ÷8</text>
+
+        <line x1="530" y1="240" x2="450" y2="180" stroke="#7c3aed" stroke-width="2" marker-end="url(#a4)"/>
+        <line x1="430" y1="176" x2="510" y2="240" stroke="#7c3aed" stroke-width="2" marker-end="url(#a4)"/>
+        <text x="556" y="196" font-size="11" fill="#5b6279">weights / ÷16</text>
+
+        <path d="M220,254 C330,254 400,254 540,254" fill="none" stroke="#9aa0b8" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#a4)"/>
+        <path d="M540,272 C400,272 330,272 220,272" fill="none" stroke="#9aa0b8" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#a4)"/>
+        <text x="380" y="292" text-anchor="middle" font-size="11" fill="#5b6279">octal ↔ hex : go through binary (fast) or decimal (safe)</text>
+      </svg>
+      <figcaption>Learn this map and no conversion question can surprise you.</figcaption>
+    </figure>
+  </section>
+
+  <section id="m8c">
+    <span class="modnum">Module 8 · Part 3</span>
+    <h2 class="title">Binary Arithmetic, Complements &amp; Codes</h2>
+    <p class="lede">How a computer actually adds, subtracts and stores numbers, and how characters are coded — all closely related to number systems and commonly asked.</p>
+
+    <h3>8.14 Binary addition, subtraction, multiplication, division</h3>
+    <div class="grid2">
+      <div class="card"><h5>Addition rules</h5><p class="mono">0+0 = 0<br>0+1 = 1<br>1+0 = 1<br>1+1 = 10 (0, carry 1)<br>1+1+1 = 11 (1, carry 1)</p></div>
+      <div class="card"><h5>Subtraction rules</h5><p class="mono">0−0 = 0<br>1−0 = 1<br>1−1 = 0<br>0−1 = need borrow → 10−1 = 1<br>10−1 = 1 (borrow taken)</p></div>
+    </div>
+    <div class="box ex"><span class="bt">Addition: (1011)₂ + (0110)₂ &nbsp;(= 11 + 6 = 17)</span>
+<pre><code>   1 1 0 0   ← carries (each sits over the column it is carried INTO)
+     1 0 1 1
+   + 0 1 1 0
+   ─────────
+   1 0 0 0 1     → (10001)₂ = 16 + 1 = 17 ✔
+
+Column by column (right to left):
+  1+0 = 1, carry 0  |  1+1 = 10 → write 0, carry 1  |
+  0+1+1 = 10 → write 0, carry 1  |  1+0+1 = 10 → write 0, carry 1 (final carry = new MSB)</code></pre>
+    <span class="mono">Another: 1101 + 1011 = 11000 &nbsp;(13 + 11 = 24 = 11000 ✔)</span></div>
+    <div class="box ex"><span class="bt">Subtraction: (1010)₂ − (0111)₂ &nbsp;(= 10 − 7 = 3)</span>
+<pre><code>   1 0 1 0
+ − 0 1 1 1
+ ─────────
+   0 0 1 1     → (11)₂ = 3 ✔   (borrow column by column)
+Also: 11011 − 01011 = 10000   (27 − 11 = 16 ✔)</code></pre></div>
+    <div class="box ex"><span class="bt">Multiplication: (1011)₂ × (110)₂ &nbsp;(= 11 × 6 = 66)</span>
+<pre><code>       1 0 1 1        (11)
+     ×   1 1 0        (6)
+     ───────────
+       0 0 0 0        ← multiply by the rightmost bit (0)
+     1 0 1 1 0        ← multiply by the middle bit (1), shifted one place left
+   +1 0 1 1 0 0       ← multiply by the leftmost bit (1), shifted two places left
+   ─────────────
+    1 0 0 0 0 1 0     → (1000010)₂ = 64 + 2 = 66 ✔
+
+Shortcut: binary multiplication = additions and SHIFTS (shifting left doubles a number),
+which is why the CPU only really needs an adder.</code></pre></div>
+    <div class="box ex"><span class="bt">Division: (110110)₂ ÷ (110)₂ &nbsp;(= 54 ÷ 6 = 9)</span>
+<pre><code>         1 0 0 1        (= 9)
+       ┌─────────
+ 1 1 0 │ 1 1 0 1 1 0
+         1 1 0            subtract 110 from 110 → 000, bring down next bit
+         ─────
+             1 1 0        → 110 ÷ 110 = 1, subtract → 0
+             1 1 0
+             ─────
+               0 0 0     remainder 0
+Answer: quotient (1001)₂ = 9, remainder 0 ✔</code></pre></div>
+    <div class="box ex"><span class="bt">Octal &amp; hex arithmetic (same ideas, bigger bases)</span>
+<pre><code>Octal:  (57)₈ + (45)₈ :  7+5 = 12 = 1×8 + 4 → write 4, carry 1
+                           5+4+1 = 10 = 1×8 + 2 → write 2, carry 1 → (124)₈  ✔
+        (745)₈ − (456)₈ = (267)₈   (485 − 302 = 183 ✔)
+Hex:    (2B)₁₆ + (1A)₁₆ :  B+A = 11+10 = 21 = 1×16 + 5 → write 5, carry 1
+                           2+1+1 = 4 → (45)₁₆   (43 + 26 = 69 = 0x45 ✔)
+        (A2)₁₆ − (7C)₁₆ = (26)₁₆       (162 − 124 = 38 = 0x26 ✔)</code></pre></div>
+
+    <h3 id="compl">8.15 Complements — how computers subtract by adding</h3>
+    <p>A digital circuit that can add is easy to build; a subtractor is extra hardware. So computers subtract by <b>adding the complement</b> of the number. You will be asked to <i>define</i> and to <i>do</i> these.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Complement</th><th>How to find it (binary)</th><th>How to find it (decimal)</th></tr></thead>
+      <tbody>
+        <tr><td><b>Diminished radix / (r−1)'s</b> complement → in binary: <b>1's complement</b>; in decimal: <b>9's complement</b></td><td>Change every 0→1 and every 1→0 (Bitwise NOT / invert all bits)</td><td>Subtract every digit from 9. 9's complement of 4567 = 5432</td></tr>
+        <tr><td><b>Radix / r's complement</b> → in binary: <b>2's complement</b>; in decimal: <b>10's complement</b></td><td>1's complement <b>+ 1</b></td><td>9's complement + 1 = 10's complement of 4567 = 5433 (also = 10000 − 4567)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box ex"><span class="bt">Find the 1's and 2's complement of (45)₁₀ = (00101101)₂ (8-bit)</span>
+<pre><code>Number           : 0 0 1 0 1 1 0 1
+1's complement   : 1 1 0 1 0 0 1 0        (all bits inverted)
+Add 1            :                 1
+2's complement   : 1 1 0 1 0 0 1 1        → represents −45
+Check: 45 + (−45) = 0 :   0 0 1 0 1 1 0 1
+                        + 1 1 0 1 0 0 1 1
+                        = 1 0 0 0 0 0 0 0 0   → carry beyond 8 bits is DISCARDED → 00000000 ✔</code></pre></div>
+    <div class="box ex"><span class="bt">Subtraction by 2's complement: 45 − 17 (8-bit)</span>
+<pre><code>45 → 0 0 1 0 1 1 0 1
+17 → 0 0 0 1 0 0 0 1 ;  2's complement of 17 = 1 1 1 0 1 1 1 1
+Add:   0 0 1 0 1 1 0 1
+     + 1 1 1 0 1 1 1 1
+     = 1 0 0 0 1 1 1 0 0   → drop the final carry → 00011100 = 28 ✔</code></pre></div>
+    <div class="box ex"><span class="bt">When the answer is negative: 17 − 45</span>
+<pre><code>17 → 00010001 ;   2's complement of 45 = 11010011
+Add: 0 0 0 1 0 0 0 1
+   + 1 1 0 1 0 0 1 1
+   = 1 1 1 0 0 1 0 0   → no carry out, so the result is NEGATIVE and is in 2's complement form.
+Take 2's complement of 11100100 → 00011100 = 28 → answer = −28 ✔</code></pre></div>
+    <div class="box tip"><span class="bt">How signs are stored</span>
+    <ul style="margin:6px 0 0">
+      <li><b>Sign-magnitude:</b> MSB = sign (0 positive, 1 negative), rest = magnitude. Range for 8 bits: −127 to +127. Has two zeros (+0, −0).</li>
+      <li><b>1's complement:</b> negative numbers made by inversion. Range −127 to +127; still two zeros.</li>
+      <li><b>2's complement (used everywhere today):</b> range −128 to +127 for 8 bits, only one zero, and addition/subtraction work directly. Range formula: <b>−2<sup>n−1</sup> to +2<sup>n−1</sup> − 1</b>.</li>
+      <li><b>Overflow:</b> if the true sum lies outside that range, the sign flips wrongly. E.g. 127 + 1 in 8 bits = 01111111 + 1 = 10000000 = −128 (overflow). Detect it by comparing the carry into the MSB with the carry out of the MSB.</li>
+    </ul></div>
+
+    <h3 id="codes">8.16 Codes — how characters are represented</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Code</th><th>Bits</th><th>Key facts</th></tr></thead>
+      <tbody>
+        <tr><td><b>BCD — Binary Coded Decimal</b> (8421 code)</td><td>4 bits per digit</td><td>Each decimal digit is coded separately in pure binary. (45)₁₀ = <b>0100 0101</b>; (359)₁₀ = <b>0011 0101 1001</b>. Codes 1010–1111 are <b>invalid</b> in BCD. Simple for displays/calculators (hence the 8-4-2-1 weights) but wasteful — 4 bits can hold 16 values and BCD uses only 10.</td></tr>
+        <tr><td><b>Excess-3 (XS-3)</b></td><td>4 bits</td><td>Digit + 3, then binary. 0→0011, 5→1000, 9→1100. Self-complementing, used in older decimal machines.</td></tr>
+        <tr><td><b>Gray code</b></td><td>—</td><td>Only <b>one bit changes</b> between consecutive numbers → very few errors in mechanical/rotary encoders and in position sensors. Binary 1011 → Gray 1110 (each Gray bit = XOR of adjacent binary bits, MSB copied).</td></tr>
+        <tr><td><b>ASCII</b></td><td>7 bits (128 characters); extended 8-bit version = 256</td><td>American Standard Code for Information Interchange — for English letters, digits, punctuation, control codes. Remember: <b>'A' = 65</b>, <b>'a' = 97</b>, <b>'0' = 48</b>, space = 32, digits 48–57, uppercase 65–90, lowercase 97–122.</td></tr>
+        <tr><td><b>EBCDIC</b></td><td>8 bits</td><td>Extended Binary Coded Decimal Interchange Code — IBM mainframe code, 256 characters. Not compatible with ASCII.</td></tr>
+        <tr><td><b>Unicode</b></td><td>UTF-8 (8-bit units), UTF-16, UTF-32</td><td>The universal character set: 1,10,000+ characters covering all the world's scripts plus symbols and emoji. UTF-8 is backward-compatible with ASCII (first 128 characters identical) — that is why it dominates the web.</td></tr>
+        <tr><td><b>Parity bit</b></td><td>+1 bit</td><td>Extra bit added for <b>error detection</b>: with even parity the total number of 1s (data + parity) becomes even. Can detect 1-bit errors but cannot correct them. (Odd parity = total 1s odd.)</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>8.17 Why do computers use the binary system? (a favourite 5-mark theory question)</h3>
+    <ol class="steps">
+      <li><b>Two-state devices are simple and reliable.</b> A transistor/switch is either OFF or ON; a magnetic spot is either magnetised or not; a voltage is either high or low. Building circuits with ten distinguishable voltage levels would be expensive and error-prone — noise would flip digits. Two levels give a huge noise margin.</li>
+      <li><b>Boolean logic fits perfectly.</b> 0 = False, 1 = True, and logic gates (AND, OR, NOT) implement arithmetic with simple circuits.</li>
+      <li><b>Less hardware, less cost, less error.</b> Only two symbols to handle means simpler, cheaper, faster circuits and higher reliability.</li>
+      <li><b>Easy to store and transmit.</b> Storage media and signals naturally hold two states (magnetised/not, pit/no pit, high/low voltage).</li>
+      <li><b>Arithmetic is simple.</b> Only 4 addition rules and 4 multiplication rules in binary, and subtraction is done by complement addition (no need for a separate subtractor).</li>
+    </ol>
+    <p>Downside: long strings (a 4-digit decimal like 1000 needs 10 bits) — which is exactly why octal and hex exist as human-friendly shorthands.</p>
+  </section>
+
+  <!-- ================= MODULE 9 ================= -->
+  <section id="m9">
+    <span class="modnum">Module 9</span>
+    <h2 class="title">Related Essentials (the neighbours of this unit)</h2>
+    <p class="lede">Everything adjacent to this syllabus that examiners like to mix in — data processing types, data representation, logic gates, and real-world uses of the number systems.</p>
+
+    <h3>9.1 Types of data processing (extends Module 2)</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Type</th><th>How it works</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><b>Batch processing</b></td><td>Data is collected over time and processed together as one "batch"; no user interaction during processing.</td><td>Monthly salary, university result processing, electricity billing, old-generation computers.</td></tr>
+        <tr><td><b>Online / Transaction processing</b></td><td>Each transaction is processed immediately as it arrives; user waits for the response.</td><td>ATM withdrawal, railway ticket booking, UPI payment, POS billing.</td></tr>
+        <tr><td><b>Real-time processing</b></td><td>So fast that the output controls an ongoing physical process; must finish within a deadline.</td><td>Air-traffic control, hospital ICU monitor, anti-lock braking, missile guidance, online gaming.</td></tr>
+        <tr><td><b>Time-sharing / Multiprogramming</b></td><td>Many users/s programs share one computer, the CPU switching rapidly between them so each feels alone.</td><td>College server with 100 logged-in students; cloud servers.</td></tr>
+        <tr><td><b>Distributed processing</b></td><td>The job is split across several computers connected by a network.</td><td>Search engines, banking networks, weather modelling clusters.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>9.2 How different kinds of data are represented inside the computer</h3>
+    <ul>
+      <li><b>Numbers</b> — binary (with 2's complement for negatives, and floating-point for fractions/in scientific work).</li>
+      <li><b>Text/characters</b> — codes: ASCII (8-bit), Unicode/UTF-8 (variable), BCD for decimal displays.</li>
+      <li><b>Images</b> — a grid of pixels, each pixel stored as a number. In <b>bitmap</b> images, colour = 24-bit (8 bits each for Red, Green, Blue, i.e. 16.7 million colours); higher resolution and colour depth = bigger file. <b>Vector</b> images store shapes and formulas instead (scalable).</li>
+      <li><b>Audio</b> — the sound wave is sampled thousands of times a second (sampling rate, e.g. 44.1 kHz) and each sample stored as a number; higher rate and bit depth = better quality, bigger file (MP3 compresses by discarding what the ear cannot hear).</li>
+      <li><b>Video</b> — a sequence of images (frames) played at 24–60 fps plus audio; compressed with codecs (MP4/H.264).</li>
+      <li><b>Every single item is ultimately a string of 0s and 1s</b> — a 1 MB photo is about 8 million bits.</li>
+    </ul>
+
+    <h3>9.3 Logic gates — the electronic cousins of binary arithmetic (bonus)</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Gate</th><th>Rule</th><th>De Morgan / use</th></tr></thead>
+      <tbody>
+        <tr><td><b>AND</b></td><td>Output 1 only if all inputs are 1 (A·B)</td><td>Used in carry generation of the adder; "both conditions must be true"</td></tr>
+        <tr><td><b>OR</b></td><td>Output 1 if any input is 1 (A+B)</td><td>"At least one condition true"</td></tr>
+        <tr><td><b>NOT</b></td><td>Inverts the input (complement) — this is exactly the 1's complement</td><td>Used with a +1 adder to make 2's complement (subtraction)</td></tr>
+        <tr><td><b>NAND / NOR</b></td><td>AND/OR followed by NOT</td><td>Universal gates — any circuit can be built from NAND alone</td></tr>
+        <tr><td><b>XOR</b></td><td>Output 1 if inputs are <i>different</i></td><td>Half-adder sum bit, parity generation, Gray-code conversion</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>Boolean algebra</b> (George Boole, 1854) is the mathematics of 0 and 1 that makes digital circuits possible; <b>Claude Shannon (1937)</b> showed that relay circuits could implement Boolean logic — a key step from switches to computers.</p>
+
+    <h3>9.4 Where number systems meet real life (great for viva "applications" questions)</h3>
+    <div class="cards">
+      <div class="card"><h5>IPv4 addresses</h5><p>Written in decimal but stored as 4 bytes, e.g. 192.168.1.1 = 11000000.10101000.00000001.00000001.</p></div>
+      <div class="card"><h5>IPv6 &amp; MAC addresses</h5><p>Written in hexadecimal — e.g. MAC 3C:5A:B4:1F:9E:22, IPv6 in 8 hex groups.</p></div>
+      <div class="card"><h5>Colour codes in HTML/CSS</h5><p>#FF0000 = red (FF, 00, 00 for R, G, B). Each pair is one byte of 0–255.</p></div>
+      <div class="card"><h5>File permissions (Unix/Linux)</h5><p><code>chmod 755</code> is octal — 7 = rwx for the owner, 5 = r-x for group and others.</p></div>
+      <div class="card"><h5>Memory addresses &amp; disassembly</h5><p>Debuggers show addresses like 0x7FFE4A2C — hexadecimal, because it maps cleanly onto bits.</p></div>
+      <div class="card"><h5>Storage sizes</h5><p>Everything counted in powers of 2: 4 GB RAM = 4 × 2³⁰ bytes ≈ 43 crore bytes.</p></div>
+      <div class="card"><h5>Digital clocks / time &amp; angles</h5><p>Base-60 (sexagesimal) residue: 60 seconds, 60 minutes, 360° = 60×6.</p></div>
+      <div class="card"><h5>Bar codes, ISBN, Aadhaar</h5><p>Check digits use modular arithmetic on the digits — a cousin of the parity idea.</p></div>
+    </div>
+
+    <h3>9.5 Bits, bytes and the word length</h3>
+    <ul>
+      <li><b>Bit</b> = a single binary digit. It is the atom of information (coined from "<b>b</b>inary dig<b>it</b>").</li>
+      <li><b>Byte</b> = 8 bits; enough for one ASCII character. A byte can store 2⁸ = 256 different values (0–255).</li>
+      <li><b>Word length</b> = the number of bits the CPU handles in one operation (8/16/32/64). Bigger word length = faster and more accurate machine; today's PCs are 64-bit.</li>
+      <li><b>Address</b> = a unique number labelling each memory cell; the CPU says "read address 42" rather than "read the third box after the blue one".</li>
+      <li>How many bit patterns in n bits? <b>2ⁿ</b>. How many distinct values in n bits? <b>2ⁿ</b>, ranging 0 to <b>2ⁿ − 1</b> (unsigned).</li>
+    </ul>
+  </section>
+
+  <!-- ================= MODULE 10 ================= -->
+  <section id="m10">
+    <span class="modnum">Module 10</span>
+    <h2 class="title">Quick Revision Sheet — the night before the exam</h2>
+    <p class="lede">If you read only one page, read this one. Everything is compressed into lists you can memorise in 30 minutes.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h5>Definitions in one line</h5>
+        <p><b>Data</b> — raw, unprocessed facts.<br>
+        <b>Information</b> — processed, meaningful data used for decisions.<br>
+        <b>Computer</b> — electronic, programmable device that accepts input, processes per stored instructions, gives output, stores results.<br>
+        <b>Number system</b> — a set of digits and rules with a base r → digits 0…r−1.<br>
+        <b>Base/radix</b> — number of symbols in the system.</p>
+      </div>
+      <div class="card">
+        <h5>The cycles</h5>
+        <p><b>IPOS:</b> Input → Processing → Output → Storage.<br>
+        <b>Machine cycle:</b> Fetch → Decode → Execute → Store (billions of times per second).<br>
+        <b>Data processing → Information.</b></p>
+      </div>
+      <div class="card">
+        <h5>Generations (V-T-I-M-A)</h5>
+        <p>1: Vacuum tubes (1940–56) — ENIAC, UNIVAC-I<br>
+        2: Transistors (1956–63) — FORTRAN, COBOL<br>
+        3: ICs (1964–71) — IBM System/360, OS, time-sharing<br>
+        4: Microprocessors/VLSI (1971+) — PC, internet, GUI<br>
+        5: AI/ULSI (present) — ML, robotics, quantum</p>
+      </div>
+      <div class="card">
+        <h5>Fathers &amp; firsts</h5>
+        <p><b>Babbage</b> — Father of the computer.<br>
+        <b>Ada Lovelace</b> — first programmer.<br>
+        <b>Von Neumann</b> — stored-program concept.<br>
+        <b>Alan Turing</b> — Turing machine, Turing test.<br>
+        <b>Hollerith</b> — punched cards → IBM.<br>
+        <b>ENIAC</b> — first general-purpose electronic digital computer (1946).<br>
+        <b>UNIVAC-I</b> — first commercial computer.<br>
+        <b>Intel 4004</b> — first microprocessor (1971).</p>
+      </div>
+      <div class="card">
+        <h5>Number systems</h5>
+        <p>Binary r=2 (0,1) · Octal r=8 (0–7) · Decimal r=10 (0–9) · Hex r=16 (0–9,A–F)<br>
+        1 octal digit = 3 bits · 1 hex digit = 4 bits</p>
+      </div>
+      <div class="card">
+        <h5>Conversion methods</h5>
+        <p>Dec → other: divide by base, read remainders <b>bottom-up</b>.<br>
+        Fraction: multiply by base, read integer parts <b>top-down</b>.<br>
+        Other → Dec: weights (powers of base).<br>
+        Binary ↔ Octal: groups of 3.<br>
+        Binary ↔ Hex: groups of 4.<br>
+        Octal ↔ Hex: via binary (or via decimal).</p>
+      </div>
+      <div class="card">
+        <h5>Handy values</h5>
+        <p>(45)₁₀ = 101101₂ = 55₈ = 2D₁₆<br>
+        (156)₁₀ = 10011100₂ = 234₈ = 9C₁₆<br>
+        (255)₁₀ = 11111111₂ = 377₈ = FF₁₆<br>
+        2¹⁰ = 1024 · 2¹⁶ = 65536 · 2³² ≈ 4.3 billion<br>
+        8 bits = 1 byte = 256 values (0–255)<br>
+        Signed 8-bit 2's complement range: −128 to +127</p>
+      </div>
+      <div class="card">
+        <h5>CPU &amp; memory</h5>
+        <p><b>CPU = ALU + CU + Registers.</b><br>
+        ALU does arithmetic &amp; logic; CU controls; registers (PC, IR, MAR, MDR, ACC) are fastest.<br>
+        Primary: RAM (volatile) + ROM (non-volatile) + Cache.<br>
+        Secondary: HDD, SSD, optical, pen drive, cloud.<br>
+        Buses: data, address (n lines → 2ⁿ locations), control.</p>
+      </div>
+      <div class="card">
+        <h5>Codes</h5>
+        <p>BCD (4 bits/digit, 8421) · Excess-3 (digit+3) · Gray (1-bit change) · ASCII (7/8 bits; A=65, a=97, 0=48) · EBCDIC (8-bit, IBM) · Unicode (all languages) · Parity bit (error detection).</p>
+      </div>
+      <div class="card">
+        <h5>Characteristics</h5>
+        <p>Speed · Accuracy · Diligence · Versatility · Storage · Automation · Reliability · Cost-effectiveness · Logical decisions · Memory — but <b>no intelligence, no emotions, no common sense</b> (GIGO).</p>
+      </div>
+      <div class="card">
+        <h5>Types of computers</h5>
+        <p>By data: Analog · Digital · Hybrid.<br>
+        By size: Super &gt; Mainframe &gt; Mini &gt; Micro.<br>
+        By purpose: General-purpose · Special-purpose.</p>
+      </div>
+      <div class="card">
+        <h5>Three diagrams to be able to draw</h5>
+        <p>1. Block diagram of a computer (inputs, CPU = ALU+CU+registers, memory, output).<br>
+        2. IPOS cycle.<br>
+        3. Memory hierarchy pyramid.<br>
+        Plus the conversion map if you have time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MODULE 11 ================= -->
+  <section id="m11">
+    <span class="modnum">Module 11</span>
+    <h2 class="title">Practice Questions with Answers</h2>
+    <p class="lede">Cover the answer, write your own, then click to check. Questions 1–32 are theory; 33–62 are numericals.</p>
+
+    <h3>Part A — Theory (short &amp; long answer)</h3>
+
+    <details><summary>Q1. Define data and information with one example each, and state the relationship between them.</summary>
+      <div class="ans"><b>Data</b> = raw, unorganised facts and figures with no meaning by themselves, e.g. the numbers 45, 78, 92. <b>Information</b> = processed, organised data that is meaningful and useful for decision making, e.g. "the class average is 70.5 and Rahul stood 3rd". Relationship: data is the input, processing converts it into information which is the output; information is often re-used as data for the next level of processing.</div></details>
+
+    <details><summary>Q2. Explain the information processing cycle with a real-world example.</summary>
+      <div class="ans">The cycle has four stages. <b>Input:</b> data and instructions are entered through input devices and stored. <b>Processing:</b> the CPU (ALU + CU) performs arithmetic/logical operations. <b>Output:</b> the result is presented as information (soft or hard copy). <b>Storage:</b> data and results are saved for future use. Example (ATM): card + PIN + amount (input) → verify PIN, check balance and debit (processing) → cash and receipt (output) → updated account record saved (storage). Some books add communication/feedback as a fifth stage.</div></details>
+
+    <details><summary>Q3. Write any six characteristics of a computer.</summary>
+      <div class="ans"><b>1. Speed</b> — billions of operations per second. <b>2. Accuracy</b> — results are 100% correct if input and program are correct. <b>3. Diligence</b> — works at the same accuracy for hours without fatigue. <b>4. Versatility</b> — one machine performs many different jobs by changing software. <b>5. Storage</b> — stores huge amounts of data permanently with instant retrieval. <b>6. Automation</b> — once started, it works on its own. (Others: reliability, cost-effectiveness, logical decision-making, no boredom.)</div></details>
+
+    <details><summary>Q4. "A computer is a dumb machine with a great memory." Justify.</summary>
+      <div class="ans">A computer has no intelligence, no feelings, no common sense and no ability to take its own decisions — it can only obey the instructions given by a human (program). But it has enormous memory, speed and accuracy. So although it looks "clever", the cleverness is the programmer's; the machine is a fast, obedient, tireless but thoughtless servant. Hence "GIGO" — garbage in, garbage out. This is why we say a computer is a dumb machine with a great memory.</div></details>
+
+    <details><summary>Q5. Distinguish between analog, digital and hybrid computers with examples.</summary>
+      <div class="ans"><b>Analog:</b> works on continuous physical quantities such as voltage or pressure; very fast but less accurate; gives results as graphs/dials — speedometer, thermometer. <b>Digital:</b> works on discrete data (0s and 1s) by counting; very accurate, can store data and give exact numeric output — laptop, calculator. <b>Hybrid:</b> accepts analog data, converts it to digital, processes it digitally and can output analog signals — combines speed with accuracy — ECG machine, petrol pump, aircraft control system.</div></details>
+
+    <details><summary>Q6. Classify computers on the basis of size, speed and cost.</summary>
+      <div class="ans"><b>Supercomputer:</b> most powerful and costliest; petaFLOPS–exaFLOPS; used in weather forecasting, nuclear simulation, AI — PARAM Siddhi, Fugaku. <b>Mainframe:</b> very large, thousands of simultaneous users, high-volume transactions — IBM z Series used by banks and railways. <b>Minicomputer/midrange:</b> medium-sized multi-user machine for a department or college — PDP-11, IBM AS/400. <b>Microcomputer:</b> single-user personal computer — desktop, laptop, tablet, smartphone. Order of size/power/cost: Super &gt; Mainframe &gt; Mini &gt; Micro.</div></details>
+
+    <details><summary>Q7. Explain the basic organization of a digital computer with a block diagram.</summary>
+      <div class="ans">Draw the diagram: input unit → CPU (ALU + Control Unit + registers) ↔ memory unit → output unit, connected by the system bus. Explain: <b>Input unit</b> accepts data/instructions and converts them to binary form. <b>ALU</b> performs arithmetic and logical operations. <b>Control unit</b> fetches, decodes and directs the execution of instructions, i.e. it controls and coordinates all units. <b>Registers</b> are very fast temporary storage inside the CPU (PC, IR, MAR, MDR, ACC). <b>Memory unit</b> stores data and instructions — primary (RAM, ROM, cache) and secondary (HDD, SSD, pen drive). <b>Output unit</b> converts results to human-readable form — monitor (soft copy), printer (hard copy). The three buses (data, address, control) carry information between them.</div></details>
+
+    <details><summary>Q8. What is the difference between the ALU and the Control Unit?</summary>
+      <div class="ans"><b>ALU (Arithmetic Logic Unit)</b> actually performs the data operations — arithmetic (+ − × ÷) and logical (comparison, AND, OR, NOT) — and stores the result in a register such as the accumulator; it also sets status flags. <b>Control Unit</b> does not process data at all; it fetches instructions from memory, decodes them and generates the control signals that tell the ALU, memory and I/O devices what to do and when, keeping everything synchronised with the clock. In short, the ALU is the worker; the CU is the supervisor.</div></details>
+
+    <details><summary>Q9. What is the stored-program concept and who gave it?</summary>
+      <div class="ans">The idea that <b>both data and the sequence of instructions (program) are stored in the same main memory</b>, so the machine can read instructions from memory one after another and execute them automatically without the programmer rewiring the hardware for each new job. It was described by <b>John von Neumann</b> in the 1945 "First Draft of a Report on the EDVAC". Nearly every computer today follows this <b>von Neumann architecture</b>. (In the alternative <i>Harvard architecture</i>, instructions and data have separate memories.)</div></details>
+
+    <details><summary>Q10. Describe the five generations of computers in brief.</summary>
+      <div class="ans"><b>1st (1940–56):</b> vacuum tubes; huge, hot, unreliable, costly; machine language; punched cards — ENIAC, UNIVAC-I. <b>2nd (1956–63):</b> transistors; smaller, faster, reliable; FORTRAN, COBOL, assembly; batch processing — IBM 1401. <b>3rd (1964–71):</b> integrated circuits; operating systems, time-sharing, minicomputers; keyboard/monitor — IBM System/360, PDP-8. <b>4th (1971+):</b> microprocessors and VLSI; personal computers, GUI, networks, internet, laptops, smartphones — Intel 4004, IBM PC. <b>5th (present &amp; future):</b> artificial intelligence, parallel and quantum computing, machine learning and robotics — IBM Watson, self-driving cars, generative AI.</div></details>
+
+    <details><summary>Q11. Who is called the father of the computer and why?</summary>
+      <div class="ans"><b>Charles Babbage (1791–1871)</b>. He designed the <b>Difference Engine</b> (1822) for mathematical tables and the <b>Analytical Engine</b> (1837), the first design of a <b>general-purpose, programmable</b> machine with all the parts of a modern computer: a "mill" (processing unit = CPU), a "store" (memory), input via punched cards, and a printer for output. Its design even included conditional branching. Because the whole logical architecture of the modern computer was conceived by him — though it could not be built with the technology of his time — he is called the Father of the Computer.</div></details>
+
+    <details><summary>Q12. What is a computer? Give the full definition and explain each keyword.</summary>
+      <div class="ans">"A computer is an <b>electronic, programmable</b> device that accepts <b>data and instructions</b> as input, <b>processes</b> them automatically according to a stored set of instructions, produces meaningful <b>information</b> as output and <b>stores</b> the results for future use." <b>Electronic</b> → runs on electricity using circuits and binary signals. <b>Programmable</b> → it follows stored instructions, so the same machine does any job by changing the program. <b>Data/instructions</b> → it cannot think; input must be supplied. <b>Automatic</b> → it works without step-by-step human help. <b>Output/storage</b> → it converts data into information and remembers it. (Word origin: Latin <i>computare</i> — to calculate.)</div></details>
+
+    <details><summary>Q13. What are the main limitations of a computer?</summary>
+      <div class="ans">1. <b>No intelligence of its own</b> — it cannot think or take independent decisions; it must be programmed. 2. <b>No emotions, feelings or moral judgement</b>. 3. <b>GIGO</b> — accuracy depends completely on input data and the program. 4. <b>Needs electricity, maintenance and a suitable environment</b>. 5. <b>Cannot learn from experience by itself</b>. 6. <b>No common sense</b> — instructions must be literal and exact. It follows the program blindly, even if the program is wrong.</div></details>
+
+    <details><summary>Q14. Differentiate between primary and secondary memory.</summary>
+      <div class="ans"><b>Primary (main) memory</b> is directly accessible to the CPU, is very fast and expensive, smaller in capacity; it includes RAM (volatile, read/write working memory), ROM (non-volatile, firmware) and cache. <b>Secondary (auxiliary) memory</b> is not directly accessed by the CPU, is slower and cheaper, much larger in capacity and permanent — HDD, SSD, optical discs, pen drives, memory cards, cloud storage. Data moves from secondary storage into primary memory when it is to be processed, and is saved back for permanence.</div></details>
+
+    <details><summary>Q15. State six differences between RAM and ROM.</summary>
+      <div class="ans">
+      <div class="tw"><table><thead><tr><th>Point</th><th>RAM</th><th>ROM</th></tr></thead><tbody>
+      <tr><td>Nature</td><td>Volatile — contents lost when power is off</td><td>Non-volatile — contents retained</td></tr>
+      <tr><td>Access</td><td>Read and write</td><td>Normally read only</td></tr>
+      <tr><td>Purpose</td><td>Holds the currently running programs and data</td><td>Holds permanent start-up instructions (BIOS/firmware)</td></tr>
+      <tr><td>Speed/cost</td><td>Faster, costlier per byte</td><td>Slower, cheaper</td></tr>
+      <tr><td>Size</td><td>Large (GBs)</td><td>Small (KBs–MBs)</td></tr>
+      <tr><td>Types</td><td>SRAM, DRAM (and its DDR variants)</td><td>PROM, EPROM, EEPROM, Flash</td></tr>
+      </tbody></table></div></div></details>
+
+    <details><summary>Q16. What is cache memory and why is it needed?</summary>
+      <div class="ans">Cache is a small, very fast memory placed between the CPU and main memory (RAM) that holds recently and frequently used data and instructions. It is needed to bridge the <b>speed gap</b> — the CPU works in nanoseconds while RAM is much slower, so the CPU would sit idle waiting for data. Cache reduces that waiting time (its "hit rate" decides performance). Levels: L1 (smallest, inside the core, fastest), L2, L3 (larger, shared). It is expensive, which is why it is small, and it is volatile.</div></details>
+
+    <details><summary>Q17. Explain the system bus and its three types.</summary>
+      <div class="ans">A bus is a set of parallel electrical lines that carries information between the CPU, memory and I/O devices. <b>Data bus:</b> bidirectional; carries the actual data and instructions; its width (8/16/32/64 bits) decides how much is transferred at a time. <b>Address bus:</b> unidirectional from CPU to memory; carries the address of the location to be read/written; with n lines it can address 2ⁿ locations (32 lines → 2³² ≈ 4 GB). <b>Control bus:</b> carries control and timing signals such as read, write, interrupt, clock and reset, and thus synchronises all operations.</div></details>
+
+    <details><summary>Q18. Describe the instruction cycle (machine cycle).</summary>
+      <div class="ans"><b>1. Fetch:</b> the control unit reads the next instruction from the memory address held in the Program Counter; the PC is incremented. <b>2. Decode:</b> the instruction goes into the Instruction Register and the CU works out what operation and which operands are involved. <b>3. Execute:</b> the ALU performs the operation (or data is moved, or a device is signalled). <b>4. Store/write-back:</b> the result is written to a register or memory and the status flags are updated. The cycle then repeats for the next instruction — billions of times per second, timed by the system clock.</div></details>
+
+    <details><summary>Q19. What is a number system? Define base/radix.</summary>
+      <div class="ans">A <b>number system</b> is a set of symbols (digits) together with rules for writing numbers using those symbols. The <b>base</b> or <b>radix</b> (r) is the total number of distinct symbols available; the digits are 0 to r−1 and the place values (weights) are the powers of r. E.g. in octal, r = 8, digits are 0–7, weights are …64, 8, 1; in hex, r = 16, digits 0–9 and A–F, weights …256, 16, 1.</div></details>
+
+    <details><summary>Q20. Why does a computer use the binary number system?</summary>
+      <div class="ans">Because (i) digital circuits are cheapest and most reliable with just <b>two stable states</b> — ON/OFF, high/low voltage (with ten levels, noise would cause errors); (ii) it maps exactly onto <b>Boolean logic</b> (0 = false, 1 = true), so logic gates can do arithmetic; (iii) arithmetic has only 4 addition and 4 multiplication rules, and subtraction is done by complement addition — so the hardware is simple, small, fast and cheap; (iv) storage media and signals naturally hold two states.</div></details>
+
+    <details><summary>Q21. Why do we need octal and hexadecimal when the computer works in binary?</summary>
+      <div class="ans">Purely for <b>human convenience</b>. Long binary strings are hard to read and error-prone. Since 2³ = 8 and 2⁴ = 16, <b>one octal digit corresponds to exactly 3 bits and one hex digit to exactly 4 bits</b>, so binary can be compressed and converted back without any calculation. Example: 110110101011 (12 bits) = DAB in hex. Hex is used for memory addresses, colour codes, MAC addresses and machine-level programming; octal for Unix file permissions (<code>chmod 755</code>).</div></details>
+
+    <details><summary>Q22. What is the difference between positional and non-positional number systems?</summary>
+      <div class="ans">In a <b>positional</b> system the value of a digit depends on its position — 47 and 74 are different; the digit is multiplied by the weight (power of the base) of its position. All modern systems (decimal, binary, octal, hex) are positional. In a <b>non-positional</b> system the symbol has a fixed value wherever it appears — Roman numerals (X = 10 in XI and XIX) and tally marks. Arithmetic is far easier in positional systems, which is why computers use them.</div></details>
+
+    <details><summary>Q23. Explain the two methods of converting a decimal integer to binary. Which is faster?</summary>
+      <div class="ans"><b>Repeated division:</b> divide by 2 repeatedly, note the remainders, and read them from bottom to top (the last remainder is the MSB). <b>Power subtraction:</b> write the powers of 2 (… 32, 16, 8, 4, 2, 1), put 1 where a power fits into the remaining value, subtract, and 0 elsewhere. Power subtraction is faster for small numbers and for mental calculations; repeated division always works, however large the number. Tip: verify the answer by expanding the binary back into a sum of weights.</div></details>
+
+    <details><summary>Q24. What are the 1's complement and 2's complement of a binary number, and why is 2's complement used?</summary>
+      <div class="ans"><b>1's complement</b> = invert every bit (0→1, 1→0). <b>2's complement</b> = 1's complement + 1 (equivalently, copy bits from the right up to and including the first 1, then invert the rest). 2's complement is used because subtraction can then be done by <b>addition</b> (a − b = a + 2's complement of b, discarding the final carry), so one adder circuit does both jobs; it also has only <b>one representation of zero</b> and gives a clean signed range of −2<sup>n−1</sup> to +2<sup>n−1</sup>−1.</div></details>
+
+    <details><summary>Q25. What is BCD? How is 45 represented in BCD?</summary>
+      <div class="ans"><b>BCD (Binary Coded Decimal)</b> represents each individual decimal digit separately in 4-bit binary (weights 8-4-2-1). For 45: 4 → 0100 and 5 → 0101, so (45)₁₀ = <b>0100 0101</b> in BCD. It is easy for decimal displays/calculators but wasteful, since 4 bits could hold 16 values and BCD uses only 0–9 (1010–1111 are invalid codes).</div></details>
+
+    <details><summary>Q26. What is Unicode and how is it different from ASCII?</summary>
+      <div class="ans"><b>ASCII</b> is a 7-bit code (extended to 8-bit) giving 128/256 codes — enough for English letters, digits and punctuation ('A' = 65, 'a' = 97, '0' = 48) but not for other scripts. <b>Unicode</b> is a universal character-encoding standard with more than a lakh code points covering all the world's writing systems, symbols and emoji; its UTF-8 form is backward-compatible with ASCII for the first 128 characters, which is why UTF-8 dominates the web.</div></details>
+
+    <details><summary>Q27. What is a parity bit and what is it used for?</summary>
+      <div class="ans">A <b>parity bit</b> is an extra bit appended to a group of bits for <b>error detection</b> during storage or transmission. In <b>even parity</b> the bit is chosen so that the total number of 1s becomes even; in <b>odd parity</b>, odd. On reception the parity is recalculated — a mismatch means an error occurred. Limitation: it can detect a single-bit error (and cannot correct it), and it fails if two bits flip at the same time.</div></details>
+
+    <details><summary>Q28. What are the differences between hardware and software?</summary>
+      <div class="ans"><b>Hardware</b> is the physical, touchable part (CPU, RAM, keyboard, monitor) — it wears out with use and is manufactured. <b>Software</b> is the set of programs/instructions (Windows, MS Word, browsers) — intangible, does not wear out but becomes obsolete, and is written by programmers. Neither can work alone: hardware without software is dead, software without hardware cannot run. <b>Firmware</b> sits between them — permanent software stored in ROM/BIOS. Software types: system software (OS, drivers, utilities, translators) and application software (general-purpose like Excel, and specific-purpose like payroll or railway reservation).</div></details>
+
+    <details><summary>Q29. Write short notes: (a) ENIAC (b) von Neumann (c) UNIVAC-I (d) Intel 4004.</summary>
+      <div class="ans">(a) <b>ENIAC</b> (1946, Eckert &amp; Mauchly, Univ. of Pennsylvania): first large general-purpose electronic digital computer; ~18,000 vacuum tubes, ~30 tonnes, room-sized; programmed by rewiring plugboards. (b) <b>John von Neumann</b>: gave the <b>stored-program concept</b> (EDVAC report, 1945) in which data and instructions share the same memory — the basis of all modern computers. (c) <b>UNIVAC-I</b> (1951): the first commercial computer sold in the USA; famously predicted the 1952 presidential election. (d) <b>Intel 4004</b> (1971): the first microprocessor — a complete 4-bit CPU on a single chip, which made the personal computer possible.</div></details>
+
+    <details><summary>Q30. What is a supercomputer? Where is it used, and what does India have?</summary>
+      <div class="ans">A supercomputer is the fastest and most powerful class of computer, with thousands of processors working in parallel, speed measured in peta/exaFLOPS, costing crores and requiring heavy cooling and power. Uses: weather and cyclone forecasting, climate modelling, nuclear and defence simulation, drug discovery and genome analysis, oil exploration, AI training, animation rendering. India: <b>PARAM 8000 (1991)</b> — the country's first indigenous supercomputer built by <b>C-DAC</b> under Dr. Vijay Bhatkar; today the PARAM series, PARAM Siddhi-AI and the National Supercomputing Mission's PARAM Rudra systems.</div></details>
+
+    <details><summary>Q31. Explain the difference between a general-purpose and a special-purpose computer.</summary>
+      <div class="ans"><b>General-purpose:</b> versatile — can be programmed to do any job (word processing, accounts, gaming, design) and can be used by many users for different tasks; a single machine supports many applications. Examples: desktop, laptop, server, tablet. <b>Special-purpose (dedicated):</b> designed and built for one specific task only, with the logic fixed inside; often smaller, cheaper and faster for that job. Examples: ATM, washing-machine controller, digital camera, microwave, car engine control unit, POS billing machine, MRI scanner, traffic-light controller.</div></details>
+
+    <details><summary>Q32. What is the role of the system clock and how is computer speed measured?</summary>
+      <div class="ans">The <b>system clock</b> is a crystal oscillator that generates a steady stream of pulses which synchronise every operation in the CPU — each pulse (or a fixed number of them) allows one micro-operation, so the clock is the heartbeat of the computer. Speed is measured as <b>clock frequency</b> in Hz/MHz/GHz (cycles per second), <b>MIPS</b> (million instructions per second) or <b>FLOPS</b> (floating-point operations per second) for scientific/supercomputers. Other factors affecting real speed: word length, cache size, number of cores, and memory/disk speed.</div></details>
+
+    <h3>Part B — Numerical practice (number systems)</h3>
+
+    <details><summary>Q33. Convert (1101)₂ to decimal.</summary><div class="ans">1×8 + 1×4 + 0×2 + 1×1 = 8+4+0+1 = <b>(13)₁₀</b></div></details>
+    <details><summary>Q34. Convert (1A)₁₆ to decimal.</summary><div class="ans">1×16 + 10×1 = <b>(26)₁₀</b></div></details>
+    <details><summary>Q35. Convert (77)₈ to decimal.</summary><div class="ans">7×8 + 7×1 = 56 + 7 = <b>(63)₁₀</b></div></details>
+    <details><summary>Q36. Convert (1010.11)₂ to decimal.</summary><div class="ans">8 + 0 + 2 + 0 + 0.5 + 0.25 = <b>(10.75)₁₀</b></div></details>
+    <details><summary>Q37. Convert (52)₁₀ to binary, octal and hexadecimal.</summary><div class="ans">52 = 32+16+4 → <b>(110100)₂</b>; repeated division by 8: 52 ÷ 8 = 6 r 4; 6 ÷ 8 = 0 r 6 → reading up: <b>(64)₈</b>; by 16 → 3 r 4 → <b>(34)₁₆</b>. Check: 6×8+4 = 52 ✔, 3×16+4 = 52 ✔</div></details>
+    <details><summary>Q38. Convert (0.75)₁₀ to binary.</summary><div class="ans">0.75 × 2 = 1.50 → 1; 0.50 × 2 = 1.00 → 1; stop → <b>(0.11)₂</b> (check: 0.5+0.25 = 0.75 ✔)</div></details>
+    <details><summary>Q39. Convert (255)₁₀ to binary and hex. What do you notice?</summary><div class="ans"><b>(11111111)₂ = (FF)₁₆</b>. It is the largest 8-bit number (2⁸ − 1 = 255), which is why 0–255 is the range of one byte and of each colour component in RGB.</div></details>
+    <details><summary>Q40. Convert (100)₁₀ to binary, octal and hex.</summary><div class="ans"><b>(1100100)₂</b>, <b>(144)₈</b> (100÷8 = 12 r4; 12÷8 = 1 r4; 1÷8 = 0 r1), <b>(64)₁₆</b> (100÷16 = 6 r4). Check: 64+32+4 = 100 ✔; 64+32+4 = 100 ✔; 6×16+4 = 100 ✔</div></details>
+    <details><summary>Q41. Convert (110110)₂ to octal, hex and decimal.</summary><div class="ans">Groups of 3: 110 | 110 → <b>(66)₈</b>. Groups of 4: 0011 | 0110 → 3 | 6 → <b>(36)₁₆</b>. Decimal: 32+16+4+2 = <b>(54)₁₀</b>. Check: 6×8+6 = 54 ✔, 3×16+6 = 54 ✔</div></details>
+    <details><summary>Q42. Convert (1AC)₁₆ to binary and decimal.</summary><div class="ans">1→0001, A→1010, C→1100 → <b>(110101100)₂</b>; decimal = 1×256 + 10×16 + 12 = 256+160+12 = <b>(428)₁₀</b></div></details>
+    <details><summary>Q43. Convert (435)₈ to binary and decimal.</summary><div class="ans">4→100, 3→011, 5→101 → <b>(100011101)₂</b>; decimal = 4×64 + 3×8 + 5 = 256+24+5 = <b>(285)₁₀</b></div></details>
+    <details><summary>Q44. Convert (2C5)₁₆ to octal (via binary).</summary><div class="ans">2C5 = 0010 1100 0101 → regroup in 3s: 001 | 011 | 000 | 101 → 1, 3, 0, 5 → <b>(1305)₈</b>. Check both equal 709 in decimal ✔</div></details>
+    <details><summary>Q45. Find the 1's and 2's complement of (11001010)₂.</summary><div class="ans">1's complement = <b>00110101</b>; 2's complement = 00110101 + 1 = <b>00110110</b></div></details>
+    <details><summary>Q46. Perform (10110)₂ − (1101)₂ using 2's complement.</summary><div class="ans">Use 8 bits: 10110 = 00010110; 1101 = 00001101; its 2's complement = 11110011. Add: 00010110 + 11110011 = (1)00001001 → discard the carry → <b>00001001 = (9)₁₀</b> ✔ (22 − 13 = 9)</div></details>
+    <details><summary>Q47. Add (1111)₂ + (1011)₂ and verify in decimal.</summary><div class="ans">1111 + 1011 = <b>11010</b>. Check: 15 + 11 = 26 = 11010₂ ✔</div></details>
+    <details><summary>Q48. Multiply (101)₂ × (11)₂.</summary><div class="ans">101 × 11 = 101 + 1010 = <b>1111</b> = 15 ✔ (5 × 3 = 15)</div></details>
+    <details><summary>Q49. Add (47)₈ + (65)₈.</summary><div class="ans">7+5 = 12 = 1×8+4 → write 4, carry 1; 4+6+1 = 11 = 1×8+3 → write 3, carry 1 → <b>(134)₈</b>. Check decimal: 39 + 53 = 92 = 134₈ ✔</div></details>
+    <details><summary>Q50. Add (FF)₁₆ + (1)₁₆.</summary><div class="ans"><b>(100)₁₆</b> (= 255 + 1 = 256). Note the carry generates a new hex digit — this is exactly how a byte overflows into the next byte.</div></details>
+    <details><summary>Q51. Write (950)₁₀ in BCD.</summary><div class="ans">9 → 1001, 5 → 0101, 0 → 0000 → <b>1001 0101 0000</b></div></details>
+    <details><summary>Q52. Find the Gray code of the binary number (1110)₂.</summary><div class="ans">MSB copied = 1; then XOR adjacent bits: 1⊕1 = 0, 1⊕1 = 0, 1⊕0 = 1 → <b>1001</b> (Gray). Verify: converting 1001 back gives 1110, and only one bit changes between successive Gray values.</div></details>
+    <details><summary>Q53. Convert (101.101)₂ to decimal.</summary><div class="ans">4 + 0 + 1 + 0.5 + 0 + 0.125 = <b>(5.625)₁₀</b></div></details>
+    <details><summary>Q54. What is the range of numbers that can be stored in 8 bits in (a) unsigned (b) 2's complement signed form?</summary><div class="ans">(a) <b>0 to 255</b> (2⁸ − 1). (b) <b>−128 to +127</b> (formula: −2<sup>n−1</sup> to 2<sup>n−1</sup> − 1).</div></details>
+    <details><summary>Q55. What is the largest number that can be represented in 10 bits?</summary><div class="ans">2¹⁰ − 1 = <b>1023</b> (i.e. 1111111111₂)</div></details>
+    <details><summary>Q56. How many bits are needed to represent 100 in binary?</summary><div class="ans">100 = 1100100₂ → <b>7 bits</b> (general rule: the number of bits = ⌊log₂ n⌋ + 1)</div></details>
+    <details><summary>Q57. Give the ASCII decimal values and 7-bit binary of 'B', 'b' and '1'.</summary><div class="ans">'B' = 66 = 1000010; 'b' = 98 = 1100010; '1' = 49 = 0110001. (Remember 'A' = 65, difference between upper and lower case = 32.)</div></details>
+    <details><summary>Q58. Write the IP address 192.168.0.1 in binary.</summary><div class="ans">192 = 11000000, 168 = 10101000, 0 = 00000000, 1 = 00000001 → <b>11000000.10101000.00000000.00000001</b> (each octet is 8 bits — hence an IPv4 address is 32 bits long).</div></details>
+    <details><summary>Q59. Convert (12)₁₀ to binary and (12)₁₀ to hex.</summary><div class="ans"><b>(1100)₂</b> and <b>(C)₁₆</b></div></details>
+    <details><summary>Q60. Convert (1000)₁₀ to hex, and convert that hex answer back to decimal to verify.</summary><div class="ans">1000 ÷ 16 = 62 r 8 → 62 ÷ 16 = 3 r 14(E) → 3 ÷ 16 = 0 r 3 → <b>(3E8)₁₆</b>. Verify: 3×256 + 14×16 + 8 = 768 + 224 + 8 = <b>1000</b> ✔</div></details>
+    <details><summary>Q61. Convert (777)₈ to decimal. What is special about it?</summary><div class="ans">7×64 + 7×8 + 7 = 448 + 56 + 7 = <b>(511)₁₀</b> = 2⁹ − 1 — the largest 9-bit number, just as (777)₈ is the largest 3-digit octal number.</div></details>
+    <details><summary>Q62. Which of these is the largest: (10011)₂, (23)₈, (13)₁₆, (19)₁₀?</summary><div class="ans">A trick question — <b>all four are equal to 19</b>. (10011)₂ = 16+2+1 = 19; (23)₈ = 2×8+3 = 19; (13)₁₆ = 16+3 = 19; (19)₁₀ = 19. Moral: converting everything into one base is the safest way to compare numbers written in different bases.</div></details>
+
+    <div class="box tip"><span class="bt">How to score full marks in numerical questions</span> Always (1) write the base as a subscript, (2) show the division/multiplication table, (3) draw an arrow showing the direction of reading, (4) verify by converting back, and (5) box the final answer with its base.</div>
+  </section>
+
+  <!-- ================= GLOSSARY ================= -->
+  <section id="glossary">
+    <span class="modnum">Reference</span>
+    <h2 class="title">Glossary of Key Terms</h2>
+    <div class="tw"><table>
+      <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td><b>ALU</b></td><td>Arithmetic Logic Unit — the CPU part that performs arithmetic and logical operations.</td></tr>
+        <tr><td><b>ASCII</b></td><td>7/8-bit character code for English text; 'A' = 65, 'a' = 97, '0' = 48.</td></tr>
+        <tr><td><b>Base / Radix</b></td><td>Number of distinct digits in a number system; the ratio between weights of adjacent places.</td></tr>
+        <tr><td><b>BCD</b></td><td>Binary Coded Decimal — each decimal digit coded in 4 bits (8421).</td></tr>
+        <tr><td><b>Binary</b></td><td>Base-2 system using only 0 and 1; the internal language of computers.</td></tr>
+        <tr><td><b>Bit</b></td><td>Binary digit — smallest unit of data (0 or 1).</td></tr>
+        <tr><td><b>Bus</b></td><td>Group of wires carrying data, addresses and control signals between units.</td></tr>
+        <tr><td><b>Byte</b></td><td>8 bits = 256 possible values; stores one character.</td></tr>
+        <tr><td><b>Cache</b></td><td>Small, very fast memory between CPU and RAM holding frequently used data.</td></tr>
+        <tr><td><b>Clock speed</b></td><td>Frequency of the pulses synchronising CPU operations (Hz, MHz, GHz).</td></tr>
+        <tr><td><b>Compiler / Interpreter</b></td><td>Translators from high-level language to machine language — whole program at once / line by line.</td></tr>
+        <tr><td><b>Control Unit</b></td><td>CPU part that fetches, decodes and directs execution of instructions.</td></tr>
+        <tr><td><b>Data</b></td><td>Raw, unprocessed facts having little or no meaning alone.</td></tr>
+        <tr><td><b>EBCDIC</b></td><td>8-bit IBM mainframe character code.</td></tr>
+        <tr><td><b>Firmware</b></td><td>Permanent software stored in ROM (e.g. BIOS) that starts the machine.</td></tr>
+        <tr><td><b>FLOPS</b></td><td>Floating-point operations per second — a measure of computing speed.</td></tr>
+        <tr><td><b>GIGO</b></td><td>Garbage In Garbage Out — output quality depends on input quality.</td></tr>
+        <tr><td><b>Hardware</b></td><td>Physical, tangible parts of a computer system.</td></tr>
+        <tr><td><b>Hexadecimal</b></td><td>Base-16 system using 0–9 and A–F; one digit = 4 bits.</td></tr>
+        <tr><td><b>Information</b></td><td>Processed, organised, meaningful data used for decisions.</td></tr>
+        <tr><td><b>Instruction cycle</b></td><td>Fetch → decode → execute → store, repeated continuously.</td></tr>
+        <tr><td><b>IPOS cycle</b></td><td>Input → Processing → Output → Storage: the information processing cycle.</td></tr>
+        <tr><td><b>LSB / MSB</b></td><td>Least / Most significant bit — the rightmost (weight 1) / leftmost (highest weight) bit.</td></tr>
+        <tr><td><b>Mainframe</b></td><td>Large, powerful computer supporting thousands of users and high-volume transactions.</td></tr>
+        <tr><td><b>Microprocessor</b></td><td>A complete CPU built on a single integrated-circuit chip.</td></tr>
+        <tr><td><b>Nibble</b></td><td>4 bits — one hexadecimal digit.</td></tr>
+        <tr><td><b>Octal</b></td><td>Base-8 system using 0–7; one digit = 3 bits.</td></tr>
+        <tr><td><b>PROM/EPROM/EEPROM</b></td><td>Programmable ROM types — write once / UV-erasable / electrically erasable.</td></tr>
+        <tr><td><b>Parity bit</b></td><td>Extra bit used for single-bit error detection.</td></tr>
+        <tr><td><b>RAM</b></td><td>Random Access Memory — volatile read/write working memory.</td></tr>
+        <tr><td><b>Register</b></td><td>Very fast temporary storage inside the CPU (PC, IR, MAR, MDR, ACC).</td></tr>
+        <tr><td><b>ROM</b></td><td>Read Only Memory — non-volatile memory holding firmware/BIOS.</td></tr>
+        <tr><td><b>Software</b></td><td>Programs and instructions that make hardware work.</td></tr>
+        <tr><td><b>SSD / HDD</b></td><td>Solid-state drive (flash, no moving parts) / hard disk drive (magnetic, mechanical).</td></tr>
+        <tr><td><b>Stored-program concept</b></td><td>Data and instructions kept in the same memory and executed automatically — von Neumann's idea.</td></tr>
+        <tr><td><b>Supercomputer</b></td><td>Fastest, most powerful, most expensive class of computer, used for large scientific work.</td></tr>
+        <tr><td><b>Unicode / UTF-8</b></td><td>Universal character-encoding standard covering all scripts and symbols.</td></tr>
+        <tr><td><b>Volatile memory</b></td><td>Memory that loses its contents when power is switched off (e.g. RAM).</td></tr>
+        <tr><td><b>Word length</b></td><td>Number of bits processed at one time by the CPU (32/64 bits today).</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="box kv"><span class="bt">You have finished Unit 1</span>
+    You can now define data and information, describe the information processing cycle, define a computer and its characteristics, narrate the history and five generations, classify computers by data/size/purpose, draw and explain the organization of a digital computer, and convert between binary, octal, decimal and hexadecimal — with fractions, complements, arithmetic and codes. Next logical topics to study (they build on this): <b>boolean algebra &amp; logic gates, computer languages, operating systems, and computer applications.</b>
+    <br><br>Now go and test yourself in the companion tool: <b>number-system-lab.html</b> — it shows step-by-step working for any conversion and can quiz you with random questions.
+    </div>
+  </section>
+
+  <div class="footer">
+    Fundamentals of Computers — Unit 1 study guide · Prepared for interactive study · Print this page for an offline revision booklet.
+  </div>
+
+  </main>
+</div>
+<script>
+(function () {
+  var all = function () { return document.querySelectorAll('details'); };
+  var ex = document.getElementById('btnExpand');
+  var co = document.getElementById('btnCollapse');
+  var pr = document.getElementById('btnPrint');
+  if (ex) ex.addEventListener('click', function () {
+    all().forEach(function (d) { d.open = true; });
+    ex.textContent = '✔ All answers shown';
+    setTimeout(function () { ex.textContent = '👁 Show all answers'; }, 1600);
+  });
+  if (co) co.addEventListener('click', function () {
+    all().forEach(function (d) { d.open = false; });
+  });
+  if (pr) pr.addEventListener('click', function () {
+    if (all().length && !document.querySelector('details[open]')) {
+      all().forEach(function (d) { d.open = true; });   // include answers in the PDF
+    }
+    window.print();
+  });
+})();
+</script>
+</body>
+</html>
+
