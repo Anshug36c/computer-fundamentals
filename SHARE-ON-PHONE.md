@@ -1,5 +1,18 @@
 # 📱 How to share this with anyone's phone
 
+## ✅ It is already online — just share this link
+
+**Full study guide:** https://anshug36c.github.io/computer-fundamentals/
+**Number System Lab (converter + quiz):** https://anshug36c.github.io/computer-fundamentals/number-system-lab.html
+
+The guide has a **“🎯 Open the practice lab”** button at the top, so you can send people only the first link.
+On a phone: Chrome → **⋮ → Add to Home screen** to keep it as an offline icon. Tap **🖨 Print / save as PDF** in the button bar to make a PDF for WhatsApp.
+
+*Everything below is for the case where you also want to send the raw files, or host a copy of your own.*
+
+---
+
+
 Everything here is **self-contained**: no internet, no app, no login needed to *use* it. Two HTML files + one notes file.
 
 | File | Size | What it is |
